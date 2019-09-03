@@ -1,9 +1,16 @@
 <html>
 <head>
-
+	<title>Daftar Porjek PKS</title>
 </head>
 <body>
-	<h1>LIST PKS</h1>
+	<table border="1">
+		<th>Nama Istansi</th>
+		<th>Jenis PKS</th>
+		<th>Asal PKS</th>
+		<th>Jangka Waktu</th>
+		<th>PIC</th>
+		<th>Action</th>
+	</table>
 
 </body>
 </html>
