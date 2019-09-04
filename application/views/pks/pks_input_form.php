@@ -1,3 +1,6 @@
+<?php
+	$this->load->view('pks/pks');
+?>
 <html>
 <head>
 	<title>Tambah PKS</title>
@@ -29,6 +32,10 @@
 		<tr>
 		<td><label for="r_waktu">Rencana Jangka Waktu PKS</label></td>
 		<td><input class="form-control" type="text" name="r_waktu" id="r_waktu" placeholder="Rencana Jangka Waktu PKS"></td>
+		<td><label for="rtm_waktu">Rencana Tanggal Mulai PKS</label></td>
+		<td><input class="form-control" type="date" name="rtm_waktu" id="rtm_waktu" placeholder="Rencana Tanggal Mulai PKS"></td>
+		<td><label for="rta_waktu">Rencana Tanggal Akhir PKS</label></td>
+		<td><input class="form-control" type="date" name="rta_waktu" id="rta_waktu" placeholder="Rencana Tanggal Akhir PKS"></td>
 		</tr>
 		<tr>
 		<td><label for="pic">PIC</label></td>

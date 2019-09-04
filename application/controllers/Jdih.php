@@ -7,6 +7,7 @@ class Jdih extends CI_Controller {
     {
         parent::__construct();
 		$this->load->library('session');
+		$this->load->model('M_jdih');
     }
 
 	public function index()
@@ -17,6 +18,13 @@ class Jdih extends CI_Controller {
 	public function create()
 	{
 		$this->load->view('jdih/jdih_input_form');
+	}
+
+	public function create_action()
+	{
+		$data = array(
+			
+		);
 	}
 	public function list_jdih()
 	{

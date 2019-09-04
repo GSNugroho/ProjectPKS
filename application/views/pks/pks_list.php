@@ -1,3 +1,6 @@
+<?php
+	$this->load->view('pks/pks');
+?>
 <html>
 <head>
 	<title>Daftar Porjek PKS</title>
