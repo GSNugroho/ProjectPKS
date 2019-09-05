@@ -6,7 +6,11 @@
 	<title>Tambah PKS</title>
 </head>
 <body>
-	<form action="<?php echo base_url().'Pks/create_action';?>" method="POST">
+<div id="fh5co-intro">
+			<div class="row animate-box">
+				<div class="col-md-12 col-md-offset-0 text-center">
+					<!-- <h2>Living in God's Amazing Grace!</h2> -->
+					<form action="<?php echo base_url().'Pks/create_action';?>" method="POST">
 	<table>
 		<tr>
 		<td><label for="nm_istansi">Nama Istansi</label></td>
@@ -46,5 +50,9 @@
 		</tr>
 	</table>
 	</form>
+				</div>
+			</div>
+		</div>
+</div>
 </body>
 </html>

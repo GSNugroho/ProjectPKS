@@ -23,8 +23,17 @@ class Jdih extends CI_Controller {
 	public function create_action()
 	{
 		$data = array(
-			
+			'r_lingkup' => $this->input->post('r_lingkup', TRUE),
+			'jns_prtn' => $this->input->post('jns_prtn', TRUE),
+			'th_prtn' => $this->input->post('th_prtn', TRUE),
+			'nmr_prtn' => $this->input->post('nmr_prtn', TRUE),
+			'nm_prtn' => $this->input->post('nm_prtn', TRUE),
+			'sts_prtn' => $this->input->post('sts_prtn', TRUE),
+			'strkl' => $this->input->post('strkl', TRUE),
+
 		);
+		$this->M_jdih->insert($data);
+		$this->load->view('jdih/jdih_list');
 	}
 	public function list_jdih()
 	{

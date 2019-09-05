@@ -6,10 +6,10 @@
 	<title>Tambah JDIH</title>
 </head>
 <body>
-	<form action="<?php echo base_url().'Pks/create_action';?>" method="POST">
+	<form action="<?php echo base_url().'Jdih/create_action';?>" method="POST">
 	<table>
 		<tr>
-		<td><label for="r_lingkup">Jenis PKS</label></td>
+		<td><label for="r_lingkup">Ruang Lingkup</label></td>
 		<td><select name="r_lingkup" class="form-control" id="r_lingkup">
 			<option value="">--Pilih Ruang Lingkup</option>
 			<option value="1">Nasional</option>
@@ -59,16 +59,8 @@
 		<td><input class="form-control" type="text" name="strkl" id="strkl" placeholder="Struktural"></td>
 		</tr>
 		<tr>
-		<td><label for="r_waktu">Rencana Jangka Waktu PKS</label></td>
-		<td><input class="form-control" type="text" name="r_waktu" id="r_waktu" placeholder="Rencana Jangka Waktu PKS"></td>
-		<td><label for="rtm_waktu">Rencana Tanggal Mulai PKS</label></td>
-		<td><input class="form-control" type="date" name="rtm_waktu" id="rtm_waktu" placeholder="Rencana Tanggal Mulai PKS"></td>
-		<td><label for="rta_waktu">Rencana Tanggal Akhir PKS</label></td>
-		<td><input class="form-control" type="date" name="rta_waktu" id="rta_waktu" placeholder="Rencana Tanggal Akhir PKS"></td>
-		</tr>
-		<tr>
-		<td><label for="pic">PIC</label></td>
-		<td><input class="form-control" type="text" name="pic" id="pic" placeholder="PIC"></td>
+		<td><label for="doc">Upload Dokumen</label></td>
+		<td><input class="form-control" type="file" name="doc" id="doc" placeholder="Dokumen"></td>
 		</tr>
 		<tr>
 		<td><button type="submit" class="btn btn-primary">Simpan</button></td>
