@@ -1,15 +1,11 @@
 <?php
 	$this->load->view('pks/pks');
 ?>
-<html>
-<head>
-	<title>Tambah PKS</title>
-</head>
-<body>
+
 <div id="fh5co-intro">
 			<div class="row animate-box">
 				<div class="col-md-12 col-md-offset-0 text-center">
-					<!-- <h2>Living in God's Amazing Grace!</h2> -->
+					
 					<form action="<?php echo base_url().'Pks/create_action';?>" method="POST">
 	<table>
 		<tr>
@@ -34,10 +30,11 @@
 		<td><input class="form-control" type="text" name="asal_pks" id="asal_pks" placeholder="Asal Permohonan PKS"></td>
 		</tr>
 		<tr>
-		<td><label for="r_waktu">Rencana Jangka Waktu PKS</label></td>
-		<td><input class="form-control" type="text" name="r_waktu" id="r_waktu" placeholder="Rencana Jangka Waktu PKS"></td>
+		<!-- <td><label for="r_waktu">Rencana Jangka Waktu PKS</label></td>
+		<td><input class="form-control" type="text" name="r_waktu" id="r_waktu" placeholder="Rencana Jangka Waktu PKS"></td> -->
 		<td><label for="rtm_waktu">Rencana Tanggal Mulai PKS</label></td>
 		<td><input class="form-control" type="date" name="rtm_waktu" id="rtm_waktu" placeholder="Rencana Tanggal Mulai PKS"></td>
+		</tr><tr>
 		<td><label for="rta_waktu">Rencana Tanggal Akhir PKS</label></td>
 		<td><input class="form-control" type="date" name="rta_waktu" id="rta_waktu" placeholder="Rencana Tanggal Akhir PKS"></td>
 		</tr>

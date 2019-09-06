@@ -9,6 +9,19 @@ class M_pks extends CI_Model{
     
     function insert($data){
         // $this->db->insert('project_pks', $data);
-    }
+	}
+	
+	function get_total_dt(){
+
+	}
+
+	function get_total_fl($searchQuery){
+
+	}
+
+	function get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
+
+	}
+	
 }
 ?>
