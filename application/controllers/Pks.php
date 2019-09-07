@@ -23,14 +23,14 @@ class Pks extends CI_Controller {
 	public function create_action()
 	{
 		$data = array(
-			'nm_istansi' => $this->input->post('nm_instansi', TRUE),
+			'nm_instansi' => $this->input->post('nm_instansi', TRUE),
 			'jns_pks' => $this->input->post('jns_pks', TRUE),
 			'des_pks' => $this->input->post('des_pks', TRUE),
 			'asal_pks' => $this->input->post('asal_pks', TRUE),
-			'r_waktu' => $this->input->post('r_waktu', TRUE),
-			'rtm_waktu' => $this->input->post('rtm_waktu', TRUE),
-			'rta_waktu' => $this->input->post('rta_waktu', TRUE),
-			'pic' => $this->input->post('pic', TRUE)
+			// 'r_waktu' => $this->input->post('r_waktu', TRUE),
+			'tgl_mulai' => $this->input->post('rtm_waktu', TRUE),
+			'tgl_akhir' => $this->input->post('rta_waktu', TRUE),
+			'pic_pks' => $this->input->post('pic', TRUE)
 		);
 		$this->M_pks->insert($data);
 		redirect(site_url('Pks/list_pks'));
@@ -63,13 +63,14 @@ class Pks extends CI_Controller {
 		$searchQuery = " ";
 		if($searchValue != ''){
 		$searchQuery = " and (
-		colom like '%".$searchValue."%' or 
-		colom like '%".$searchValue."%' or 
-		colom like '%".$searchValue."%' or 
-		colom like '%".$searchValue."%' or 
-		colom like'%".$searchValue."%' or
-		colom like'%".$searchValue."%' or
-		colom like'%".$searchValue."%' ) ";
+		kd_pks like '%".$searchValue."%' or 
+		nm_instansi like '%".$searchValue."%' or 
+		jns_pks like '%".$searchValue."%' or 
+		des_pks like '%".$searchValue."%' or 
+		asal_pks like'%".$searchValue."%' or
+		tgl_mulai like'%".$searchValue."%' or
+		pic_pks like'%".$searchValue."%' or
+		tgl_akhir like'%".$searchValue."%' ) ";
 		}
 
 		## Total number of records without filtering
@@ -81,7 +82,7 @@ class Pks extends CI_Controller {
 		
 
 		## Total number of record with filtering
-		$sel = $this->M_monitor->get_total_fl($searchQuery);
+		$sel = $this->M_pks->get_total_fl($searchQuery);
 		// $records = sqlsrv_fetch_assoc($sel);
 		foreach($sel as $row){
 			$totalRecordwithFilter = $row->allcount;
@@ -89,29 +90,48 @@ class Pks extends CI_Controller {
 		
 
 		## Fetch records
-		$empQuery = $this->M_monitor->get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage);
+		$empQuery = $this->M_pks->get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage);
 		$empRecords = $empQuery;
 		$data = array();
 
 		foreach($empRecords as $row){
-		$cek = '<a href="perawatan/cek/'.$row->kd_inv.'" class="btn btn-success btn-circle">
+		$cek = '<a href="perawatan/cek/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		<i class="fas fa-check"></i>
 		</a>';
 		
 		$button = '
-		<a href="Pks/read/'.$row->kd_inv.'" class="btn btn-info btn-circle">
-		<i class="fas fa-info-circle"></i>
+		<a href="perawatan/proses/'.$row->kd_pks.'" class="btn btn-success btn-circle">
+		<i class="fa fa-check"></i>
 		</a>
-		<a href="Pks/update/'.$row->kd_inv.'" class="btn btn-warning btn-circle">
-        <i class="fas fa-edit"></i>
+		<a href="Pks/read/'.$row->kd_pks.'" class="btn btn-info btn-circle ">
+		<i class="fa fa-info"></i>
+		</a>
+		<a href="Pks/update/'.$row->kd_pks.'" class="btn btn-warning btn-circle">
+        <i class="fa fa-edit"></i>
         </a>
-		<a href="Pks/delete/'.$row->kd_inv.'" class="btn btn-danger btn-circle">
-		<i class="fas fa-trash"></i>
+		<a href="Pks/delete/'.$row->kd_pks.'" class="btn btn-danger btn-circle">
+		<i class="fa fa-trash"></i>
 		</a>
 		';
+		
+		$j_p = $row->jns_pks;
+		if($j_p == 1){
+			$jns_pks = 'Manajerial';
+		}else if($j_p == 2){
+			$jns_pks = 'Medis';
+		}else{
+			$jns_pks = '';
+		}
 
 		$data[] = array( 
-			"action"=>$button
+			"nm_instansi" => $row->nm_instansi,
+			"jns_pks" => $jns_pks,
+			"des_pks" => $row->des_pks,
+			"asal_pks" => $row->asal_pks,
+			"tgl_mulai" => date('d-m-Y', strtotime($row->tgl_mulai)),
+			"tgl_akhir" => date('d-m-Y', strtotime($row->tgl_akhir)),
+			"pic_pks" => $row->pic_pks,
+			"action" => $button
 		);
 		}
 
