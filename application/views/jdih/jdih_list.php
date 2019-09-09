@@ -37,15 +37,17 @@
       'serverSide': true,
       'serverMethod': 'post',
       'ajax': {
-          'url':'<?php echo base_url().'Pks/tbl_list'?>'
+          'url':'<?php echo base_url().'Jdih/tbl_list'?>'
       },
       'columns': [
-		 { data: 'nm_instansi' },
-		 { data: 'jns_pks' },
-		 { data: 'asal_pks' },
-		 { data: 'tgl_mulai' },
-		 { data: 'tgl_akhir' },
-		 { data: 'pic_pks' },
+		 { data: 'r_lingkup' },
+		 { data: 'jns_prtn' },
+		 { data: 'th_prtn' },
+		 { data: 'nmr_prtn' },
+		 { data: 'nm_prtn' },
+		 { data: 'sts_prtn' },
+		 { data: 'stru_prtn' },
+		 { data: 'nm_doc_prtn' },
          { data: 'action' }
       ]
 	});

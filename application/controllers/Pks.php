@@ -100,7 +100,7 @@ class Pks extends CI_Controller {
 		</a>';
 		
 		$button = '
-		<a href="perawatan/proses/'.$row->kd_pks.'" class="btn btn-success btn-circle">
+		<a href="Pks/proses/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		<i class="fa fa-check"></i>
 		</a>
 		<a href="Pks/read/'.$row->kd_pks.'" class="btn btn-info btn-circle ">

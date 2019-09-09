@@ -58,9 +58,11 @@
 	<div class="form-group">
 		<label for="doc">Upload Dokumen</label>
 		<input class="form-control" type="file" name="doc" id="doc" placeholder="Dokumen">
+		<!-- <input type="hidden" name="old_doc" value=""> -->
 	</div>
 	<div class="form-group">
-		<button type="submit" class="btn btn-primary">Simpan</button>
+		<input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
+		<!-- <button type="submit" class="btn btn-primary">Simpan</button> -->
 	</div>
 	</form>
 </div>
