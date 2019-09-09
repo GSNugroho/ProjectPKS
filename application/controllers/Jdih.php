@@ -34,7 +34,7 @@ class Jdih extends CI_Controller {
 			'stru_prtn' => $this->input->post('strkl', TRUE),
 			'nm_doc_prtn' => $kd_jdih
 		);
-		$this->_uploadPdf($kd_jdih);
+		$this->do_upload();
 		// $this->M_jdih->insert($data);
 		$this->load->view('jdih/jdih_list');
 	}
@@ -43,31 +43,26 @@ class Jdih extends CI_Controller {
 		$this->load->view('jdih/jdih_list');
 	}
 	
-	private function _uploadPdf($kd_jdih)
-	{
-
-	$config = array(
+	public function do_upload()
+	{$config = array(
 		'upload_path' => "uploads/",
 		'allowed_types' => "pdf",
-		'file_name' => $kd_jdih,
 		'overwrite' => TRUE,
 		'max_size' => "2048000" // Can be set to particular file size , here it is 2 MB(2048 Kb)
 		//'max_height' => "768",
 		//'max_width' => "1024"
 		);
-
-    $this->load->library('upload', $config);
-    if($this->upload->do_upload())
+		$this->load->library('upload', $config);
+		if($this->upload->do_upload('data'))
 		{
 		$data = array('upload_data' => $this->upload->data());
-		$this->load->view('jdih/jdih_list',$data);
+		echo 'sukses';
 		}
 		else
 		{
 		$error = array('error' => $this->upload->display_errors());
-		$this->load->view('jdih/jdih_list', $error);
+		echo 'gagal';
 		}
-    return $kd_jdih.".pdf";
 	}
 
 	function kode(){
@@ -98,14 +93,13 @@ class Jdih extends CI_Controller {
 		$searchQuery = " ";
 		if($searchValue != ''){
 		$searchQuery = " and (
-		kd_pks like '%".$searchValue."%' or 
-		nm_instansi like '%".$searchValue."%' or 
-		jns_pks like '%".$searchValue."%' or 
-		des_pks like '%".$searchValue."%' or 
-		asal_pks like'%".$searchValue."%' or
-		tgl_mulai like'%".$searchValue."%' or
-		pic_pks like'%".$searchValue."%' or
-		tgl_akhir like'%".$searchValue."%' ) ";
+		kd_jdih like '%".$searchValue."%' or 
+		r_lingkup like '%".$searchValue."%' or 
+		th_prtn like '%".$searchValue."%' or 
+		nmr_prtn like '%".$searchValue."%' or 
+		nm_prtn like'%".$searchValue."%' or
+		stru_prtn like'%".$searchValue."%' or
+		nm_doc_prtn like'%".$searchValue."%' ) ";
 		}
 
 		## Total number of records without filtering

@@ -7,6 +7,7 @@
         <h3 class="box-title">Data PKS</h3>
     </div>
 <div class="box-body">
+	<?php $error;?>
 	<table id="dataJDIH" class="table table-bordered table-striped">
 		<thead>
 		<tr>
