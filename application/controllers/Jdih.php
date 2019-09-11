@@ -23,6 +23,7 @@ class Jdih extends CI_Controller {
 	public function create_action()
 	{
 		$kd_jdih = $this->kode();
+		$dl_sts = 1;
 		$data = array(
 			'kd_jdih' => $this->kode(),
 			'r_lingkup' => $this->input->post('r_lingkup', TRUE),
@@ -32,11 +33,76 @@ class Jdih extends CI_Controller {
 			'nm_prtn' => $this->input->post('nm_prtn', TRUE),
 			'sts_prtn' => $this->input->post('sts_prtn', TRUE),
 			'stru_prtn' => $this->input->post('strkl', TRUE),
-			'nm_doc_prtn' => $kd_jdih
+			'date_create' => date('Y-m-d'),
+			'nm_doc_prtn' => $kd_jdih,
+			'dl_sts' => $dl_sts
 		);
 		$this->do_upload();
-		// $this->M_jdih->insert($data);
-		$this->load->view('jdih/jdih_list');
+		$this->M_jdih->insert($data);
+		redirect(base_url('Jdih/jdih_list'));
+	}
+
+	public function update($id){
+		$row = $this->M_jdih->get_by_id($id);
+
+		if($row){
+			$data = array(
+				'kd_jdih' => set_value('kd_jdih', $row->kd_jdih),
+				'r_lingkup' => set_value('r_lingkup', $row->r_lingkup),
+				'jns_prtn' => set_value('jns_prtn', $row->jns_prtn),
+				'th_prtn' => set_value('th_prtn', $row->th_prtn),
+				'nmr_prtn' => set_value('nmr_prtn', $row->nmr_prtn),
+				'nm_prtn' => set_value('nm_prtn', $row->nm_prtn),
+				'sts_prtn' => set_value('sts_prtn', $row->sts_prtn),
+				'stru_prtn' => set_value('stru_prtn', $row->stru_prtn)
+			);
+			$this->load->view('jdih/jdih_edit_form', $data);
+		}
+	}
+
+	public function update_action(){
+		$data = array(
+			'r_lingkup' => $this->input->post('r_lingkup', TRUE),
+			'jns_prtn' => $this->input->post('jns_prtn', TRUE),
+			'th_prtn' => $this->input->post('th_prtn', TRUE),
+			'nmr_prtn' => $this->input->post('nmr_prtn', TRUE),
+			'nm_prtn' => $this->input->post('nm_prtn', TRUE),
+			'sts_prtn' => $this->input->post('sts_prtn', TRUE),
+			'stru_prtn' => $this->input->post('stru_prtn', TRUE)
+		);
+		$this->M_jdih->update($this->input->post('kd_jdih'), $data);
+		redirect(base_url('jdih/list_jdih'));
+	}
+
+	public function read($id){
+		$row = $this->M_jdih->get_by_id($id);
+
+		if($row){
+			$data = array(
+				'kd_jdih' => set_value('kd_jdih', $row->kd_jdih),
+				'r_lingkup' => set_value('r_lingkup', $row->r_lingkup),
+				'jns_prtn' => set_value('jns_prtn', $row->jns_prtn),
+				'th_prtn' => set_value('th_prtn', $row->th_prtn),
+				'nmr_prtn' => set_value('nmr_prtn', $row->nmr_prtn),
+				'nm_prtn' => set_value('nm_prtn', $row->nm_prtn),
+				'sts_prtn' => set_value('sts_prtn', $row->sts_prtn),
+				'stru_prtn' => set_value('stru_prtn', $row->stru_prtn)
+			);
+		$this->load->view('jdih/jdih_read', $data);
+		}
+	}
+
+	public function delete($id){
+		$row = $this->M_jdih->get_by_id($id);
+		$dl_sts = 0;
+
+		if($row){
+			$data = array(
+				'dl_sts' => $dl_sts
+			);
+			$this->M_jdih->update($id, $data);
+			redirect(base_url('Jdih/list_jdih'));
+		}
 	}
 	public function list_jdih()
 	{
@@ -46,6 +112,7 @@ class Jdih extends CI_Controller {
 	public function do_upload()
 	{$config = array(
 		'upload_path' => "uploads/",
+		'file_name' => $this->kode().'.pdf',
 		'allowed_types' => "pdf",
 		'overwrite' => TRUE,
 		'max_size' => "2048000" // Can be set to particular file size , here it is 2 MB(2048 Kb)
@@ -55,14 +122,23 @@ class Jdih extends CI_Controller {
 		$this->load->library('upload', $config);
 		if($this->upload->do_upload('data'))
 		{
-		$data = array('upload_data' => $this->upload->data());
-		echo 'sukses';
+		// $data = array('upload_data' => $this->upload->data());
+		// echo 'sukses';
+		$this->load->view('jdih/jdih_list');
 		}
 		else
 		{
-		$error = array('error' => $this->upload->display_errors());
-		echo 'gagal';
+		// $error = array('error' => $this->upload->display_errors());
+		// echo 'gagal';
+		$this->load->view('jdih/jdih_list');
 		}
+	}
+
+	public function download($id){
+		$this->load->helper('download');
+		$fileinfo = $this->M_jdih->download($id);
+		$file = 'uploads/'.$fileinfo['nm_doc_prtn'];
+		force_download($file, NULL);
 	}
 
 	function kode(){
@@ -129,16 +205,16 @@ class Jdih extends CI_Controller {
 		</a>';
 		
 		$button = '
-		<a href="Jdih/proses/'.$row->kd_jdih.'" class="btn btn-success btn-circle">
+		<a href="download/'.$row->kd_jdih.'" class="btn btn-success btn-circle">
 		<i class="fa fa-check"></i>
 		</a>
-		<a href="Jdih/read/'.$row->kd_jdih.'" class="btn btn-info btn-circle ">
+		<a href="read/'.$row->kd_jdih.'" class="btn btn-info btn-circle ">
 		<i class="fa fa-info"></i>
 		</a>
-		<a href="Jdih/update/'.$row->kd_jdih.'" class="btn btn-warning btn-circle">
+		<a href="update/'.$row->kd_jdih.'" class="btn btn-warning btn-circle">
         <i class="fa fa-edit"></i>
         </a>
-		<a href="Jdih/delete/'.$row->kd_jdih.'" class="btn btn-danger btn-circle">
+		<a href="delete/'.$row->kd_jdih.'" class="btn btn-danger btn-circle">
 		<i class="fa fa-trash"></i>
 		</a>
 		';

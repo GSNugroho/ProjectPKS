@@ -259,7 +259,7 @@
       reserved.
     </div>
      /.container -->
-  <!-- </footer> --> 
+  <!-- </footer>  -->
 
 <!-- ./wrapper -->
 

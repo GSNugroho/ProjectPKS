@@ -3,11 +3,11 @@
 ?>
 <div class="box box-primary">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Tambah Projek PKS</h3>
+    	<h3 class="box-title">Tambah Projek JDIH</h3>
 	</div>
-	<form role= "form" action="<?php echo base_url().'Jdih/do_upload';?>" method="POST" enctype="multipart/form-data">
+	<form role= "form" action="<?php echo base_url().'Jdih/create_action';?>" method="POST" enctype="multipart/form-data">
 	<div class="box-body">
-    <!-- <div class="form-group">
+    <div class="form-group">
 		<label for="r_lingkup">Ruang Lingkup</label>
 		<select name="r_lingkup" class="form-control" id="r_lingkup">
 			<option value="">--Pilih Ruang Lingkup</option>
@@ -54,7 +54,7 @@
 	<div class="form-group">
 		<label for="strkl">Struktural</label>
 		<input class="form-control" type="text" name="strkl" id="strkl" placeholder="Struktural">
-	</div> -->
+	</div>
 	<div class="form-group">
 		<label for="doc">Upload Dokumen</label>
 		<input class="form-control" type="file" name="data" id="doc">
@@ -68,6 +68,16 @@
 </div>
 </div>
 </div>
+<footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+        <!-- <b>Version</b> 2.4.18 -->
+      </div>
+      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+      reserved.
+    </div>
+     <!-- /.container -->
+   </footer> 
 </div>
 </body>
 </html>
