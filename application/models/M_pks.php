@@ -19,30 +19,52 @@ class M_pks extends CI_Model{
 		$this->db->update($this->table, $data);
 	}
 	
-	function get_total_dt(){
-		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE SKR_Pks.dl_sts = 1");
-		return $query->result();
-	}
-
 	function get_by_id($id){
 		$query = $this->db->query("SELECT * FROM SKR_Pks WHERE kd_pks = '".$id."'");
 		return $query->row();
 	}
+	
+	function get_total_dt(){
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0");
+		return $query->result();
+	}
 
 	function get_total_fl($searchQuery){
-		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1".$searchQuery);
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0".$searchQuery);
 		return $query->result();
 	}
 
 	function get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
-		$query = $this->db->query("SELECT TOP ".$rowperpage."* FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1".$searchQuery." and SKR_Pks.kd_pks NOT IN(
-			SELECT TOP ".$baris." SKR_Pks.kd_pks FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
+		$query = $this->db->query("SELECT TOP ".$rowperpage."* FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0".$searchQuery." and SKR_Pks.kd_pks NOT IN(
+			SELECT TOP ".$baris." SKR_Pks.kd_pks FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
 			order by ".$columnName." ".$columnSortOrder);
 		return $query->result();
 	}
 
 	function get_kode(){
 		$query = $this->db->query('SELECT MAX(kd_pks) AS maxkode FROM SKR_Pks');
+		return $query->result();
+	}
+
+	function get_total_dt_p(){
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1");
+		return $query->result();
+	}
+
+	function get_total_fl_p($searchQuery){
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 ".$searchQuery);
+		return $query->result();
+	}
+	
+	function get_total_ft_p($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
+		$query = $this->db->query("SELECT TOP ".$rowperpage."* FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 ".$searchQuery." and SKR_Pks.kd_pks NOT IN(
+			SELECT TOP ".$baris." SKR_Pks.kd_pks FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
+			order by ".$columnName." ".$columnSortOrder);
+		return $query->result();
+	}
+
+	function getAll(){
+		$query = $this->db->query("SELECT * FROM SKR_Pks");
 		return $query->result();
 	}
 	

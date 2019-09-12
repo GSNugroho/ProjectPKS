@@ -42,6 +42,7 @@
 	</div>
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">Simpan</button>
+		<a href="<?php echo base_url('Pks/list_pks') ?>" class="btn btn-danger">Batal</a>
 	</div>
 	</form>
 </div>

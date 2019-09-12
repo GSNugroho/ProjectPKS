@@ -5,14 +5,15 @@
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Data PKS</h3>
-    </div>
+	</div>
+<p><a href="<?php echo base_url('Pks/export_excel') ?>">Export ke Excel</a></p>
 <div class="box-body">
 	<table id="dataPKS" class="table table-bordered table-striped">
 		<thead>
 		<tr>
-		<th>Nama Istansi</th>
-		<th>Jenis PKS</th>
-		<th>Asal PKS</th>
+		<th>Nama Instansi</th>
+		<th>Jenis</th>
+		<th>Asal</th>
 		<th>Tanggal Mulai</th>
 		<th>Tanggal Akhir</th>
 		<th>PIC</th>

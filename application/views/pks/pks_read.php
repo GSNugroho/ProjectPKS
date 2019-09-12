@@ -16,6 +16,10 @@
     <tr><td>Tanggal Mulai PKS</td><td>:</td><td><?php echo $tgl_mulai; ?></td></tr>
     <tr><td>Tanggal Selesai PKS</td><td>:</td><td><?php echo $tgl_akhir; ?></td></tr>
     <tr><td>PIC</td><td>:</td><td><?php echo $pic_pks; ?></td></tr>
+    <tr><td>Tanggal Revisi</td><td>:</td><td><?php echo $date_rev; ?></td></tr>
+    <tr><td>Tanggal Koreksi</td><td>:</td><td><?php echo $date_rev; ?></td></tr>
+    <tr><td>Tanggal Tandatangan</td><td>:</td><td><?php echo $date_rev; ?></td></tr>
+    <tr><td>Tanggal Selesai</td><td>:</td><td><?php echo $date_sls; ?></td></tr>
     </table>
 </div>
 </div>
