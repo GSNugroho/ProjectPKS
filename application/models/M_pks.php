@@ -64,7 +64,7 @@ class M_pks extends CI_Model{
 	}
 
 	function getAll(){
-		$query = $this->db->query("SELECT * FROM SKR_Pks");
+		$query = $this->db->query("SELECT * FROM SKR_Pks WHERE dl_sts = 1 AND sls_pks = 0");
 		return $query->result();
 	}
 	

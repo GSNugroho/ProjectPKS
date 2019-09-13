@@ -57,7 +57,7 @@
 	</div>
 	<div class="form-group">
 		<label for="doc">Upload Dokumen</label>
-		<input class="form-control" type="file" name="data" id="doc">
+		<input class="form-control" type="file" name="data" id="doc" value="<?php echo $nm_doc_prtn?>">
 		<!-- <input type="hidden" name="old_doc" value=""> -->
 	</div>
 	<div class="form-group">

@@ -6,7 +6,7 @@
     <div class="box-header with-border">
         <h3 class="box-title">Data PKS</h3>
 	</div>
-<p><a href="<?php echo base_url('Pks/export_excel') ?>">Export ke Excel</a></p>
+<p><a href="<?php echo base_url('Pks/export') ?>">Export ke Excel</a></p>
 <div class="box-body">
 	<table id="dataPKS" class="table table-bordered table-striped">
 		<thead>

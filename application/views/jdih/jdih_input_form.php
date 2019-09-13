@@ -62,7 +62,7 @@
 	</div>
 	<div class="form-group">
 		<input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
-		<!-- <button type="submit" class="btn btn-primary">Simpan</button> -->
+		<a href="<?php echo base_url('Jdih/list_jdih') ?>" class="btn btn-danger">Batal</a>
 	</div>
 	</form>
 </div>

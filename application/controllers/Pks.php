@@ -1,6 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require('./application/third_party/vendor/autoload.php');
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 class Pks extends CI_Controller {
 
 	public function __construct()
@@ -224,6 +229,48 @@ class Pks extends CI_Controller {
 			'isi' => $this->M_pks->getAll());
 
    		$this->load->view('pks/pks_export',$data);
+	}
+
+	public function export(){
+		$data = $this->M_pks->getAll();
+
+          $spreadsheet = new Spreadsheet;
+
+          $spreadsheet->setActiveSheetIndex(0)
+                      ->setCellValue('A1', 'No')
+                      ->setCellValue('B1', 'Nama Instansi')
+                      ->setCellValue('C1', 'Jenis')
+                      ->setCellValue('D1', 'Asal')
+                      ->setCellValue('E1', 'Tanggal Mulai')
+                      ->setCellValue('F1', 'Tanggal Akhir')
+                      ->setCellValue('G1', 'PIC');
+
+          $kolom = 2;
+          $nomor = 1;
+          foreach($data as $row) {
+			if($row->jns_pks == 1){$jns_pks = 'Menejerial';}else{$jns_pks = 'Medis';}
+
+               $spreadsheet->setActiveSheetIndex(0)
+                           ->setCellValue('A' . $kolom, $nomor)
+                           ->setCellValue('B' . $kolom, $row->nm_instansi)
+                           ->setCellValue('C' . $kolom, $jns_pks)
+                           ->setCellValue('D' . $kolom, $row->asal_pks)
+                           ->setCellValue('E' . $kolom, date('j F Y', strtotime($row->tgl_mulai)))
+                           ->setCellValue('F' . $kolom, date('j F Y', strtotime($row->tgl_akhir)))
+                           ->setCellValue('G' . $kolom, $row->pic_pks);
+
+               $kolom++;
+               $nomor++;
+
+          }
+
+          $writer = new Xlsx($spreadsheet);
+
+        header('Content-Type: application/vnd.ms-excel');
+	 	header('Content-Disposition: attachment;filename="Latihan.xlsx"');
+	  	header('Cache-Control: max-age=0');
+
+	  $writer->save('php://output');
 	}
 
 	function kode(){

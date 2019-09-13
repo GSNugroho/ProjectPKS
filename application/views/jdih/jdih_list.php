@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Data PKS</h3>
+        <h3 class="box-title">Data Peraturan</h3>
     </div>
 <div class="box-body">
 	<?php $error;?>
@@ -13,7 +13,7 @@
 		<tr>
 		<th>Ruang Lingkup</th>
 		<th>Jenis Peraturan</th>
-		<th>Tahun Terbit</th>
+		<!-- <th>Tahun Terbit</th> -->
 		<th>Nomor Peraturan</th>
 		<th>Nama Peraturan</th>
 		<th>Status Peraturan</th>
@@ -43,7 +43,7 @@
       'columns': [
 		 { data: 'r_lingkup' },
 		 { data: 'jns_prtn' },
-		 { data: 'th_prtn' },
+		//  { data: 'th_prtn' },
 		 { data: 'nmr_prtn' },
 		 { data: 'nm_prtn' },
 		 { data: 'sts_prtn' },

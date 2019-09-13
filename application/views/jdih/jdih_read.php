@@ -1,9 +1,9 @@
 <?php
-	$this->load->view('pks/pks');
+	$this->load->view('jdih/jdih');
 ?>
 <div class="box box-primary">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Data Projek PKS</h3>
+    	<h3 class="box-title">Data Peraturan</h3>
 	</div>
 		
 	<div class="box-body"> 
@@ -16,6 +16,9 @@
     <tr><td>Nama Peraturan</td><td>:</td><td><?php echo $nm_prtn; ?></td></tr>
     <tr><td>Status Peraturan</td><td>:</td><td><?php echo $sts_prtn; ?></td></tr>
     <tr><td>Struktural</td><td>:</td><td><?php echo $stru_prtn; ?></td></tr>
+    <tr><td>PDF</td><td>:</td><td><a href="<?php echo base_url('Jdih/download/'.$kd_jdih)?>" target="_blank">
+		<i class="fa fa-file-pdf-o"></i>
+		</a><?php echo $nm_prtn.'.php'?></td></tr>
     </table>
 </div>
 </div>

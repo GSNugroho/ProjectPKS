@@ -39,7 +39,7 @@ class Jdih extends CI_Controller {
 		);
 		$this->do_upload();
 		$this->M_jdih->insert($data);
-		redirect(base_url('Jdih/jdih_list'));
+		redirect('Jdih/list_jdih');
 	}
 
 	public function update($id){
@@ -54,7 +54,8 @@ class Jdih extends CI_Controller {
 				'nmr_prtn' => set_value('nmr_prtn', $row->nmr_prtn),
 				'nm_prtn' => set_value('nm_prtn', $row->nm_prtn),
 				'sts_prtn' => set_value('sts_prtn', $row->sts_prtn),
-				'stru_prtn' => set_value('stru_prtn', $row->stru_prtn)
+				'stru_prtn' => set_value('stru_prtn', $row->stru_prtn),
+				'nm_doc_prtn' => set_value('nm_doc_prtn', $row->nm_doc_prtn)
 			);
 			$this->load->view('jdih/jdih_edit_form', $data);
 		}
@@ -78,16 +79,61 @@ class Jdih extends CI_Controller {
 		$row = $this->M_jdih->get_by_id($id);
 
 		if($row){
+			$rl = $row->r_lingkup;
+		if($rl == 1){
+			$r_lingkup = 'Nasional';
+		}else if($rl == 2){
+			$r_lingkup = 'Internal RS';
+		}else{
+			$r_lingkup = '';
+		}
+
+		$jp = $row->jns_prtn;
+		if($jp == 1){
+			$jns_prtn = 'Undang-Undang';
+		}else if($jp == 2){
+			$jns_prtn = 'Peraturan Pemerintah';
+		}else if($jp == 3){
+			$jns_prtn = 'Perpres';
+		}else if($jp == 4){
+			$jns_prtn = 'Permenkes';
+		}else if($jp == 5){
+			$jns_prtn = 'Kepmenkes';
+		}else if($jp == 6){
+			$jns_prtn = 'Keppres';
+		}else if($jp == 7){
+			$jns_prtn = 'Inpres';
+		}else if($jp == 8){
+			$jns_prtn = 'Perdir';
+		}else if($jp == 9){
+			$jns_prtn = 'SK';
+		}else if($jp == 10){
+			$jns_prtn = 'SE';
+		}else{
+			$jns_prtn = '';
+		}
+
+		$sp = $row->sts_prtn;
+		if($sp == 1){
+			$sts_prtn = 'Berlaku';
+		}else if($sp == 2){
+			$sts_prtn = 'Tidak Berlaku';
+		}else{
+			$sts_prtn ='';
+		}
 			$data = array(
 				'kd_jdih' => set_value('kd_jdih', $row->kd_jdih),
-				'r_lingkup' => set_value('r_lingkup', $row->r_lingkup),
-				'jns_prtn' => set_value('jns_prtn', $row->jns_prtn),
+				'r_lingkup' => $r_lingkup,
+				'jns_prtn' => $jns_prtn,
 				'th_prtn' => set_value('th_prtn', $row->th_prtn),
 				'nmr_prtn' => set_value('nmr_prtn', $row->nmr_prtn),
 				'nm_prtn' => set_value('nm_prtn', $row->nm_prtn),
-				'sts_prtn' => set_value('sts_prtn', $row->sts_prtn),
-				'stru_prtn' => set_value('stru_prtn', $row->stru_prtn)
+				'sts_prtn' => $sts_prtn,
+				'stru_prtn' => set_value('stru_prtn', $row->stru_prtn),
+				'nm_doc_prtn' => set_value('nm_doc_prtn', $row->nm_doc_prtn)
 			);
+
+			
 		$this->load->view('jdih/jdih_read', $data);
 		}
 	}
@@ -110,10 +156,16 @@ class Jdih extends CI_Controller {
 	}
 	
 	public function do_upload()
-	{$config = array(
+	{
+		$this->load->helper('security');
+		$name = $this->kode().'.pdf';
+		$en_name = do_hash($name, 'md5');
+		
+		$config = array(
 		'upload_path' => "uploads/",
-		'file_name' => $this->kode().'.pdf',
+		'file_name' => $en_name,
 		'allowed_types' => "pdf",
+		// 'encrypt_name' => TRUE,
 		'overwrite' => TRUE,
 		'max_size' => "2048000" // Can be set to particular file size , here it is 2 MB(2048 Kb)
 		//'max_height' => "768",
@@ -123,22 +175,38 @@ class Jdih extends CI_Controller {
 		if($this->upload->do_upload('data'))
 		{
 		// $data = array('upload_data' => $this->upload->data());
-		// echo 'sukses';
-		$this->load->view('jdih/jdih_list');
+		echo 'sukses';
+		
 		}
 		else
 		{
 		// $error = array('error' => $this->upload->display_errors());
-		// echo 'gagal';
-		$this->load->view('jdih/jdih_list');
+		echo 'gagal';
+		
 		}
 	}
 
 	public function download($id){
 		$this->load->helper('download');
-		$fileinfo = $this->M_jdih->download($id);
-		$file = 'uploads/'.$fileinfo['nm_doc_prtn'];
-		force_download($file, NULL);
+		$this->load->helper('security');
+
+		$row = $this->M_jdih->get_by_id($id);
+		if($row){
+			$nm_prtn = $row->nm_prtn;
+		}
+
+		$e_name = $id.'.pdf';
+		$en_name = do_hash($e_name, 'md5');
+
+		if($this->uri->segment(3))
+		{	
+		    $data   = file_get_contents('uploads/'.$en_name.'.pdf');
+		}
+		// $name   = $this->uri->segment(3);
+		$name = $nm_prtn.'.pdf';
+		force_download($name, $data);
+
+		// force_download('uploads/'.$id,NULL);
 	}
 
 	function kode(){
@@ -153,6 +221,21 @@ class Jdih extends CI_Controller {
         $char = "JDIH";
         $kodebaru = $char.sprintf("%06s", $noUrut);
         return $kodebaru;
+	}
+
+	function nomor_peraturan($jns_prtn){
+		if($jns_prtn == 10){
+			$kode = $this->M_jdih->get_no_sk($jns_prtn);
+			foreach($kode as $row){
+				$data = $row->maxkode();
+			}
+
+			$nmr_prtn = $data;
+			$noUrut = (int) substr($nmr_prtn, 0,3);
+			$noUrut++;
+			$char = "SE";
+			$nmr_br = $char;
+		}
 	}
 
 	function tbl_list(){
@@ -205,9 +288,6 @@ class Jdih extends CI_Controller {
 		</a>';
 		
 		$button = '
-		<a href="download/'.$row->kd_jdih.'" class="btn btn-success btn-circle">
-		<i class="fa fa-check"></i>
-		</a>
 		<a href="read/'.$row->kd_jdih.'" class="btn btn-info btn-circle ">
 		<i class="fa fa-info"></i>
 		</a>
@@ -216,6 +296,11 @@ class Jdih extends CI_Controller {
         </a>
 		<a href="delete/'.$row->kd_jdih.'" class="btn btn-danger btn-circle">
 		<i class="fa fa-trash"></i>
+		</a>
+		';
+		$pdf = '
+		<a href="download/'.$row->kd_jdih.'" target="_blank">
+		<i class="fa fa-file-pdf-o"></i>
 		</a>
 		';
 		
@@ -265,12 +350,12 @@ class Jdih extends CI_Controller {
 		$data[] = array( 
 			"r_lingkup" => $r_lingkup,
 			"jns_prtn" => $jns_prtn,
-			"th_prtn" => $row->th_prtn,
+			// "th_prtn" => $row->th_prtn,
 			"nmr_prtn" => $row->nmr_prtn,
 			"nm_prtn" => $row->nm_prtn,
 			"sts_prtn" => $sts_prtn,
 			"stru_prtn" => $row->stru_prtn,
-			"nm_doc_prtn" => $row->nm_doc_prtn,
+			"nm_doc_prtn" => $pdf,
 			"action" => $button
 		);
 		}
