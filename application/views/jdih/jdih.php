@@ -255,7 +255,7 @@
       <div class="pull-right hidden-xs">
         <b>Version</b> 2.4.18
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+      <strong>Copyright &copy; 2019 <a href="https://adminlte.io"></a>.</strong> All rights
       reserved.
     </div>
      /.container -->
@@ -276,4 +276,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/dist/js/demo.js')?>"></script>
 
-	<h1>Modul JDIH</h1>
+  <!-- <h1>Modul JDIH</h1> -->
+  
+  <br><br>

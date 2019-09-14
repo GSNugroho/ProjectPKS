@@ -17,14 +17,22 @@
     <tr><td>Tanggal Selesai PKS</td><td>:</td><td><?php echo $tgl_akhir; ?></td></tr>
     <tr><td>PIC</td><td>:</td><td><?php echo $pic_pks; ?></td></tr>
     <tr><td>Tanggal Revisi</td><td>:</td><td><?php echo $date_rev; ?></td></tr>
-    <tr><td>Tanggal Koreksi</td><td>:</td><td><?php echo $date_rev; ?></td></tr>
-    <tr><td>Tanggal Tandatangan</td><td>:</td><td><?php echo $date_rev; ?></td></tr>
+    <tr><td>Tanggal Koreksi</td><td>:</td><td><?php echo $date_cor; ?></td></tr>
+    <tr><td>Tanggal Tandatangan</td><td>:</td><td><?php echo $date_ttd; ?></td></tr>
     <tr><td>Tanggal Selesai</td><td>:</td><td><?php echo $date_sls; ?></td></tr>
     </table>
 </div>
 </div>
 </div>
 </div>
+<footer class="main-footer">
+    <div class="container">
+      
+      <strong>Copyright &copy; 2019 <a href="https://adminlte.io"></a>.</strong> All rights
+      reserved.
+    </div>
+    <!-- /.container -->
+  </footer>
 </div>
 </body>
 </html>

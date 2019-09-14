@@ -29,6 +29,7 @@
 			<option value="8" <?php echo ($jns_prtn == '8')?'selected':''?>>Perdir</option>
 			<option value="9" <?php echo ($jns_prtn == '9')?'selected':''?>>SK</option>
 			<option value="10" <?php echo ($jns_prtn == '10')?'selected':''?>>SE</option>
+			<option value="11" <?php echo ($jns_prtn == '11')?'selected':''?>>DLL</option>
 		</select>
 	</div>
 	<div class="form-group"	>
@@ -52,15 +53,16 @@
 		</select>
 	</div>
 	<div class="form-group">
-		<label for="strkl">Struktural</label>
-		<input class="form-control" type="text" name="strkl" id="strkl" placeholder="Struktural" value="<?php echo $stru_prtn?>">
+		<label for="stru_prtn">Struktural</label>
+		<input class="form-control" type="text" name="stru_prtn" id="stru_prtn" placeholder="Struktural" value="<?php echo $stru_prtn?>">
 	</div>
 	<div class="form-group">
 		<label for="doc">Upload Dokumen</label>
 		<input class="form-control" type="file" name="data" id="doc" value="<?php echo $nm_doc_prtn?>">
-		<!-- <input type="hidden" name="old_doc" value=""> -->
+		
 	</div>
 	<div class="form-group">
+		<input type="hidden" name="kd_jdih" id="kd_jdih" value="<?php echo $kd_jdih?>">
 		<input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
 		<a href="<?php echo base_url('Jdih/list_jdih') ?>" class="btn btn-danger">Batal</a>
 	</div>
@@ -73,7 +75,7 @@
       <div class="pull-right hidden-xs">
         <!-- <b>Version</b> 2.4.18 -->
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+      <strong>Copyright &copy; 2019 <a href="https://adminlte.io"></a>.</strong> All rights
       reserved.
     </div>
      <!-- /.container -->

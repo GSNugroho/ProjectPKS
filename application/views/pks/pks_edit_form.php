@@ -16,7 +16,7 @@
 		<label for="jns_pks">Jenis PKS</label>
 		<select name="jns_pks" class="form-control" id="jns_pks">
 			<option value="">--Pilih Jenis PKS</option>
-			<option value="1" <?php echo ($jns_pks == '1')?'selected':''?>>Manajerial</option>
+			<option value="1" <?php echo ($jns_pks == '1')?'selected':''?>>Menejerial</option>
 			<option value="2" <?php echo ($jns_pks == '2')?'selected':''?>>Medis</option>
 		</select>
 	</div>
@@ -41,6 +41,7 @@
 		<input class="form-control" type="text" name="pic" id="pic" placeholder="PIC" value="<?php echo $pic_pks?>">
 	</div>
 	<div class="form-group">
+		<input type="hidden" name="kd_pks" id="kd_pks" value="<?php echo $kd_pks?>">
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="<?php echo base_url('Pks/list_pks') ?>" class="btn btn-danger">Batal</a>
 	</div>
@@ -49,6 +50,13 @@
 </div>
 </div>
 </div>
+<footer class="main-footer">
+    <div class="container">      
+      <strong>Copyright &copy; 2019 <a href="https://adminlte.io"></a>.</strong> All rights
+      reserved.
+    </div>
+    <!-- /.container -->
+  </footer>
 </div>
 </body>
 </html>

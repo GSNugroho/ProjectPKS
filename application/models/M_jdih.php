@@ -20,23 +20,23 @@ class M_jdih extends CI_Model{
 	}
 
 	function get_by_id($id){
-		$query = $this->db->query("SELECT * FROM SKR_Jdih WHERE kd_jdih = '".$id."'");
+		$query = $this->db->query("SELECT * FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.id_jns WHERE kd_jdih = '".$id."'");
 		return $query->row();
 	}
 	
 	function get_total_dt(){
-		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Jdih WHERE SKR_Jdih.dl_sts = 1");
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.id_jns WHERE SKR_Jdih.dl_sts = 1");
 		return $query->result();
 	}
 
 	function get_total_fl($searchQuery){
-		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Jdih WHERE 1=1 AND SKR_Jdih.dl_sts = 1".$searchQuery);
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.id_jns WHERE 1=1 AND SKR_Jdih.dl_sts = 1".$searchQuery);
 		return $query->result();
 	}
 
 	function get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
-		$query = $this->db->query("SELECT TOP ".$rowperpage." * FROM SKR_Jdih WHERE 1=1 AND SKR_Jdih.dl_sts = 1".$searchQuery." and SKR_Jdih.kd_jdih NOT IN (
-			SELECT TOP ".$baris." SKR_Jdih.kd_jdih FROM SKR_Jdih WHERE 1=1 AND SKR_Jdih.dl_sts = 1".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
+		$query = $this->db->query("SELECT TOP ".$rowperpage." * FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.id_jns WHERE 1=1 AND SKR_Jdih.dl_sts = 1".$searchQuery." and SKR_Jdih.kd_jdih NOT IN (
+			SELECT TOP ".$baris." SKR_Jdih.kd_jdih FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.id_jns WHERE 1=1 AND SKR_Jdih.dl_sts = 1".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
 			order by ".$columnName." ".$columnSortOrder);
 		return $query->result();
 	}
@@ -49,6 +49,11 @@ class M_jdih extends CI_Model{
 	public function download($id){
 		$query = $this->db->get_where('SKR_Jdih',array('kd_jdih'=>$id));
 		return $query->row_array();
+	}
+
+	public function get_no_se($jns){
+		$query = $this->db->query("SELECT count(nmr_prtn) as maxkode FROM SKR_Jdih WHERE jns_prtn = '".$jns."' AND nmr_prtn LIKE '%SE%' ");
+		return $query->result();
 	}
 }
 ?>

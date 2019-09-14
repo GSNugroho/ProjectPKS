@@ -16,7 +16,7 @@
 		<label for="jns_pks">Jenis PKS</label>
 		<select name="jns_pks" class="form-control" id="jns_pks">
 			<option value="">--Pilih Jenis PKS</option>
-			<option value="1">Manajerial</option>
+			<option value="1">Menejerial</option>
 			<option value="2">Medis</option>
 		</select>
 	</div>
@@ -54,7 +54,7 @@
       <div class="pull-right hidden-xs">
         <!-- <b>Version</b> 2.4.18 -->
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+      <strong>Copyright &copy; 2019 <a href="https://adminlte.io"></a>.</strong> All rights
       reserved.
     </div>
      <!-- /.container -->

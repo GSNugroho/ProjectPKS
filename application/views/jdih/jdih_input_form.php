@@ -29,6 +29,7 @@
 			<option value="8">Perdir</option>
 			<option value="9">SK</option>
 			<option value="10">SE</option>
+			<option value="11">DLL</option>
 		</select>
 	</div>
 	<div class="form-group"	>
@@ -58,7 +59,7 @@
 	<div class="form-group">
 		<label for="doc">Upload Dokumen</label>
 		<input class="form-control" type="file" name="data" id="doc">
-		<!-- <input type="hidden" name="old_doc" value=""> -->
+		
 	</div>
 	<div class="form-group">
 		<input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
@@ -73,7 +74,7 @@
       <div class="pull-right hidden-xs">
         <!-- <b>Version</b> 2.4.18 -->
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+      <strong>Copyright &copy; 2019 <a href="https://adminlte.io"></a>.</strong> All rights
       reserved.
     </div>
      <!-- /.container -->

@@ -13,11 +13,11 @@
 		<tr>
 		<th>Ruang Lingkup</th>
 		<th>Jenis Peraturan</th>
-		<!-- <th>Tahun Terbit</th> -->
-		<th>Nomor Peraturan</th>
+		<th>Tahun Terbit</th>
+		<!-- <th>Nomor Peraturan</th> -->
 		<th>Nama Peraturan</th>
-		<th>Status Peraturan</th>
-		<th>Struktural</th>
+		<!-- <th>Status Peraturan</th> -->
+		<th>Bagian Terkait</th>
 		<th>Pdf</th>
 		<th>Action</th>
 		</tr>
@@ -43,10 +43,10 @@
       'columns': [
 		 { data: 'r_lingkup' },
 		 { data: 'jns_prtn' },
-		//  { data: 'th_prtn' },
-		 { data: 'nmr_prtn' },
+		 { data: 'th_prtn' },
+		//  { data: 'nmr_prtn' },
 		 { data: 'nm_prtn' },
-		 { data: 'sts_prtn' },
+		//  { data: 'sts_prtn' },
 		 { data: 'stru_prtn' },
 		 { data: 'nm_doc_prtn' },
          { data: 'action' }
@@ -62,7 +62,7 @@
       <div class="pull-right hidden-xs">
         <!-- <b>Version</b> 2.4.18 -->
       </div>
-      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights
+      <strong>Copyright &copy; 2019 <a href="https://adminlte.io"></a>.</strong> All rights
       reserved.
     </div>
      <!-- /.container -->

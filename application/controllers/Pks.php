@@ -267,7 +267,7 @@ class Pks extends CI_Controller {
           $writer = new Xlsx($spreadsheet);
 
         header('Content-Type: application/vnd.ms-excel');
-	 	header('Content-Disposition: attachment;filename="Latihan.xlsx"');
+	 	header('Content-Disposition: attachment;filename="Data PKS.xlsx"');
 	  	header('Cache-Control: max-age=0');
 
 	  $writer->save('php://output');
