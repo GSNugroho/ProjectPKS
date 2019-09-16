@@ -41,6 +41,23 @@ class M_jdih extends CI_Model{
 		return $query->result();
 	}
 
+	function get_total_dt_jns(){
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Jdih_jns WHERE bt_aktif = 1");
+		return $query->result();
+	}
+	
+	function get_total_fl_jns($searchQuery){
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Jdih_jns WHERE 1=1 AND bt_aktif = 1".$searchQuery);
+		return $query->result();
+	}
+
+	function get_total_ft_jns($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
+		$query = $this->db->query("SELECT TOP ".$rowperpage." * FROM SKR_Jdih_jns WHERE 1=1 AND bt_aktif = 1".$searchQuery." and SKR_Jdih_jns.id_jns NOT IN (
+			SELECT TOP ".$baris." SKR_Jdih_jns.id_jns FROM SKR_Jdih_jns WHERE 1=1 AND bt_aktif = 1".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
+			order by ".$columnName." ".$columnSortOrder);
+		return $query->result();
+	}
+
 	function get_kode(){
 		$query = $this->db->query('SELECT MAX(kd_jdih) AS maxkode FROM SKR_Jdih');
 		return $query->result();
@@ -54,6 +71,22 @@ class M_jdih extends CI_Model{
 	public function get_no_se($jns){
 		$query = $this->db->query("SELECT count(nmr_prtn) as maxkode FROM SKR_Jdih WHERE jns_prtn = '".$jns."' AND nmr_prtn LIKE '%SE%' ");
 		return $query->result();
+	}
+
+	public function get_no(){
+		$query = $this->db->query("SELECT MAX(id_jns) AS maxkode FROM SKR_Jdih_jns");
+		return $query->result();
+	}
+	public function get_by_id_jns($id){
+		$query = $this->db->query("SELECT * FROM SKR_Jdih_jns WHERE id_jns = '".$id."'");
+		return $query->row();
+	}
+	public function insert_jns($data){
+		$this->db->insert('SKR_Jdih_jns', $data);
+	}
+	public function update_jns($id, $data){
+		$this->db->where('id_jns', $id);
+		$this->db->update('SKR_Jdih_jns', $data);
 	}
 }
 ?>

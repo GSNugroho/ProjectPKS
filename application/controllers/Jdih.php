@@ -88,31 +88,6 @@ class Jdih extends CI_Controller {
 			$r_lingkup = '';
 		}
 
-		// $jp = $row->jns_prtn;
-		// if($jp == 1){
-		// 	$jns_prtn = 'Undang-Undang';
-		// }else if($jp == 2){
-		// 	$jns_prtn = 'Peraturan Pemerintah';
-		// }else if($jp == 3){
-		// 	$jns_prtn = 'Perpres';
-		// }else if($jp == 4){
-		// 	$jns_prtn = 'Permenkes';
-		// }else if($jp == 5){
-		// 	$jns_prtn = 'Kepmenkes';
-		// }else if($jp == 6){
-		// 	$jns_prtn = 'Keppres';
-		// }else if($jp == 7){
-		// 	$jns_prtn = 'Inpres';
-		// }else if($jp == 8){
-		// 	$jns_prtn = 'Perdir';
-		// }else if($jp == 9){
-		// 	$jns_prtn = 'SK';
-		// }else if($jp == 10){
-		// 	$jns_prtn = 'SE';
-		// }else{
-		// 	$jns_prtn = '';
-		// }
-
 		$sp = $row->sts_prtn;
 		if($sp == 1){
 			$sts_prtn = 'Berlaku';
@@ -124,7 +99,7 @@ class Jdih extends CI_Controller {
 			$data = array(
 				'kd_jdih' => set_value('kd_jdih', $row->kd_jdih),
 				'r_lingkup' => $r_lingkup,
-				'jns_prtn' => set_value('jns_prtn', $row->nm_jns_jdih),
+				'jns_prtn' => set_value('jns_prtn', $row->nm_jdih_jns),
 				'th_prtn' => set_value('th_prtn', $row->th_prtn),
 				'nmr_prtn' => set_value('nmr_prtn', $row->nmr_prtn),
 				'nm_prtn' => set_value('nm_prtn', $row->nm_prtn),
@@ -221,6 +196,61 @@ class Jdih extends CI_Controller {
 		$this->load->view('jdih/jdih_read_pdf', $data);
 	}
 
+	public function jns_prtn(){
+		$this->load->view('jns_jdih/jns_jdih_list');
+	}
+	public function create_jns_prtn(){
+		$this->load->view('jns_jdih/jns_jdih_input');
+	}
+	public function create_jns_prtn_action(){
+		$nomor = $this->M_jdih->get_no();
+		foreach($nomor as $row){
+			$dt = $row->maxkode;
+		}
+		$no = $dt;
+		$no++;
+
+		$aktif = 1;
+		$data = array(
+			'id_jns' => $no,
+			'nm_jdih_jns' => $this->input->post('jns_prtn', TRUE),
+			'bt_aktif' =>$aktif
+		);
+
+		$this->M_jdih->insert_jns($data);
+		$this->load->view('jns_jdih/jns_jdih_list');
+	}
+	public function update_jns_prtn($id){
+		$row = $this->M_jdih->get_by_id_jns($id);
+
+		if($row){
+			$data = array(
+				'id_jns' => set_value('id_jns', $row->id_jns),
+				'jns_prtn' => set_value('nm_jdih_jns', $row->nm_jdih_jns),
+			);
+			$this->load->view('jns_jdih/jns_jdih_edit', $data);
+		}
+	}
+	public function update_jns_prtn_action(){
+		$data = array(
+			'nm_jdih_jns' => $this->input->post('jns_prtn', TRUE)
+		);
+		$this->M_jdih->update_jns($this->input->post('id_jns', TRUE), $data);
+		$this->load->view('jns_jdih/jns_jdih_list');
+	}
+	public function delete_jns_prtn($id){
+		$row = $this->M_jdih->get_by_id_jns($id);
+
+		$aktif = 0;
+		if($row){
+			$data = array(
+				'bt_aktif' => $aktif
+			);
+		}
+		$this->M_jdih->update_jns($id, $data);
+		$this->load->view('jns_jdih/jns_jdih_list', $data);
+	}
+
 	function kode(){
         $kode = $this->M_jdih->get_kode();
         foreach($kode as $row){
@@ -270,7 +300,7 @@ class Jdih extends CI_Controller {
 		$searchQuery = " and (
 		 
 		r_lingkup like '%".$searchValue."%' or 
-		nm_jns_jdih like '%".$searchValue."%' or 
+		nm_jdih_jns like '%".$searchValue."%' or 
 		th_prtn like '%".$searchValue."%' or 
 		nmr_prtn like '%".$searchValue."%' or 
 		nm_prtn like'%".$searchValue."%' or
@@ -342,12 +372,79 @@ class Jdih extends CI_Controller {
 
 		$data[] = array( 
 			"r_lingkup" => $r_lingkup,
-			"jns_prtn" => $row->nm_jns_jdih,
+			"jns_prtn" => $row->nm_jdih_jns,
 			"th_prtn" => $row->th_prtn,
 			"nmr_prtn" => $row->nmr_prtn,
 			"nm_prtn" => $row->nm_prtn,
 			"stru_prtn" => $row->stru_prtn,
 			"nm_doc_prtn" => $pdf,
+			"action" => $button
+		);
+		}
+
+		## Response
+		$response = array(
+		"draw" => intval($draw),
+		"iTotalRecords" => $totalRecords,
+		"iTotalDisplayRecords" => $totalRecordwithFilter,
+		"aaData" => $data
+		);
+
+		echo json_encode($response);
+	}
+
+	function tbl_jns_prtn(){
+		## Read value
+		$draw = $_POST['draw'];
+		$baris = $_POST['start'];
+		$rowperpage = $_POST['length']; // Rows display per page
+		$columnIndex = $_POST['order'][0]['column']; // Column index
+		$columnName = $_POST['columns'][$columnIndex]['data']; // Column name
+		$columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+		$searchValue = $_POST['search']['value']; // Search value
+
+		## Search 
+		$searchQuery = " ";
+		if($searchValue != ''){
+		$searchQuery = " and (
+		nm_jns_jdih like '%".$searchValue."%
+		' ) ";
+		}
+
+		## Total number of records without filtering
+		$sel = $this->M_jdih->get_total_dt_jns();
+		// $records = sqlsrv_fetch_array($sel);
+		foreach($sel as $row){
+			$totalRecords = $row->allcount;
+		}
+		
+
+		## Total number of record with filtering
+		$sel = $this->M_jdih->get_total_fl_jns($searchQuery);
+		// $records = sqlsrv_fetch_assoc($sel);
+		foreach($sel as $row){
+			$totalRecordwithFilter = $row->allcount;
+		}
+		
+
+		## Fetch records
+		$empQuery = $this->M_jdih->get_total_ft_jns($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage);
+		$empRecords = $empQuery;
+		$data = array();
+
+		foreach($empRecords as $row){
+		
+		$button = '
+		<a href="update_jns_prtn/'.$row->id_jns.'" class="btn btn-warning btn-circle">
+        <i class="fa fa-edit"></i>
+        </a>
+		<a href="delete_jns_prtn/'.$row->id_jns.'" class="btn btn-danger btn-circle">
+		<i class="fa fa-trash"></i>
+		</a>
+		';
+		
+		$data[] = array( 
+			"nm_jdih_jns" => $row->nm_jdih_jns,
 			"action" => $button
 		);
 		}

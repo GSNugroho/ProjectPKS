@@ -3,7 +3,7 @@
 ?>
 <div class="box box-primary">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Tambah Projek JDIH</h3>
+    	<h3 class="box-title">Tambah Peraturan</h3>
 	</div>
 	<form role= "form" action="<?php echo base_url().'Jdih/create_action';?>" method="POST" enctype="multipart/form-data">
 	<div class="box-body">

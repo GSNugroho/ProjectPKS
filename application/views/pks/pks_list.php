@@ -11,13 +11,14 @@
 	<table id="dataPKS" class="table table-bordered table-striped">
 		<thead>
 		<tr>
+		<th>Nama PKS</th>
 		<th>Nama Instansi</th>
 		<th>Jenis</th>
 		<th>Asal</th>
 		<th>Tanggal Mulai</th>
 		<th>Tanggal Akhir</th>
 		<th>PIC</th>
-		<th>Action</th>
+		<th>Tindakan</th>
 		</tr>
 		</thead>
 	</table>
@@ -31,6 +32,24 @@
 <script>
 	$(document).ready(function(){
    $('#dataPKS').DataTable({
+	language: {
+	"sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
+	"sProcessing":   "Sedang memproses...",
+	"sLengthMenu":   "Tampilkan _MENU_ entri",
+	"sZeroRecords":  "Tidak ditemukan data yang sesuai",
+	"sInfo":         "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+	"sInfoEmpty":    "Menampilkan 0 sampai 0 dari 0 entri",
+	"sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+	"sInfoPostFix":  "",
+	"sSearch":       "Cari:",
+	"sUrl":          "",
+	"oPaginate": {
+		"sFirst":    "Pertama",
+		"sPrevious": "Sebelumnya",
+		"sNext":     "Selanjutnya",
+		"sLast":     "Terakhir"
+	}
+	},
 	//   'order': [[ 0, "desc" ]],
       'processing': true,
       'serverSide': true,
@@ -39,6 +58,7 @@
           'url':'<?php echo base_url().'Pks/tbl_list'?>'
       },
       'columns': [
+		 { data: 'nm_pks' },
 		 { data: 'nm_instansi' },
 		 { data: 'jns_pks' },
 		 { data: 'asal_pks' },

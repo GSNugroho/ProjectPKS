@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Progres PKS</h3>
+        <h3 class="box-title">Status PKS</h3>
     </div>
 <div class="box-body">
 	<table id="dataPKS" class="table table-bordered table-striped">
@@ -30,6 +30,24 @@
 <script>
 	$(document).ready(function(){
    $('#dataPKS').DataTable({
+	language: {
+	"sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
+	"sProcessing":   "Sedang memproses...",
+	"sLengthMenu":   "Tampilkan _MENU_ entri",
+	"sZeroRecords":  "Tidak ditemukan data yang sesuai",
+	"sInfo":         "Menampilkan _START_ sampai _END_ dari _TOTAL_ entri",
+	"sInfoEmpty":    "Menampilkan 0 sampai 0 dari 0 entri",
+	"sInfoFiltered": "(disaring dari _MAX_ entri keseluruhan)",
+	"sInfoPostFix":  "",
+	"sSearch":       "Cari:",
+	"sUrl":          "",
+	"oPaginate": {
+		"sFirst":    "Pertama",
+		"sPrevious": "Sebelumnya",
+		"sNext":     "Selanjutnya",
+		"sLast":     "Terakhir"
+	}
+	},
 	//   'order': [[ 0, "desc" ]],
       'processing': true,
       'serverSide': true,

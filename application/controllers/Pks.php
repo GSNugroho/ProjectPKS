@@ -29,15 +29,16 @@ class Pks extends CI_Controller {
 	{
 		$param = 0;
 		$dl_sts = 1;
+
 		$data = array(
 			'nm_instansi' => $this->input->post('nm_instansi', TRUE),
 			'kd_pks' => $this->kode(),
+			'nm_pks' => $this->input->post('nm_pks', TRUE),
 			'jns_pks' => $this->input->post('jns_pks', TRUE),
 			'des_pks' => $this->input->post('des_pks', TRUE),
 			'asal_pks' => $this->input->post('asal_pks', TRUE),
-			// 'r_waktu' => $this->input->post('r_waktu', TRUE),
-			'tgl_mulai' => $this->input->post('rtm_waktu', TRUE),
-			'tgl_akhir' => $this->input->post('rta_waktu', TRUE),
+			'tgl_mulai' => date('Y-m-d', strtotime($this->input->post('rtm_waktu'))),
+			'tgl_akhir' => date('Y-m-d', strtotime($this->input->post('rta_waktu'))),
 			'pic_pks' => $this->input->post('pic', TRUE),
 			'dl_sts' => $dl_sts,
 			'rev_pks' => $param,
@@ -56,12 +57,13 @@ class Pks extends CI_Controller {
 		if($row){
 			$data = array(
 				'kd_pks' => set_value('kd_pks', $row->kd_pks),
+				'nm_pks' => set_value('nm_pks', $row->nm_pks),
 				'nm_instansi' => set_value('nm_instansi', $row->nm_instansi),
 				'jns_pks' => set_value('jns_pks', $row->jns_pks),
 				'des_pks' => set_value('des_pks', $row->des_pks),
 				'asal_pks' => set_value('asal_pks', $row->asal_pks),
-				'tgl_mulai' => set_value('tgl_mulai', date('Y-m-d', strtotime($row->tgl_mulai))),
-				'tgl_akhir' => set_value('tgl_akhir', date('Y-m-d', strtotime($row->tgl_akhir))),
+				'tgl_mulai' => set_value('tgl_mulai', date('d/m/Y', strtotime($row->tgl_mulai))),
+				'tgl_akhir' => set_value('tgl_akhir', date('d/m/Y', strtotime($row->tgl_akhir))),
 				'pic_pks' => set_value('pic_pks', $row->pic_pks)
 			);
 			$this->load->view('pks/pks_edit_form', $data);
@@ -70,12 +72,13 @@ class Pks extends CI_Controller {
 
 	public function update_action(){
 		$data = array(
+			'nm_pks' => $this->input->post('nm_pks', TRUE),
 			'nm_instansi' => $this->input->post('nm_instansi', TRUE),
 			'jns_pks' => $this->input->post('jns_pks', TRUE),
 			'des_pks' => $this->input->post('des_pks', TRUE),
 			'asal_pks' => $this->input->post('asal_pks', TRUE),
-			'tgl_mulai' => $this->input->post('rtm_waktu', TRUE),
-			'tgl_akhir' => $this->input->post('rta_waktu', TRUE),
+			'tgl_mulai' => date('Y-m-d', strtotime($this->input->post('rtm_waktu'))),
+			'tgl_akhir' => date('Y-m-d', strtotime($this->input->post('rta_waktu'))),
 			'pic_pks' => $this->input->post('pic', TRUE)
 		);
 		$this->M_pks->update($this->input->post('kd_pks'), $data);
@@ -362,12 +365,13 @@ class Pks extends CI_Controller {
 		}
 
 		$data[] = array( 
+			"nm_pks" => $row->nm_pks,
 			"nm_instansi" => $row->nm_instansi,
 			"jns_pks" => $jns_pks,
 			"des_pks" => $row->des_pks,
 			"asal_pks" => $row->asal_pks,
-			"tgl_mulai" => date('d-m-Y', strtotime($row->tgl_mulai)),
-			"tgl_akhir" => date('d-m-Y', strtotime($row->tgl_akhir)),
+			"tgl_mulai" => date('d/m/Y', strtotime($row->tgl_mulai)),
+			"tgl_akhir" => date('d/m/Y', strtotime($row->tgl_akhir)),
 			"pic_pks" => $row->pic_pks,
 			"action" => $button
 		);

@@ -43,8 +43,9 @@
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
 		  		<li><a href="<?php echo site_url()?>">Keluar</a></li>
-				<li><a href="<?php echo base_url('Jdih/create')?>">Input Peraturan</a></li>
-				<li><a href="<?php echo base_url('Jdih/list_jdih')?>">Daftar Peraturan</a></li>
+				<li><a href="<?php echo base_url('Jdih/create')?>">Tambah Peraturan</a></li>
+        <li><a href="<?php echo base_url('Jdih/list_jdih')?>">Data Peraturan</a></li>
+        <li><a href="<?php echo base_url('Jdih/jns_prtn')?>">Jenis Peraturan</a></li>
           </ul>
           <!-- <form class="navbar-form navbar-left" role="search">
             <div class="form-group">

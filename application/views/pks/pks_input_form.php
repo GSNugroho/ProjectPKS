@@ -1,13 +1,25 @@
 <?php
 	$this->load->view('pks/pks');
 ?>
+	<link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/bootstrap.min.css')?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/ilmudetil.css')?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/bootstrap-datetimepicker.css')?>"/>
+	<script src="<?php echo base_url('assets/datepicker/js/bootstrap.min.js')?>"></script>
+	<script src="<?php echo base_url('assets/datepicker/js/moment-with-locales.js')?>"></script>
+	<script src="<?php echo base_url('assets/datepicker/js/jquery-1.11.3.min.js')?>"></script>
+	<script src="<?php echo base_url('assets/datepicker/js/bootstrap-datetimepicker.js')?>"></script>
+
 <div class="box box-primary">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Tambah Projek PKS</h3>
+    	<h3 class="box-title">Tambah PKS</h3>
 	</div>
 		
 	<form role="form" action="<?php echo base_url().'Pks/create_action';?>" method="POST">
 	<div class="box-body">
+	<div class="form-group">
+		<label for="nm_pks">Nama PKS</label>
+		<input class="form-control" type="text" name="nm_pks" id="nm_pks" placeholder="Nama PKS">
+	</div>
     <div class="form-group">
 		<label for="nm_instansi">Nama Istansi</label>
 		<input class="form-control" type="text" name="nm_instansi" id="nm_instansi" placeholder="Nama Istansi">
@@ -30,11 +42,17 @@
 	</div>
 	<div class="form-group">
 		<label for="rtm_waktu">Rencana Tanggal Mulai PKS</label>
-		<input class="form-control" type="date" name="rtm_waktu" id="rtm_waktu" placeholder="Rencana Tanggal Mulai PKS">
+	<div class="input-group date" id="tgl1">
+		<input type="text" class="form-control" name="rtm_waktu" placeholder="dd-mm-yyyy"/>	
+		<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+	</div>
 	</div>
 	<div class="form-group">
-		<label for="rta_waktu">Rencana Tanggal Akhir PKS</label>
-		<input class="form-control" type="date" name="rta_waktu" id="rta_waktu" placeholder="Rencana Tanggal Akhir PKS">
+		<label for="rtm_waktu">Rencana Tanggal Akhir PKS</label>
+	<div class="input-group date" id="tgl2">
+		<input type="text" class="form-control" name="rta_waktu" placeholder="dd-mm-yyyy"/>	
+		<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+	</div>
 	</div>
 	<div class="form-group">
 		<label for="pic">PIC</label>
@@ -60,5 +78,13 @@
      <!-- /.container -->
    </footer> 
 </div>
+<script>
+	$(function() { 
+  	$('#tgl1').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
+	});
+	$(function() { 
+  	$('#tgl2').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
+	});
+</script>
 </body>
 </html>

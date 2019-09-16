@@ -3,7 +3,7 @@
 ?>
 <div class="box box-primary">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Tambah Projek PKS</h3>
+    	<h3 class="box-title">Sunting Projek PKS</h3>
 	</div>
 	<form role= "form" action="<?php echo base_url().'Jdih/update_action';?>" method="POST" enctype="multipart/form-data">
 	<div class="box-body">
