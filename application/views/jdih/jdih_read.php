@@ -1,6 +1,8 @@
 <?php
 	$this->load->view('jdih/jdih');
 ?>
+
+    <div class="container">
 <div class="box box-primary">
 	<div class="box-header with-border">
     	<h3 class="box-title">Data Peraturan</h3>
@@ -16,7 +18,7 @@
     <tr><td>Nama Peraturan</td><td>:</td><td><?php echo $nm_prtn; ?></td></tr>
     <tr><td>Status Peraturan</td><td>:</td><td><?php echo $sts_prtn; ?></td></tr>
     <tr><td>Struktural</td><td>:</td><td><?php echo $stru_prtn; ?></td></tr>
-    <tr><td>Download PDF</td><td>:&nbsp;&nbsp;</td><td><a href="<?php echo base_url('Jdih/download/'.$kd_jdih)?>" target="_blank">
+    <tr><td>Unduh Dokumen</td><td>:&nbsp;&nbsp;</td><td><a href="<?php echo base_url('Jdih/download/'.$kd_jdih)?>" target="_blank">
     <i class="fa fa-file-pdf-o"></i>
     <?php echo $nm_prtn.'.pdf'?>
 		</a></td></tr>

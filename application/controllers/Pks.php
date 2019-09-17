@@ -17,7 +17,7 @@ class Pks extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('pks/pks');
+		$this->load->view('pks/pks_db');
 	}
 	
 	public function create()
@@ -47,8 +47,44 @@ class Pks extends CI_Controller {
 			'sls_pks' => $param,
 			'dt_cr' => date('Y-m-d')
 		);
+		$this->do_upload();
 		$this->M_pks->insert($data);
 		redirect(site_url('Pks/list_pks'));
+	}
+
+	public function do_upload(){
+		$this->load->helper('security');
+		$name = $this->kode().'.pdf';
+		$en_name = do_hash($name, 'md5');
+
+		$config = array(
+			'upload_path' => "uploads/pks",
+			'file_name' => $en_name,
+			'allowed_types' => "pdf",
+			'overwrite' => TRUE,
+			'max_size' => "2048000"
+		);
+		$this->load->library('upload', $config);
+		if($this->upload->do_upload('dok_pks')){
+			echo 'sukses';
+		}else{
+			echo 'gagal';
+		}
+	}
+
+	public function read_pdf($id){
+		$this->load->helper('download');
+		$this->load->helper('security');
+
+		$row = $this->M_pks->get_by_id($id);
+		if($row){
+			$nm_pks = $row->nm_pks;
+		}
+
+		$e_name = $id.'.pdf';
+		$en_name = do_hash($e_name, 'md5');
+		$data = array('en_name' => $en_name);
+		$this->load->view('pks/pks_read_pdf', $data);
 	}
 
 	public function update($id){
@@ -215,7 +251,8 @@ class Pks extends CI_Controller {
 				'date_rev' => $date_rev,
 				'date_cor' => $date_cor,
 				'date_ttd' => $date_ttd,
-				'date_sls' => $date_sls
+				'date_sls' => $date_sls,
+				'nm_pks' => set_value('nm_pks', $row->nm_pks)
 			);
 			$this->load->view('pks/pks_read', $data);
 		}

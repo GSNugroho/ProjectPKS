@@ -42,10 +42,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-		  		<li><a href="<?php echo site_url()?>">Keluar</a></li>
-				<li><a href="<?php echo base_url('Pks/create')?>">Tambah PKS</a></li>
-				<li><a href="<?php echo base_url('Pks/list_pks')?>">Data PKS</a></li>
-				<li><a href="<?php echo base_url('Pks/progress')?>">Status PKS</a></li>
+            <li><a href="<?php echo base_url('Pks')?>">Beranda</a></li>
+            <li><a href="<?php echo base_url('Pks/create')?>">Tambah PKS</a></li>
+            <li><a href="<?php echo base_url('Pks/list_pks')?>">Data PKS</a></li>
+            <li><a href="<?php echo base_url('Pks/progress')?>">Status PKS</a></li>
+            <li><a href="<?php echo site_url()?>">Keluar</a></li>
           </ul>
           <!-- <form class="navbar-form navbar-left" role="search">
             <div class="form-group">

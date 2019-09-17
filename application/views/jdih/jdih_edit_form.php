@@ -1,6 +1,21 @@
 <?php
 	$this->load->view('jdih/jdih');
 ?>
+<link rel="stylesheet" href="<?php echo base_url('assets/bower_components/jquery-ui/themes/smoothness/jquery-ui.css')?>">
+
+<script src="<?php echo base_url('assets/bower_components/jquery-ui/jquery-ui.js')?>"></script>
+<style>
+       .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+            /* add padding to account for vertical scrollbar */
+            padding-right: 20px;
+        } 
+</style>
+
+    <div class="container">
 <div class="box box-primary">
 	<div class="box-header with-border">
     	<h3 class="box-title">Sunting Projek PKS</h3>
@@ -17,20 +32,21 @@
     </div>
 	<div class="form-group">
 		<label for="jns_prtn">Jenis Peraturan</label>
-		<select name="jns_prtn" class="form-control" id="jns_prtn">
+		<input class="form-control" type="text" name="jns_prtn" id="jns_prtn" placeholder="Jenis Peraturan" value="<?php echo $jns_prtn?>">
+		<!-- <select name="jns_prtn" class="form-control" id="jns_prtn">
 			<option value="">--Pilih Jenis Peraturan</option>
-			<option value="1" <?php echo ($jns_prtn == '1')?'selected':''?>>Undang - Undang</option>
-			<option value="2" <?php echo ($jns_prtn == '2')?'selected':''?>>Peraturan Pemerintah</option>
-			<option value="3" <?php echo ($jns_prtn == '3')?'selected':''?>>Perpres</option>
-			<option value="4" <?php echo ($jns_prtn == '4')?'selected':''?>>Permenkes</option>
-			<option value="5" <?php echo ($jns_prtn == '5')?'selected':''?>>Kepmenkes</option>
-			<option value="6" <?php echo ($jns_prtn == '6')?'selected':''?>>Keppres</option>
-			<option value="7" <?php echo ($jns_prtn == '7')?'selected':''?>>Inpres</option>
-			<option value="8" <?php echo ($jns_prtn == '8')?'selected':''?>>Perdir</option>
-			<option value="9" <?php echo ($jns_prtn == '9')?'selected':''?>>SK</option>
-			<option value="10" <?php echo ($jns_prtn == '10')?'selected':''?>>SE</option>
-			<option value="11" <?php echo ($jns_prtn == '11')?'selected':''?>>DLL</option>
-		</select>
+			<option value="1" <?php //echo ($jns_prtn == '1')?'selected':''?>>Undang - Undang</option>
+			<option value="2" <?php //echo ($jns_prtn == '2')?'selected':''?>>Peraturan Pemerintah</option>
+			<option value="3" <?php //echo ($jns_prtn == '3')?'selected':''?>>Perpres</option>
+			<option value="4" <?php //echo ($jns_prtn == '4')?'selected':''?>>Permenkes</option>
+			<option value="5" <?php //echo ($jns_prtn == '5')?'selected':''?>>Kepmenkes</option>
+			<option value="6" <?php //echo ($jns_prtn == '6')?'selected':''?>>Keppres</option>
+			<option value="7" <?php //echo ($jns_prtn == '7')?'selected':''?>>Inpres</option>
+			<option value="8" <?php //echo ($jns_prtn == '8')?'selected':''?>>Perdir</option>
+			<option value="9" <?php //echo ($jns_prtn == '9')?'selected':''?>>SK</option>
+			<option value="10" <?php //echo ($jns_prtn == '10')?'selected':''?>>SE</option>
+			<option value="11" <?php //echo ($jns_prtn == '11')?'selected':''?>>DLL</option>
+		</select> -->
 	</div>
 	<div class="form-group"	>
 		<label for="th_prtn">Tahun Terbit Peraturan</label>
@@ -81,5 +97,19 @@
      <!-- /.container -->
    </footer> 
 </div>
+<script>
+$(function() {
+    $("#jns_prtn").autocomplete({
+        source: "<?php echo base_url('Jdih/autojenis'); ?>",
+		minLength:2
+    });
+});
+$(function() {
+    $("#strkl").autocomplete({
+        source: "<?php echo base_url('Jdih/autostrk'); ?>",
+		minLength:2
+    });
+});
+</script>
 </body>
 </html>

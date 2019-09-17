@@ -6,18 +6,22 @@
     <div class="container">
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Jenis Peraturan</h3>
+        <h3 class="box-title">Daftar Peraturan</h3>
     </div>
 <div class="box-body">
-        <a href="<?php echo base_url('jdih/create_jns_prtn')?>" class="btn btn-primary btn-icon-split">
-        	<span class="text">Tambah Data</span>
-        </a>
-        <br><br>
+	<?php $error;?>
 	<table id="dataJDIH" class="table table-bordered table-striped">
 		<thead>
 		<tr>
 		<th>Nama Peraturan</th>
-		<th>Tindakan</th>
+		<th>Jenis Peraturan</th>
+		<th>Ruang Lingkup</th>
+		<th>Tahun Terbit</th>
+		<!-- <th>Nomor Peraturan</th> -->
+		<!-- <th>Status Peraturan</th> -->
+		<th>Bagian Terkait</th>
+		<th>Unduh Pdf</th>
+		<!-- <th>Tindakan</th> -->
 		</tr>
 		</thead>
 	</table>
@@ -29,9 +33,10 @@
 <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')?>"></script>
 <script>
+	
 	$(document).ready(function(){
    $('#dataJDIH').DataTable({
-    language: {
+	language: {
 	"sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
 	"sProcessing":   "Sedang memproses...",
 	"sLengthMenu":   "Tampilkan _MENU_ entri",
@@ -49,19 +54,28 @@
 		"sLast":     "Terakhir"
 	}
 	},
+	   
 	//   'order': [[ 0, "desc" ]],
       'processing': true,
       'serverSide': true,
       'serverMethod': 'post',
       'ajax': {
-          'url':'<?php echo base_url().'Jdih/tbl_jns_prtn'?>'
+          'url':'<?php echo base_url().'Jdih/tbl_list'?>'
       },
       'columns': [
-		 { data: 'nm_jdih_jns' },
-		 { data: 'action' }
+		 { data: 'nm_prtn' },
+		 { data: 'jns_prtn' },
+		 { data: 'r_lingkup' },
+		 { data: 'th_prtn' },
+		//  { data: 'nmr_prtn' },
+		//  { data: 'sts_prtn' },
+		 { data: 'stru_prtn' },
+		 { data: 'nm_doc_prtn' },
+        //  { data: 'action' }
       ]
 	});
 	});
+	
 </script>
 </div>
 </div>

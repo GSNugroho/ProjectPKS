@@ -2,6 +2,8 @@
 	$this->load->view('jdih/jdih');
 ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
+
+    <div class="container">
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Data Peraturan</h3>
@@ -18,7 +20,7 @@
 		<!-- <th>Nomor Peraturan</th> -->
 		<!-- <th>Status Peraturan</th> -->
 		<th>Bagian Terkait</th>
-		<th>Pdf</th>
+		<!-- <th>Pdf</th> -->
 		<th>Tindakan</th>
 		</tr>
 		</thead>
@@ -68,7 +70,7 @@
 		//  { data: 'nmr_prtn' },
 		//  { data: 'sts_prtn' },
 		 { data: 'stru_prtn' },
-		 { data: 'nm_doc_prtn' },
+		//  { data: 'nm_doc_prtn' },
          { data: 'action' }
       ]
 	});

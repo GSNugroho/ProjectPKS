@@ -12,12 +12,15 @@ class Jdih extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('jdih/jdih');
+		$this->load->view('jdih/jdih_db');
 	}
 	
 	public function create()
 	{
-		$this->load->view('jdih/jdih_input_form');
+		$data = array(
+			'dd_jns' => $this->M_jdih->get_jns()
+		);
+		$this->load->view('jdih/jdih_input_form', $data);
 	}
 
 	public function create_action()
@@ -99,7 +102,7 @@ class Jdih extends CI_Controller {
 			$data = array(
 				'kd_jdih' => set_value('kd_jdih', $row->kd_jdih),
 				'r_lingkup' => $r_lingkup,
-				'jns_prtn' => set_value('jns_prtn', $row->nm_jdih_jns),
+				'jns_prtn' => set_value('jns_prtn', $row->jns_prtn),
 				'th_prtn' => set_value('th_prtn', $row->th_prtn),
 				'nmr_prtn' => set_value('nmr_prtn', $row->nmr_prtn),
 				'nm_prtn' => set_value('nm_prtn', $row->nm_prtn),
@@ -128,6 +131,9 @@ class Jdih extends CI_Controller {
 	public function list_jdih()
 	{
 		$this->load->view('jdih/jdih_list');
+	}
+	public function daftar_prtn(){
+		$this->load->view('jdih/jdih_daftar');
 	}
 	
 	public function do_upload()
@@ -300,7 +306,7 @@ class Jdih extends CI_Controller {
 		$searchQuery = " and (
 		 
 		r_lingkup like '%".$searchValue."%' or 
-		nm_jdih_jns like '%".$searchValue."%' or 
+		jns_prtn like '%".$searchValue."%' or 
 		th_prtn like '%".$searchValue."%' or 
 		nmr_prtn like '%".$searchValue."%' or 
 		nm_prtn like'%".$searchValue."%' or
@@ -348,6 +354,7 @@ class Jdih extends CI_Controller {
 		$pdf = '
 		<a href="read_pdf/'.$row->kd_jdih.'" target="_blank">
 		<i class="fa fa-file-pdf-o"></i>
+		'.$row->nm_prtn.'
 		</a>
 		';
 		
@@ -372,7 +379,7 @@ class Jdih extends CI_Controller {
 
 		$data[] = array( 
 			"r_lingkup" => $r_lingkup,
-			"jns_prtn" => $row->nm_jdih_jns,
+			"jns_prtn" => $row->jns_prtn,
 			"th_prtn" => $row->th_prtn,
 			"nmr_prtn" => $row->nmr_prtn,
 			"nm_prtn" => $row->nm_prtn,
@@ -459,5 +466,47 @@ class Jdih extends CI_Controller {
 
 		echo json_encode($response);
 	}
+
+	function autojenis() {
+        $returnData = array();
+        
+        // Get skills data
+        $conditions['searchTerm'] = $this->input->get('term');
+        $conditions['conditions']['bt_aktif'] = '1';
+        $skillData = $this->M_jdih->autojns($conditions);
+        
+        // Generate array
+        if(!empty($skillData)){
+            foreach ($skillData as $row){
+                $data['id'] = $row['id_jns'];
+                $data['value'] = $row['nm_jdih_jns'];
+                array_push($returnData, $data);
+            }
+        }
+        
+        // Return results as json encoded array
+        echo json_encode($returnData);die;
+	}
+	
+	function autostrk() {
+        $returnData = array();
+        
+        // Get skills data
+        $conditions['searchTerm'] = $this->input->get('term');
+        // $conditions['conditions']['bt_aktif'] = '1';
+        $skillData = $this->M_jdih->autostrk($conditions);
+        
+        // Generate array
+        if(!empty($skillData)){
+            foreach ($skillData as $row){
+                $data['id'] = $row['vc_k_gugus'];
+                $data['value'] = $row['vc_n_gugus'];
+                array_push($returnData, $data);
+            }
+        }
+        
+        // Return results as json encoded array
+        echo json_encode($returnData);die;
+    }
 }
 ?>

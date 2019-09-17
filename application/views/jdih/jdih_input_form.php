@@ -1,6 +1,21 @@
 <?php
 	$this->load->view('jdih/jdih');
 ?>
+<link rel="stylesheet" href="<?php echo base_url('assets/bower_components/jquery-ui/themes/smoothness/jquery-ui.css')?>">
+
+<script src="<?php echo base_url('assets/bower_components/jquery-ui/jquery-ui.js')?>"></script>
+<style>
+       .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+            /* add padding to account for vertical scrollbar */
+            padding-right: 20px;
+        } 
+</style>
+
+    <div class="container">
 <div class="box box-primary">
 	<div class="box-header with-border">
     	<h3 class="box-title">Tambah Peraturan</h3>
@@ -10,31 +25,38 @@
     <div class="form-group">
 		<label for="r_lingkup">Ruang Lingkup</label>
 		<select name="r_lingkup" class="form-control" id="r_lingkup">
-			<option value="">--Pilih Ruang Lingkup</option>
+			<option value="">--Pilih Ruang Lingkup--</option>
 			<option value="1">Nasional</option>
 			<option value="2">Internal RS</option>
 		</select>
     </div>
 	<div class="form-group">
 		<label for="jns_prtn">Jenis Peraturan</label>
-		<select name="jns_prtn" class="form-control" id="jns_prtn">
-			<option value="">--Pilih Jenis Peraturan</option>
-			<option value="1">Undang - Undang</option>
-			<option value="2">Peraturan Pemerintah</option>
-			<option value="3">Perpres</option>
-			<option value="4">Permenkes</option>
-			<option value="5">Kepmenkes</option>
-			<option value="6">Keppres</option>
-			<option value="7">Inpres</option>
-			<option value="8">Perdir</option>
-			<option value="9">SK</option>
-			<option value="10">SE</option>
-			<option value="11">DLL</option>
-		</select>
+		<input class="form-control" type="text" name="jns_prtn" id="jns_prtn" placeholder="Jenis Peraturan">
+		<!-- <select name="jns_prtn" class="form-control" id="jns_prtn"> -->
+		<!-- <option value="">--Pilih Jenis Peraturan--</option> -->
+		<?php
+            // foreach ($dd_jns as $row) {  
+            // echo "<option value='".$row->id_jns."'>".$row->nm_jdih_jns."</option>";
+            // }
+            // echo"
+        	// </select>"
+        ?>
 	</div>
 	<div class="form-group"	>
 		<label for="th_prtn">Tahun Terbit Peraturan</label>
-		<input class="form-control" type="text" name="th_prtn" id="th_prtn" placeholder="Tahun Terbit Peraturan">
+		<!-- <input class="form-control" type="text" name="th_prtn" id="th_prtn" placeholder="Tahun Terbit Peraturan"> -->
+		<select name="th_prtn" class="form-control" id="th_prtn">
+		<option value="">--Pilih Tahun Peraturan--</option>
+		<?php
+        $thn_skr = date('Y');
+        for ($x = $thn_skr; $x >= 2010; $x--) {
+        ?>
+        <option value="<?php echo $x ?>"><?php echo $x ?></option>
+        <?php
+        }
+		?>
+		</select>
 	</div>
 	<div class="form-group">
 		<label for="nmr_prtn">Nomor Peraturan</label>
@@ -59,7 +81,6 @@
 	<div class="form-group">
 		<label for="doc">Upload Dokumen</label>
 		<input class="form-control" type="file" name="data" id="doc">
-		
 	</div>
 	<div class="form-group">
 		<input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
@@ -80,5 +101,19 @@
      <!-- /.container -->
    </footer> 
 </div>
+<script>
+$(function() {
+    $("#jns_prtn").autocomplete({
+        source: "<?php echo base_url('Jdih/autojenis'); ?>",
+		minLength:2
+    });
+});
+$(function() {
+    $("#strkl").autocomplete({
+        source: "<?php echo base_url('Jdih/autostrk'); ?>",
+		minLength:2
+    });
+});
+</script>
 </body>
 </html>

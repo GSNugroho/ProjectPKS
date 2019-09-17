@@ -20,6 +20,10 @@
     <tr><td>Tanggal Koreksi</td><td>:</td><td><?php echo $date_cor; ?></td></tr>
     <tr><td>Tanggal Tandatangan</td><td>:</td><td><?php echo $date_ttd; ?></td></tr>
     <tr><td>Tanggal Selesai</td><td>:</td><td><?php echo $date_sls; ?></td></tr>
+    <tr><td>Unduh Dokumen</td><td>:</td><td><a href="<?php echo base_url('Pks/read_pdf/'.$kd_pks)?>" target="_blank">
+    <i class="fa fa-file-text-o"></i>
+    <?php echo $nm_pks.'.pdf'?>
+    </a></td></tr>
     </table>
 </div>
 </div>
