@@ -11,7 +11,7 @@
         <!-- Main content -->
         <section class="content">
       <!-- Info boxes -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
@@ -19,28 +19,28 @@
             <div class="info-box-content">
               <span class="info-box-text">Peraturan </span>
               <span class="info-box-number">90<small>%</small></span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
-        </div>
+        <!-- </div> -->
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <!-- <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">Likes</span>
               <span class="info-box-number">41,410</span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
-        </div>
+        <!-- </div> -->
         <!-- /.col -->
 
         <!-- fix for small devices only -->
-        <div class="clearfix visible-sm-block"></div>
+        <!-- <div class="clearfix visible-sm-block"></div>
 
         <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
@@ -49,29 +49,29 @@
             <div class="info-box-content">
               <span class="info-box-text">Sales</span>
               <span class="info-box-number">760</span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
-        </div>
+        <!-- </div> -->
         <!-- /.col -->
-        <div class="col-md-3 col-sm-6 col-xs-12">
+        <!-- <div class="col-md-3 col-sm-6 col-xs-12">
           <div class="info-box">
             <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
 
             <div class="info-box-content">
               <span class="info-box-text">New Members</span>
               <span class="info-box-number">2,000</span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
-        </div>
+        <!-- </div> -->
         <!-- /.col -->
-      </div>
+      <!-- </div> -->
       <!-- /.row -->
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12">
           <div class="box">
             <div class="box-header with-border">
@@ -93,23 +93,23 @@
                 </div>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
-            </div>
+            </div> -->
             <!-- /.box-header -->
-            <div class="box-body">
+            <!-- <div class="box-body">
               <div class="row">
                 <div class="col-md-8">
                   <p class="text-center">
                     <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
                   </p>
 
-                  <div class="chart">
+                  <div class="chart"> -->
                     <!-- Sales Chart Canvas -->
-                    <canvas id="salesChart" style="height: 180px;"></canvas>
-                  </div>
+                    <!-- <canvas id="salesChart" style="height: 180px;"></canvas> -->
+                  <!-- </div> -->
                   <!-- /.chart-responsive -->
-                </div>
+                <!-- </div> -->
                 <!-- /.col -->
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <p class="text-center">
                     <strong>Goal Completion</strong>
                   </p>
@@ -121,95 +121,95 @@
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-aqua" style="width: 80%"></div>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- /.progress-group -->
-                  <div class="progress-group">
+                  <!-- <div class="progress-group">
                     <span class="progress-text">Complete Purchase</span>
                     <span class="progress-number"><b>310</b>/400</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-red" style="width: 80%"></div>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- /.progress-group -->
-                  <div class="progress-group">
+                  <!-- <div class="progress-group">
                     <span class="progress-text">Visit Premium Page</span>
                     <span class="progress-number"><b>480</b>/800</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-green" style="width: 80%"></div>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- /.progress-group -->
-                  <div class="progress-group">
+                  <!-- <div class="progress-group">
                     <span class="progress-text">Send Inquiries</span>
                     <span class="progress-number"><b>250</b>/500</span>
 
                     <div class="progress sm">
                       <div class="progress-bar progress-bar-yellow" style="width: 80%"></div>
                     </div>
-                  </div>
+                  </div> -->
                   <!-- /.progress-group -->
-                </div>
+                <!-- </div> -->
                 <!-- /.col -->
-              </div>
+              <!-- </div> -->
               <!-- /.row -->
-            </div>
+            <!-- </div> -->
             <!-- ./box-body -->
-            <div class="box-footer">
+            <!-- <div class="box-footer">
               <div class="row">
                 <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
                     <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
                     <h5 class="description-header">$35,210.43</h5>
                     <span class="description-text">TOTAL REVENUE</span>
-                  </div>
+                  </div> -->
                   <!-- /.description-block -->
-                </div>
+                <!-- </div> -->
                 <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
+                <!-- <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
                     <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
                     <h5 class="description-header">$10,390.90</h5>
                     <span class="description-text">TOTAL COST</span>
-                  </div>
+                  </div> -->
                   <!-- /.description-block -->
-                </div>
+                <!-- </div> -->
                 <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
+                <!-- <div class="col-sm-3 col-xs-6">
                   <div class="description-block border-right">
                     <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
                     <h5 class="description-header">$24,813.53</h5>
                     <span class="description-text">TOTAL PROFIT</span>
-                  </div>
+                  </div> -->
                   <!-- /.description-block -->
-                </div>
+                <!-- </div> -->
                 <!-- /.col -->
-                <div class="col-sm-3 col-xs-6">
+                <!-- <div class="col-sm-3 col-xs-6">
                   <div class="description-block">
                     <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
                     <h5 class="description-header">1200</h5>
                     <span class="description-text">GOAL COMPLETIONS</span>
-                  </div>
+                  </div> -->
                   <!-- /.description-block -->
-                </div>
-              </div>
+                <!-- </div>
+              </div> -->
               <!-- /.row -->
-            </div>
+            <!-- </div> -->
             <!-- /.box-footer -->
-          </div>
+          <!-- </div> -->
           <!-- /.box -->
-        </div>
+        <!-- </div> -->
         <!-- /.col -->
-      </div>
+      <!-- </div> -->
       <!-- /.row -->
 
       <!-- Main row -->
-      <div class="row">
+      <!-- <div class="row"> -->
         <!-- Left col -->
-        <div class="col-md-8">
+        <!-- <div class="col-md-8"> -->
           <!-- MAP & BOX PANE -->
-          <div class="box box-success">
+          <!-- <div class="box box-success">
             <div class="box-header with-border">
               <h3 class="box-title">Visitors Report</h3>
 
@@ -218,50 +218,50 @@
                 </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
-            </div>
+            </div> -->
             <!-- /.box-header -->
-            <div class="box-body no-padding">
+            <!-- <div class="box-body no-padding">
               <div class="row">
                 <div class="col-md-9 col-sm-8">
-                  <div class="pad">
+                  <div class="pad"> -->
                     <!-- Map will be created here -->
-                    <div id="world-map-markers" style="height: 325px;"></div>
+                    <!-- <div id="world-map-markers" style="height: 325px;"></div>
                   </div>
-                </div>
+                </div> -->
                 <!-- /.col -->
-                <div class="col-md-3 col-sm-4">
+                <!-- <div class="col-md-3 col-sm-4">
                   <div class="pad box-pane-right bg-green" style="min-height: 280px">
                     <div class="description-block margin-bottom">
                       <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
                       <h5 class="description-header">8390</h5>
                       <span class="description-text">Visits</span>
-                    </div>
+                    </div> -->
                     <!-- /.description-block -->
-                    <div class="description-block margin-bottom">
+                    <!-- <div class="description-block margin-bottom">
                       <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
                       <h5 class="description-header">30%</h5>
                       <span class="description-text">Referrals</span>
-                    </div>
+                    </div> -->
                     <!-- /.description-block -->
-                    <div class="description-block">
+                    <!-- <div class="description-block">
                       <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
                       <h5 class="description-header">70%</h5>
                       <span class="description-text">Organic</span>
-                    </div>
+                    </div> -->
                     <!-- /.description-block -->
-                  </div>
-                </div>
+                  <!-- </div> -->
+                <!-- </div> -->
                 <!-- /.col -->
-              </div>
+              <!-- </div> -->
               <!-- /.row -->
-            </div>
+            <!-- </div> -->
             <!-- /.box-body -->
-          </div>
+          <!-- </div> -->
           <!-- /.box -->
           <div class="row">
-            <div class="col-md-6">
+            <!-- <div class="col-md-6"> -->
               <!-- DIRECT CHAT -->
-              <div class="box box-warning direct-chat direct-chat-warning">
+              <!-- <div class="box box-warning direct-chat direct-chat-warning">
                 <div class="box-header with-border">
                   <h3 class="box-title">Direct Chat</h3>
 
@@ -275,80 +275,80 @@
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
                     </button>
                   </div>
-                </div>
+                </div> -->
                 <!-- /.box-header -->
-                <div class="box-body">
+                <!-- <div class="box-body"> -->
                   <!-- Conversations are loaded here -->
-                  <div class="direct-chat-messages">
+                  <!-- <div class="direct-chat-messages"> -->
                     <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
+                    <!-- <div class="direct-chat-msg">
                       <div class="direct-chat-info clearfix">
                         <span class="direct-chat-name pull-left">Alexander Pierce</span>
                         <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                      </div>
+                      </div> -->
                       <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                      <!-- <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image"> -->
                       <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
+                      <!-- <div class="direct-chat-text">
                         Is this template really for free? That's unbelievable!
-                      </div>
+                      </div> -->
                       <!-- /.direct-chat-text -->
-                    </div>
+                    <!-- </div> -->
                     <!-- /.direct-chat-msg -->
 
                     <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
+                    <!-- <div class="direct-chat-msg right">
                       <div class="direct-chat-info clearfix">
                         <span class="direct-chat-name pull-right">Sarah Bullock</span>
                         <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                      </div>
+                      </div> -->
                       <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                      <!-- <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"> -->
                       <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
+                      <!-- <div class="direct-chat-text">
                         You better believe it!
-                      </div>
+                      </div> -->
                       <!-- /.direct-chat-text -->
-                    </div>
+                    <!-- </div> -->
                     <!-- /.direct-chat-msg -->
 
                     <!-- Message. Default to the left -->
-                    <div class="direct-chat-msg">
+                    <!-- <div class="direct-chat-msg">
                       <div class="direct-chat-info clearfix">
                         <span class="direct-chat-name pull-left">Alexander Pierce</span>
                         <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
-                      </div>
+                      </div> -->
                       <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image">
+                      <!-- <img class="direct-chat-img" src="dist/img/user1-128x128.jpg" alt="message user image"> -->
                       <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
+                      <!-- <div class="direct-chat-text">
                         Working with AdminLTE on a great new app! Wanna join?
-                      </div>
+                      </div> -->
                       <!-- /.direct-chat-text -->
-                    </div>
+                    <!-- </div> -->
                     <!-- /.direct-chat-msg -->
 
                     <!-- Message to the right -->
-                    <div class="direct-chat-msg right">
+                    <!-- <div class="direct-chat-msg right">
                       <div class="direct-chat-info clearfix">
                         <span class="direct-chat-name pull-right">Sarah Bullock</span>
                         <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
-                      </div>
+                      </div> -->
                       <!-- /.direct-chat-info -->
-                      <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image">
+                      <!-- <img class="direct-chat-img" src="dist/img/user3-128x128.jpg" alt="message user image"> -->
                       <!-- /.direct-chat-img -->
-                      <div class="direct-chat-text">
+                      <!-- <div class="direct-chat-text">
                         I would love to.
-                      </div>
+                      </div> -->
                       <!-- /.direct-chat-text -->
-                    </div>
+                    <!-- </div> -->
                     <!-- /.direct-chat-msg -->
 
-                  </div>
+                  <!-- </div> -->
                   <!--/.direct-chat-messages-->
 
                   <!-- Contacts are loaded here -->
-                  <div class="direct-chat-contacts">
+                  <!-- <div class="direct-chat-contacts">
                     <ul class="contacts-list">
                       <li>
                         <a href="#">
@@ -360,12 +360,12 @@
                                   <small class="contacts-list-date pull-right">2/28/2015</small>
                                 </span>
                             <span class="contacts-list-msg">How have you been? I was...</span>
-                          </div>
+                          </div> -->
                           <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
+                        <!-- </a>
+                      </li> -->
                       <!-- End Contact Item -->
-                      <li>
+                      <!-- <li>
                         <a href="#">
                           <img class="contacts-list-img" src="dist/img/user7-128x128.jpg" alt="User Image">
 
@@ -375,12 +375,12 @@
                                   <small class="contacts-list-date pull-right">2/23/2015</small>
                                 </span>
                             <span class="contacts-list-msg">I will be waiting for...</span>
-                          </div>
+                          </div> -->
                           <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
+                        <!-- </a>
+                      </li> -->
                       <!-- End Contact Item -->
-                      <li>
+                      <!-- <li>
                         <a href="#">
                           <img class="contacts-list-img" src="dist/img/user3-128x128.jpg" alt="User Image">
 
@@ -390,12 +390,12 @@
                                   <small class="contacts-list-date pull-right">2/20/2015</small>
                                 </span>
                             <span class="contacts-list-msg">I'll call you back at...</span>
-                          </div>
+                          </div> -->
                           <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
+                        <!-- </a>
+                      </li> -->
                       <!-- End Contact Item -->
-                      <li>
+                      <!-- <li>
                         <a href="#">
                           <img class="contacts-list-img" src="dist/img/user5-128x128.jpg" alt="User Image">
 
@@ -405,12 +405,12 @@
                                   <small class="contacts-list-date pull-right">2/10/2015</small>
                                 </span>
                             <span class="contacts-list-msg">Where is your new...</span>
-                          </div>
+                          </div> -->
                           <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
+                        <!-- </a>
+                      </li> -->
                       <!-- End Contact Item -->
-                      <li>
+                      <!-- <li>
                         <a href="#">
                           <img class="contacts-list-img" src="dist/img/user6-128x128.jpg" alt="User Image">
 
@@ -420,12 +420,12 @@
                                   <small class="contacts-list-date pull-right">1/27/2015</small>
                                 </span>
                             <span class="contacts-list-msg">Can I take a look at...</span>
-                          </div>
+                          </div> -->
                           <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
+                        <!-- </a>
+                      </li> -->
                       <!-- End Contact Item -->
-                      <li>
+                      <!-- <li>
                         <a href="#">
                           <img class="contacts-list-img" src="dist/img/user8-128x128.jpg" alt="User Image">
 
@@ -435,18 +435,18 @@
                                   <small class="contacts-list-date pull-right">1/4/2015</small>
                                 </span>
                             <span class="contacts-list-msg">Never mind I found...</span>
-                          </div>
+                          </div> -->
                           <!-- /.contacts-list-info -->
-                        </a>
-                      </li>
+                        <!-- </a>
+                      </li> -->
                       <!-- End Contact Item -->
-                    </ul>
+                    <!-- </ul> -->
                     <!-- /.contatcts-list -->
-                  </div>
+                  <!-- </div> -->
                   <!-- /.direct-chat-pane -->
-                </div>
+                <!-- </div> -->
                 <!-- /.box-body -->
-                <div class="box-footer">
+                <!-- <div class="box-footer">
                   <form action="#" method="post">
                     <div class="input-group">
                       <input type="text" name="message" placeholder="Type Message ..." class="form-control">
@@ -455,76 +455,109 @@
                           </span>
                     </div>
                   </form>
-                </div>
+                </div> -->
                 <!-- /.box-footer-->
-              </div>
+              <!-- </div> -->
               <!--/.direct-chat -->
-            </div>
+            <!-- </div> -->
             <!-- /.col -->
 
             <div class="col-md-6">
               <!-- USERS LIST -->
               <div class="box box-danger">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Latest Members</h3>
-
-                  <div class="box-tools pull-right">
-                    <span class="label label-danger">8 New Members</span>
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                    </button>
-                  </div>
+                  <h3 class="box-title">Jumlah Peraturan Per Jenis</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding">
                   <ul class="users-list clearfix">
-                    <li>
-                      <img src="dist/img/user1-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Alexander Pierce</a>
-                      <span class="users-list-date">Today</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user8-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Norman</a>
-                      <span class="users-list-date">Yesterday</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user7-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Jane</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user6-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">John</a>
-                      <span class="users-list-date">12 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user2-160x160.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Alexander</a>
-                      <span class="users-list-date">13 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user5-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Sarah</a>
-                      <span class="users-list-date">14 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user4-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Nora</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
-                    <li>
-                      <img src="dist/img/user3-128x128.jpg" alt="User Image">
-                      <a class="users-list-name" href="#">Nadia</a>
-                      <span class="users-list-date">15 Jan</span>
-                    </li>
+                    <?php 
+                      foreach($jns_1 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                              <span class="users-list-date">'.$row->total.'</span>
+                              </li>';
+                      }
+                      foreach($jns_2 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_3 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_4 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_5 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_6 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_7 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_8 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_9 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_10 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                      foreach($jns_11 as $row){
+                        echo '<li>'.$row->jns_prtn.'
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                    ?>
                   </ul>
                   <!-- /.users-list -->
                 </div>
-                <!-- /.box-body -->
-                <div class="box-footer text-center">
-                  <a href="javascript:void(0)" class="uppercase">View All Users</a>
+                <!-- /.box-footer -->
+              </div>
+              <!--/.box -->
+            </div>
+            <div class="col-md-6">
+              <!-- USERS LIST -->
+              <div class="box box-danger">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Jumlah Peraturan Per Ruang Lingkup</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <ul class="users-list clearfix">
+                    <?php 
+                      foreach($r_l1 as $row){
+                        echo '<li>Nasional
+                              <span class="users-list-date">'.$row->total.'</span>
+                              </li>';
+                      }
+                      foreach($r_l2 as $row){
+                        echo '<li>Internal RS
+                        <span class="users-list-date">'.$row->total.'</span>
+                        </li>';
+                      }
+                    ?>
+                  </ul>
+                  <!-- /.users-list -->
                 </div>
                 <!-- /.box-footer -->
               </div>
@@ -535,94 +568,37 @@
           <!-- /.row -->
 
           <!-- TABLE: LATEST ORDERS -->
+          <div class="row">
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Latest Orders</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              <h3 class="box-title">Peraturan Terakhir Ditambahkan</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
-                <table class="table no-margin">
+                <table class="table no-margin" id="dt_prtn_akhir">
                   <thead>
                   <tr>
-                    <th>Order ID</th>
-                    <th>Item</th>
-                    <th>Status</th>
-                    <th>Popularity</th>
+                    <th>Nama Peraturan</th>
+                    <th>Jenis Peraturan</th>
+                    <th>Ruang Lingkup</th>
+                    <th>Tahun</th>
+                    <th>Pdf</th>
                   </tr>
-                  </thead>
                   <tbody>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
+                    <?php 
+                      foreach($prtn as $row){
+                        if($row->r_lingkup == 1){ $lingkup = 'Nasional';}else{$lingkup = 'Internal RS';}
+                        echo '<tr><td>'.$row->nm_prtn.'</td><td>'.$row->jns_prtn.'</td><td>'.$lingkup.'</td><td>'.$row->th_prtn.'</td><td><a href="Jdih/read_pdf/'.$row->kd_jdih.'" target="_blank">
+                        <i class="fa fa-file-pdf-o"></i>
+                        </a></td></tr>';
+                      }
+                    ?>
                   </tbody>
+                  </thead>
                 </table>
               </div>
               <!-- /.table-responsive -->
-            </div>
-            <!-- /.box-body -->
-            <div class="box-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
             </div>
             <!-- /.box-footer -->
           </div>
@@ -630,9 +606,9 @@
         </div>
         <!-- /.col -->
 
-        <div class="col-md-4">
+        <!-- <div class="col-md-4"> -->
           <!-- Info Boxes Style 2 -->
-          <div class="info-box bg-yellow">
+          <!-- <div class="info-box bg-yellow">
             <span class="info-box-icon"><i class="ion ion-ios-pricetag-outline"></i></span>
 
             <div class="info-box-content">
@@ -645,11 +621,11 @@
               <span class="progress-description">
                     50% Increase in 30 Days
                   </span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
-          <div class="info-box bg-green">
+          <!-- <div class="info-box bg-green">
             <span class="info-box-icon"><i class="ion ion-ios-heart-outline"></i></span>
 
             <div class="info-box-content">
@@ -662,11 +638,11 @@
               <span class="progress-description">
                     20% Increase in 30 Days
                   </span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
-          <div class="info-box bg-red">
+          <!-- <div class="info-box bg-red">
             <span class="info-box-icon"><i class="ion ion-ios-cloud-download-outline"></i></span>
 
             <div class="info-box-content">
@@ -679,11 +655,11 @@
               <span class="progress-description">
                     70% Increase in 30 Days
                   </span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
-          <div class="info-box bg-aqua">
+          <!-- <div class="info-box bg-aqua">
             <span class="info-box-icon"><i class="ion-ios-chatbubble-outline"></i></span>
 
             <div class="info-box-content">
@@ -696,12 +672,12 @@
               <span class="progress-description">
                     40% Increase in 30 Days
                   </span>
-            </div>
+            </div> -->
             <!-- /.info-box-content -->
-          </div>
+          <!-- </div> -->
           <!-- /.info-box -->
 
-          <div class="box box-default">
+          <!-- <div class="box box-default">
             <div class="box-header with-border">
               <h3 class="box-title">Browser Usage</h3>
 
@@ -710,18 +686,18 @@
                 </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
-            </div>
+            </div> -->
             <!-- /.box-header -->
-            <div class="box-body">
+            <!-- <div class="box-body">
               <div class="row">
                 <div class="col-md-8">
                   <div class="chart-responsive">
                     <canvas id="pieChart" height="150"></canvas>
-                  </div>
+                  </div> -->
                   <!-- ./chart-responsive -->
-                </div>
+                <!-- </div> -->
                 <!-- /.col -->
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <ul class="chart-legend clearfix">
                     <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
                     <li><i class="fa fa-circle-o text-green"></i> IE</li>
@@ -730,13 +706,13 @@
                     <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
                     <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
                   </ul>
-                </div>
+                </div> -->
                 <!-- /.col -->
-              </div>
+              <!-- </div> -->
               <!-- /.row -->
-            </div>
+            <!-- </div> -->
             <!-- /.box-body -->
-            <div class="box-footer no-padding">
+            <!-- <div class="box-footer no-padding">
               <ul class="nav nav-pills nav-stacked">
                 <li><a href="#">United States of America
                   <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 12%</span></a></li>
@@ -745,39 +721,39 @@
                 <li><a href="#">China
                   <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 0%</span></a></li>
               </ul>
-            </div>
+            </div> -->
             <!-- /.footer -->
-          </div>
+          <!-- </div> -->
           <!-- /.box -->
 
           <!-- PRODUCT LIST -->
-          <div class="box box-primary">
+          <!-- <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Recently Added Products</h3>
+              <h3 class="box-title">Terakhir Jadwal Ditambahkan</h3> -->
 
-              <div class="box-tools pull-right">
+              <!-- <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
+              </div> -->
+            <!-- </div> -->
             <!-- /.box-header -->
-            <div class="box-body">
+            <!-- <div class="box-body">
               <ul class="products-list product-list-in-box">
-                <li class="item">
-                  <div class="product-img">
+                <li class="item"> -->
+                  <!-- <div class="product-img">
                     <img src="dist/img/default-50x50.gif" alt="Product Image">
-                  </div>
-                  <div class="product-info">
+                  </div> -->
+                  <!-- <div class="product-info">
                     <a href="javascript:void(0)" class="product-title">Samsung TV
                       <span class="label label-warning pull-right">$1800</span></a>
                     <span class="product-description">
                           Samsung 32" 1080p 60Hz LED Smart HDTV.
                         </span>
                   </div>
-                </li>
+                </li> -->
                 <!-- /.item -->
-                <li class="item">
+                <!-- <li class="item">
                   <div class="product-img">
                     <img src="dist/img/default-50x50.gif" alt="Product Image">
                   </div>
@@ -788,9 +764,9 @@
                           26" Mongoose Dolomite Men's 7-speed, Navy Blue.
                         </span>
                   </div>
-                </li>
+                </li> -->
                 <!-- /.item -->
-                <li class="item">
+                <!-- <li class="item">
                   <div class="product-img">
                     <img src="dist/img/default-50x50.gif" alt="Product Image">
                   </div>
@@ -801,9 +777,9 @@
                           Xbox One Console Bundle with Halo Master Chief Collection.
                         </span>
                   </div>
-                </li>
+                </li> -->
                 <!-- /.item -->
-                <li class="item">
+                <!-- <li class="item">
                   <div class="product-img">
                     <img src="dist/img/default-50x50.gif" alt="Product Image">
                   </div>
@@ -814,21 +790,34 @@
                           PlayStation 4 500GB Console (PS4)
                         </span>
                   </div>
-                </li>
+                </li> -->
                 <!-- /.item -->
-              </ul>
-            </div>
+              <!-- </ul>
+            </div> -->
             <!-- /.box-body -->
-            <div class="box-footer text-center">
+            <!-- <div class="box-footer text-center">
               <a href="javascript:void(0)" class="uppercase">View All Products</a>
-            </div>
+            </div> -->
             <!-- /.box-footer -->
-          </div>
+          <!-- </div> -->
           <!-- /.box -->
-        </div>
+        <!-- </div> -->
         <!-- /.col -->
-      </div>
+      <!-- </div> -->
       <!-- /.row -->
     </section>
+    
     </div>
     </div>
+  </div>
+  <footer class="main-footer">
+    <div class="container">
+      <div class="pull-right hidden-xs">
+      </div>
+      <strong>Copyright &copy; 2019 <a href="https://adminlte.io"></a>.</strong> All rights
+      reserved.
+	</div>
+   </footer>
+   </div>
+</body>
+</html>

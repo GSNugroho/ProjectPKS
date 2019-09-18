@@ -12,7 +12,23 @@ class Jdih extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('jdih/jdih_db');
+		$data = array(
+			'prtn' => $this->M_jdih->get_prtn_baru(),
+			'jns_1' => $this->M_jdih->get_t_jns1(),
+			'jns_2' => $this->M_jdih->get_t_jns2(),
+			'jns_3' => $this->M_jdih->get_t_jns3(),
+			'jns_4' => $this->M_jdih->get_t_jns4(),
+			'jns_5' => $this->M_jdih->get_t_jns5(),
+			'jns_6' => $this->M_jdih->get_t_jns6(),
+			'jns_7' => $this->M_jdih->get_t_jns7(),
+			'jns_8' => $this->M_jdih->get_t_jns8(),
+			'jns_9' => $this->M_jdih->get_t_jns9(),
+			'jns_10' => $this->M_jdih->get_t_jns10(),
+			'jns_11' => $this->M_jdih->get_t_jns11(),
+			'r_l1' => $this->M_jdih->get_t_rl1(),
+			'r_l2' => $this->M_jdih->get_t_rl2(),
+		);
+		$this->load->view('jdih/jdih_db', $data);
 	}
 	
 	public function create()

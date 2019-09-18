@@ -154,7 +154,65 @@ class M_jdih extends CI_Model{
 
         //return fetched data
         return $result;
-    }
+	}
+	
+	function get_prtn_baru(){
+		$query = $this->db->query("SELECT TOP 5 * FROM SKR_Jdih WHERE dl_sts = 1 ORDER BY date_create asc");
+		return $query->result();
+	}
+	function get_t_jns1(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 1 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns2(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 2 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns3(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 3 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns4(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 4 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns5(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 5 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns6(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 6 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns7(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 7 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns8(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 8 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns9(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 9 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns10(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 10 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_jns11(){
+		$query = $this->db->query("SELECT SKR_Jdih.jns_prtn, count(jns_prtn) as total FROM SKR_Jdih JOIN SKR_Jdih_jns ON SKR_Jdih.jns_prtn = SKR_Jdih_jns.nm_jdih_jns WHERE SKR_Jdih_jns.id_jns = 11 AND SKR_Jdih.dl_sts = 1 GROUP BY SKR_Jdih.jns_prtn");
+		return $query->result();
+	}
+	function get_t_rl1(){
+		$query = $this->db->query("SELECT COUNT(r_lingkup) as total FROM SKR_Jdih WHERE SKR_Jdih.dl_sts = 1 AND SKR_Jdih.r_lingkup = 1");
+		return $query->result();
+	}
+	function get_t_rl2(){
+		$query = $this->db->query("SELECT COUNT(r_lingkup) as total FROM SKR_Jdih WHERE SKR_Jdih.dl_sts = 1 AND SKR_Jdih.r_lingkup = 2");
+		return $query->result();
+	}
+
 
 }
 ?>

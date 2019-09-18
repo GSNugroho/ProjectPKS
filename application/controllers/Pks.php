@@ -138,37 +138,7 @@ class Pks extends CI_Controller {
 		$row = $this->M_pks->get_by_id($id);
 		
 		if($row){
-			if(($row->rev_pks == 0)&&($row->cor_pks == 0)&&($row->ttd_pks == 0)&&($row->sls_pks == 0)){
-				$rev_pks = 0;
-				$cor_pks = 2;
-				$ttd_pks = 2;
-				$sls_pks = 2;
-			}else if(($row->rev_pks == 1)&&($row->cor_pks == 0)&&($row->ttd_pks == 0)&&($row->sls_pks == 0)){
-				$rev_pks = 1;
-				$cor_pks = 0;
-				$ttd_pks = 2;
-				$sls_pks = 2;
-			}else if(($row->rev_pks == 1)&&($row->cor_pks == 1)&&($row->ttd_pks == 0)&&($row->sls_pks == 0)){
-				$rev_pks = 1;
-				$cor_pks = 1;
-				$ttd_pks = 0;
-				$sls_pks = 2;
-			}else if(($row->rev_pks == 1)&&($row->cor_pks == 1)&&($row->ttd_pks == 1)&&($row->sls_pks == 0)){
-				$rev_pks = 1;
-				$cor_pks = 1;
-				$ttd_pks = 1;
-				$sls_pks = 0;
-			}else{
-				$rev_pks = 1;
-				$cor_pks = 1;
-				$ttd_pks = 1;
-				$sls_pks = 1;
-			}
 			$data = array(
-				'rev_pks' => $rev_pks,
-				'cor_pks' => $cor_pks,
-				'ttd_pks' => $ttd_pks,
-				'sls_pks' => $sls_pks,
 				'kd_pks' => set_value('kd_pks', $row->kd_pks)
 			);
 		}
@@ -178,29 +148,31 @@ class Pks extends CI_Controller {
 
 	public function proses_action(){
 		
-		$rev_pks = $this->input->post('rev_pks');
-		$cor_pks = $this->input->post('cor_pks');
-		$ttd_pks = $this->input->post('ttd_pks');
-		$sls_pks = $this->input->post('sls_pks');
+		$dt_sts = $this->input->post('sts_pr');
+		$dt_ct = $this->input->post('ct_sts');
 
-		if(($rev_pks == 1)&&($cor_pks == 0)&&($ttd_pks == 0)&&($sls_pks == 0)){
+		if($dt_sts == 1){
 			$data = array(
-				'rev_pks' => $rev_pks,
+				'rev_pks' => $dt_sts,
+				'rev_ct' => $dt_ct,
 				'date_rev' => date('Y-m-d')
 			);
-		}else if(($rev_pks == 1)&&($cor_pks == 1)&&($ttd_pks == 0)&&($sls_pks == 0)){
+		}elseif($dt_sts == 2){
 			$data = array(
-				'cor_pks' => $cor_pks,
+				'cor_pks' => $dt_sts,
+				'cor_ct' => $dt_ct,
 				'date_cor' => date('Y-m-d')
 			);
-		}else if(($rev_pks == 1)&&($cor_pks == 1)&&($ttd_pks == 1)&&($sls_pks == 0)){
+		}elseif($dt_sts == 3){
 			$data = array(
-				'ttd_pks' => $ttd_pks,
+				'ttd_pks' => $dt_sts,
+				'ttd_ct' => $dt_ct,
 				'date_ttd' => date('Y-m-d')
 			);
-		}else if(($rev_pks == 1)&&($cor_pks == 1)&&($ttd_pks == 1)&&($sls_pks == 1)){
+		}elseif($dt_sts == 4){
 			$data = array(
-				'sls_pks' => $sls_pks,
+				'sls_pks' => $dt_sts,
+				'sls_ct' => $dt_ct,
 				'date_sls' => date('Y-m-d')
 			);
 		}
@@ -278,12 +250,13 @@ class Pks extends CI_Controller {
 
           $spreadsheet->setActiveSheetIndex(0)
                       ->setCellValue('A1', 'No')
-                      ->setCellValue('B1', 'Nama Instansi')
-                      ->setCellValue('C1', 'Jenis')
-                      ->setCellValue('D1', 'Asal')
-                      ->setCellValue('E1', 'Tanggal Mulai')
-                      ->setCellValue('F1', 'Tanggal Akhir')
-                      ->setCellValue('G1', 'PIC');
+                      ->setCellValue('B1', 'Nama PKS')
+                      ->setCellValue('C1', 'Nama Instansi')
+                      ->setCellValue('D1', 'Jenis')
+                      ->setCellValue('E1', 'Asal')
+                      ->setCellValue('F1', 'Tanggal Mulai')
+                      ->setCellValue('G1', 'Tanggal Akhir')
+                      ->setCellValue('H1', 'PIC');
 
           $kolom = 2;
           $nomor = 1;
@@ -292,12 +265,13 @@ class Pks extends CI_Controller {
 
                $spreadsheet->setActiveSheetIndex(0)
                            ->setCellValue('A' . $kolom, $nomor)
-                           ->setCellValue('B' . $kolom, $row->nm_instansi)
-                           ->setCellValue('C' . $kolom, $jns_pks)
-                           ->setCellValue('D' . $kolom, $row->asal_pks)
-                           ->setCellValue('E' . $kolom, date('j F Y', strtotime($row->tgl_mulai)))
-                           ->setCellValue('F' . $kolom, date('j F Y', strtotime($row->tgl_akhir)))
-                           ->setCellValue('G' . $kolom, $row->pic_pks);
+                           ->setCellValue('B' . $kolom, $row->nm_pks)
+                           ->setCellValue('C' . $kolom, $row->nm_instansi)
+                           ->setCellValue('D' . $kolom, $jns_pks)
+                           ->setCellValue('E' . $kolom, $row->asal_pks)
+                           ->setCellValue('F' . $kolom, date('j F Y', strtotime($row->tgl_mulai)))
+                           ->setCellValue('G' . $kolom, date('j F Y', strtotime($row->tgl_akhir)))
+                           ->setCellValue('H' . $kolom, $row->pic_pks);
 
                $kolom++;
                $nomor++;

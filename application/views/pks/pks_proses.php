@@ -7,46 +7,21 @@
     </div>
     <form role="form" action="<?php echo base_url().'PKS/proses_action';?>" method="POST">
       <div class="box-body">
-        <table id="example2" class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Revisi</th>
-              <th>Koreksi</th>
-              <th>Tanda Tangan</th>
-              <th>Selesai</th>
-            </tr>
-          </thead>
-          <tr>
-            <?php 
-                if($rev_pks == 1){
-                    echo '<td><input type="checkbox" name="rev_pks" id="rev_pks" align="center" checked onclick="return false;" value="1"></td>';
-                }else{
-                    echo '<td><input type="checkbox" name="rev_pks" id="rev_pks" align="center" value="1"></td>';
-                }
-                if($cor_pks == 1){
-                    echo '<td><input type="checkbox" name="cor_pks" id="cor_pks" align="center" checked onclick="return false;" value="1"></td>';
-                }else if($cor_pks == 2){
-                    echo '<td><input type="checkbox" name="cor_pks" id="cor_pks" align="center" onclick="return false;" value="1"></td>';
-                }else{
-                    echo '<td><input type="checkbox" name="cor_pks" id="cor_pks" align="center" value="1"></td>';
-                }
-                if($ttd_pks == 1){
-                    echo '<td><input type="checkbox" name="ttd_pks" id="ttd_pks" align="center" checked onclick="return false;" value="1"></td>';
-                }else if($ttd_pks == 2){
-                    echo '<td><input type="checkbox" name="ttd_pks" id="ttd_pks" align="center" onclick="return false;" value="1"></td>';
-                }else{
-                    echo '<td><input type="checkbox" name="ttd_pks" id="ttd_pks" align="center" value="1"></td>';
-                }
-                if($sls_pks == 1){
-                    echo '<td><input type="checkbox" name="sls_pks" id="sls_pks" align="center" checked onclick="return false;" value="1"></td>';
-                }else if($sls_pks == 2){
-                    echo '<td><input type="checkbox" name="sls_pks" id="sls_pks" align="center" onclick="return false;" value="1"></td>';
-                }else{
-                    echo '<td><input type="checkbox" name="sls_pks" id="sls_pks" align="center" value="1"></td>';
-                }
-            ?>
-          </tr>
-        </table>
+      <div class="form-group">
+      		<label for="sts_prtn">Pilih Status</label>
+          <!-- <input class="form-control" type="text" name="jns_prtn" id="jns_prtn" placeholder="Jenis Peraturan"> -->
+          <select class="form-control" name="sts_pr" id="sts_pr">
+            <option value=""></option>
+            <option value="1">Revisi</option>
+            <option value="2">Koreksi</option>
+            <option value="3">Tanda Tangan</option>
+            <option value="4">Selesai</option>
+          </select>
+        </div>
+      <div class="form-group">
+          <label for="ct_sts">Catatan</label>
+          <textarea class="form-control" rows="3" name="ct_sts" id="ct_sts" placeholder="Catatan"></textarea>
+      </div>
         <input type="hidden" name="kd_pks" value="<?php echo $kd_pks?>">
         <input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
         <a href="<?php echo base_url('Pks/list_pks') ?>" class="btn btn-danger">Batal</a>
