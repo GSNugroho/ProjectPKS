@@ -17,6 +17,7 @@
 		<th>Asal</th>
 		<th>Tanggal Mulai</th>
 		<th>Tanggal Akhir</th>
+		<th>Status Pengerjaan</th>
 		<th>PIC</th>
 		<th>Tindakan</th>
 		</tr>
@@ -64,6 +65,7 @@ $(document).ready(function(){
 		 { data: 'asal_pks' },
 		 { data: 'tgl_mulai' },
 		 { data: 'tgl_akhir' },
+		 { data: 'prsn_pks'},
 		 { data: 'pic_pks' },
          { data: 'action' }
       ]

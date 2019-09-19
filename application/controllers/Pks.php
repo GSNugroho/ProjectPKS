@@ -17,7 +17,15 @@ class Pks extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('pks/pks_db');
+		$data = array(
+			'st_1' => $this->M_pks->get_t_st1(),
+			'st_2' => $this->M_pks->get_t_st2(),
+			'st_3' => $this->M_pks->get_t_st3(),
+			'st_4' => $this->M_pks->get_t_st4(),
+			'st_5' => $this->M_pks->get_t_st5(),
+			'g_t_pks' => $this->M_pks->get_g_pks()
+		);
+		$this->load->view('pks/pks_db', $data);
 	}
 	
 	public function create()
@@ -29,6 +37,7 @@ class Pks extends CI_Controller {
 	{
 		$param = 0;
 		$dl_sts = 1;
+		$prsn_0 = '0%';
 
 		$data = array(
 			'nm_instansi' => $this->input->post('nm_instansi', TRUE),
@@ -45,7 +54,8 @@ class Pks extends CI_Controller {
 			'cor_pks' => $param,
 			'ttd_pks' => $param,
 			'sls_pks' => $param,
-			'dt_cr' => date('Y-m-d')
+			'dt_cr' => date('Y-m-d'),
+			'prsn_pks' => $prsn_0
 		);
 		$this->do_upload();
 		$this->M_pks->insert($data);
@@ -150,30 +160,38 @@ class Pks extends CI_Controller {
 		
 		$dt_sts = $this->input->post('sts_pr');
 		$dt_ct = $this->input->post('ct_sts');
+		$prsn_1 = '25%';
+		$prsn_2 = '50%';
+		$prsn_3 = '75%';
+		$prsn_4 = '100%';
 
 		if($dt_sts == 1){
 			$data = array(
 				'rev_pks' => $dt_sts,
 				'rev_ct' => $dt_ct,
-				'date_rev' => date('Y-m-d')
+				'date_rev' => date('Y-m-d'),
+				'prsn_pks' => $prsn_1
 			);
 		}elseif($dt_sts == 2){
 			$data = array(
 				'cor_pks' => $dt_sts,
 				'cor_ct' => $dt_ct,
-				'date_cor' => date('Y-m-d')
+				'date_cor' => date('Y-m-d'),
+				'prsn_pks' => $prsn_2
 			);
 		}elseif($dt_sts == 3){
 			$data = array(
 				'ttd_pks' => $dt_sts,
 				'ttd_ct' => $dt_ct,
-				'date_ttd' => date('Y-m-d')
+				'date_ttd' => date('Y-m-d'),
+				'prsn_pks' => $prsn_3
 			);
 		}elseif($dt_sts == 4){
 			$data = array(
 				'sls_pks' => $dt_sts,
 				'sls_ct' => $dt_ct,
-				'date_sls' => date('Y-m-d')
+				'date_sls' => date('Y-m-d'),
+				'prsn_pks' => $prsn_4
 			);
 		}
 
@@ -224,7 +242,11 @@ class Pks extends CI_Controller {
 				'date_cor' => $date_cor,
 				'date_ttd' => $date_ttd,
 				'date_sls' => $date_sls,
-				'nm_pks' => set_value('nm_pks', $row->nm_pks)
+				'nm_pks' => set_value('nm_pks', $row->nm_pks),
+				'rev_ct' => set_value('rev_ct', $row->rev_ct),
+				'cor_ct' => set_value('cor_ct', $row->cor_ct),
+				'ttd_ct' => set_value('ttd_ct', $row->ttd_ct),
+				'sls_ct' => set_value('sls_ct', $row->sls_ct)
 			);
 			$this->load->view('pks/pks_read', $data);
 		}
@@ -322,6 +344,7 @@ class Pks extends CI_Controller {
 		asal_pks like'%".$searchValue."%' or
 		tgl_mulai like'%".$searchValue."%' or
 		pic_pks like'%".$searchValue."%' or
+		prsn_pks like'%".$searchValue."%' or
 		tgl_akhir like'%".$searchValue."%' ) ";
 		}
 
@@ -383,6 +406,7 @@ class Pks extends CI_Controller {
 			"asal_pks" => $row->asal_pks,
 			"tgl_mulai" => date('d/m/Y', strtotime($row->tgl_mulai)),
 			"tgl_akhir" => date('d/m/Y', strtotime($row->tgl_akhir)),
+			"prsn_pks" => $row->prsn_pks,
 			"pic_pks" => $row->pic_pks,
 			"action" => $button
 		);
@@ -518,6 +542,27 @@ class Pks extends CI_Controller {
 
 		echo json_encode($response);
 	}
+
+	function autoins() {
+        $returnData = array();
+        
+        // Get skills data
+        $conditions['searchTerm'] = $this->input->get('term');
+        // $conditions['conditions']['bt_aktif'] = '1';
+        $skillData = $this->M_pks->autoins($conditions);
+        
+        // Generate array
+        if(!empty($skillData)){
+            foreach ($skillData as $row){
+                $data['id'] = $row['vc_k_png'];
+                $data['value'] = $row['vc_n_png'];
+                array_push($returnData, $data);
+            }
+        }
+        
+        // Return results as json encoded array
+        echo json_encode($returnData);die;
+    }
 		
 }
 ?>

@@ -67,6 +67,67 @@ class M_pks extends CI_Model{
 		$query = $this->db->query("SELECT * FROM SKR_Pks WHERE dl_sts = 1 AND sls_pks = 0");
 		return $query->result();
 	}
+
+	function get_t_st1(){
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '0%'");
+		return $query->result();
+	}
+
+	function get_t_st2(){
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '25%'");
+		return $query->result();
+	}
+
+	function get_t_st3(){
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '50%'");
+		return $query->result();
+	}
+
+	function get_t_st4(){
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '75%'");
+		return $query->result();
+	}
+
+	function get_t_st5(){
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '100%'");
+		return $query->result();
+	}
+
+	function get_g_pks(){
+		$query = $this->db->query("SELECT MONTH(dt_cr) as bulan, COUNT(MONTH(dt_cr)) as tgl FROM SKR_Pks WHERE YEAR(dt_cr) = YEAR(GETDATE()) GROUP BY MONTH(dt_cr)");
+		return $query->result();
+	}
+
+	function autoins($params = array()){
+        $this->db->select("*");
+        $this->db->from('pubpng');
+        
+        //fetch data by conditions
+        // if(array_key_exists("conditions",$params)){
+        //     foreach ($params['conditions'] as $key => $value) {
+        //         $this->db->where($key,$value);
+        //     }
+        // }
+        
+        //search by terms
+        if(!empty($params['searchTerm'])){
+            $this->db->like('vc_n_png', $params['searchTerm']);
+        }
+        
+        $this->db->order_by('vc_n_png', 'asc');
+        
+        if(array_key_exists("id",$params)){
+            $this->db->where('vc_k_png',$params['id']);
+            $query = $this->db->get();
+            $result = $query->row_array();
+        }else{
+            $query = $this->db->get();
+            $result = ($query->num_rows() > 0)?$query->result_array():FALSE;
+        }
+
+        //return fetched data
+        return $result;
+	}
 	
 }
 ?>

@@ -8,6 +8,20 @@
 	<script src="<?php echo base_url('assets/datepicker/js/moment-with-locales.js')?>"></script>
 	<script src="<?php echo base_url('assets/datepicker/js/jquery-1.11.3.min.js')?>"></script>
 	<script src="<?php echo base_url('assets/datepicker/js/bootstrap-datetimepicker.js')?>"></script>
+	
+	<link rel="stylesheet" href="<?php echo base_url('assets/bower_components/jquery-ui/themes/smoothness/jquery-ui.css')?>">
+	<script src="<?php echo base_url('assets/bower_components/jquery-ui/jquery-ui.js')?>"></script>
+
+	<style>
+       .ui-autocomplete {
+            max-height: 200px;
+            overflow-y: auto;
+            /* prevent horizontal scrollbar */
+            overflow-x: hidden;
+            /* add padding to account for vertical scrollbar */
+            padding-right: 20px;
+        } 
+	</style>
 
 <div class="box box-primary">
 	<div class="box-header with-border">
@@ -86,9 +100,17 @@
 	$(function() { 
   	$('#tgl1').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
 	});
+
 	$(function() { 
   	$('#tgl2').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
 	});
+
+	$(function() {
+    $("#nm_instansi").autocomplete({
+        source: "<?php echo base_url('Pks/autoins'); ?>",
+		minLength:2
+    });
+});
 </script>
 </body>
 </html>
