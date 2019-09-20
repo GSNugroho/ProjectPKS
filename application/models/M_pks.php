@@ -101,14 +101,7 @@ class M_pks extends CI_Model{
 	function autoins($params = array()){
         $this->db->select("*");
         $this->db->from('pubpng');
-        
-        //fetch data by conditions
-        // if(array_key_exists("conditions",$params)){
-        //     foreach ($params['conditions'] as $key => $value) {
-        //         $this->db->where($key,$value);
-        //     }
-        // }
-        
+
         //search by terms
         if(!empty($params['searchTerm'])){
             $this->db->like('vc_n_png', $params['searchTerm']);
@@ -129,5 +122,14 @@ class M_pks extends CI_Model{
         return $result;
 	}
 	
+	function get_respon(){
+		$query = $this->db->query("SELECT MONTH(dt_cr) as bulan, DATEDIFF(day, dt_cr, date_rev) as selisih FROM SKR_Pks WHERE dl_sts = 1 AND YEAR(dt_cr) = YEAR(GETDATE())");;
+		return $query->result();
+	}
+
+	function get_r_total(){
+		$query = $this->db->query("SELECT count(MONTH(dt_cr)) as total FROM SKR_Pks WHERE dl_sts = 1 AND YEAR(dt_cr) = YEAR(GETDATE()) AND MONTH(dt_cr) = MONTH(GETDATE())");
+		return $query->result();
+	}
 }
 ?>

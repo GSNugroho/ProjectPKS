@@ -1,5 +1,6 @@
 <?php
     $this->load->view('pks/pks');
+    echo $rt;
 ?>
     <script src="<?php echo base_url('assets/bower_components/chart.js/Chart.js')?>"></script>
     <div class="container">
@@ -206,7 +207,7 @@ $(function () {
           pointStrokeColor    : 'rgba(60,141,188,1)',
           pointHighlightFill  : '#fff',
           pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [<?php foreach($g_t_pks as $row){echo $row->tgl;}?>]
+          data                : [<?php echo $rt?>]
         }
       ]
     }

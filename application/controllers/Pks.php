@@ -17,13 +17,26 @@ class Pks extends CI_Controller {
 
 	public function index()
 	{
+		$bnyk = $this->M_pks->get_respon();
+		$tot = $this->M_pks->get_r_total();
+		$sl = 0;
+		foreach($bnyk as $row){
+			$bl = $row->bulan;
+			$sl = $sl+(int)$row->selisih;
+		}
+		foreach($tot as $row){
+			$total = (int)$row->total;
+		}
+		
+		$rt = $sl/$total;
 		$data = array(
 			'st_1' => $this->M_pks->get_t_st1(),
 			'st_2' => $this->M_pks->get_t_st2(),
 			'st_3' => $this->M_pks->get_t_st3(),
 			'st_4' => $this->M_pks->get_t_st4(),
 			'st_5' => $this->M_pks->get_t_st5(),
-			'g_t_pks' => $this->M_pks->get_g_pks()
+			'g_t_pks' => $this->M_pks->get_g_pks(),
+			'rt' => $rt
 		);
 		$this->load->view('pks/pks_db', $data);
 	}
