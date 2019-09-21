@@ -37,6 +37,7 @@
     <div class="form-group">
 		<label for="nm_instansi">Nama Istansi</label>
 		<input class="form-control" type="text" name="nm_instansi" id="nm_instansi" placeholder="Nama Istansi">
+		<input type="hidden" name="id_instansi" id="id_instansi">
     </div>
 	<div class="form-group">
 		<label for="jns_pks">Jenis PKS</label>
@@ -108,7 +109,11 @@
 	$(function() {
     $("#nm_instansi").autocomplete({
         source: "<?php echo base_url('Pks/autoins'); ?>",
-		minLength:2
+		minLength:2,
+		select: function (event, ui) {
+                    $('[name="nm_instansi"]').val(ui.item.value); 
+                    $('[name="id_instansi"]').val(ui.item.id); 
+                }
     });
 });
 </script>

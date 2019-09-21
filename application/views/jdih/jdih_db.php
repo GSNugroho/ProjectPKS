@@ -464,7 +464,7 @@
 
             <div class="col-md-6">
               <!-- USERS LIST -->
-              <div class="box box-danger">
+              <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Jumlah Peraturan Per Jenis</h3>
                 </div>
@@ -473,57 +473,57 @@
                   <ul class="users-list clearfix">
                     <?php 
                       foreach($jns_1 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                               <span class="users-list-date">'.$row->total.'</span>
                               </li>';
                       }
                       foreach($jns_2 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_3 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_4 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_5 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_6 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_7 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_8 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_9 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_10 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
                       foreach($jns_11 as $row){
-                        echo '<li>'.$row->jns_prtn.'
+                        echo '<li>'.$row->nm_jdih_jns.'
                         <span class="users-list-date">'.$row->total.'</span>
                         </li>';
                       }
@@ -565,8 +565,7 @@
             </div>
             <!-- /.col -->
           </div>
-          <!-- /.row -->
-
+          <!-- /.nm_jdih_jns
           <!-- TABLE: LATEST ORDERS -->
           <div class="row">
           <div class="box box-info">
@@ -589,7 +588,7 @@
                     <?php 
                       foreach($prtn as $row){
                         if($row->r_lingkup == 1){ $lingkup = 'Nasional';}else{$lingkup = 'Internal RS';}
-                        echo '<tr><td>'.$row->nm_prtn.'</td><td>'.$row->jns_prtn.'</td><td>'.$lingkup.'</td><td>'.$row->th_prtn.'</td><td><a href="Jdih/read_pdf/'.$row->kd_jdih.'" target="_blank">
+                        echo '<tr><td>'.$row->nm_prtn.'</td><td>'.$row->nm_jdih_jns.'</td><td>'.$lingkup.'</td><td>'.$row->th_prtn.'</td><td><a href="Jdih/read_pdf/'.$row->kd_jdih.'" target="_blank">
                         <i class="fa fa-file-pdf-o"></i>
                         </a></td></tr>';
                       }

@@ -33,6 +33,7 @@
 	<div class="form-group">
 		<label for="jns_prtn">Jenis Peraturan</label>
 		<input class="form-control" type="text" name="jns_prtn" id="jns_prtn" placeholder="Jenis Peraturan">
+		<input type="hidden" name="id_jns_prtn" id="id_jns_prtn">
 		<!-- <select name="jns_prtn" class="form-control" id="jns_prtn"> -->
 		<!-- <option value="">--Pilih Jenis Peraturan--</option> -->
 		<?php
@@ -45,18 +46,18 @@
 	</div>
 	<div class="form-group"	>
 		<label for="th_prtn">Tahun Terbit Peraturan</label>
-		<!-- <input class="form-control" type="text" name="th_prtn" id="th_prtn" placeholder="Tahun Terbit Peraturan"> -->
-		<select name="th_prtn" class="form-control" id="th_prtn">
+		<input class="form-control" type="text" name="th_prtn" id="th_prtn" placeholder="Tahun Terbit Peraturan">
+		<!-- <select name="th_prtn" class="form-control" id="th_prtn">
 		<option value="">--Pilih Tahun Peraturan--</option>
 		<?php
-        $thn_skr = date('Y');
-        for ($x = $thn_skr; $x >= 2010; $x--) {
+        // $thn_skr = date('Y');
+        // for ($x = $thn_skr; $x >= 2010; $x--) {
         ?>
-        <option value="<?php echo $x ?>"><?php echo $x ?></option>
+        <option value="<?php //echo $x ?>"><?php //echo $x ?></option>
         <?php
-        }
+        //}
 		?>
-		</select>
+		</select> -->
 	</div>
 	<div class="form-group">
 		<label for="nmr_prtn">Nomor Peraturan</label>
@@ -105,7 +106,11 @@
 $(function() {
     $("#jns_prtn").autocomplete({
         source: "<?php echo base_url('Jdih/autojenis'); ?>",
-		minLength:2
+		minLength:2,
+		select: function (event, ui) {
+                    $('[name="jns_prtn"]').val(ui.item.value); 
+                    $('[name="id_jns_prtn"]').val(ui.item.id); 
+                }
     });
 });
 $(function() {

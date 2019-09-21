@@ -46,7 +46,7 @@ class Jdih extends CI_Controller {
 		$data = array(
 			'kd_jdih' => $this->kode(),
 			'r_lingkup' => $this->input->post('r_lingkup', TRUE),
-			'jns_prtn' => $this->input->post('jns_prtn', TRUE),
+			'jns_prtn' => $this->input->post('id_jns_prtn', TRUE),
 			'th_prtn' => $this->input->post('th_prtn', TRUE),
 			'nmr_prtn' => $this->input->post('nmr_prtn', TRUE),
 			'nm_prtn' => $this->input->post('nm_prtn', TRUE),
@@ -322,7 +322,7 @@ class Jdih extends CI_Controller {
 		$searchQuery = " and (
 		 
 		r_lingkup like '%".$searchValue."%' or 
-		jns_prtn like '%".$searchValue."%' or 
+		nm_jdih_jns like '%".$searchValue."%' or 
 		th_prtn like '%".$searchValue."%' or 
 		nmr_prtn like '%".$searchValue."%' or 
 		nm_prtn like'%".$searchValue."%' or
@@ -395,7 +395,7 @@ class Jdih extends CI_Controller {
 
 		$data[] = array( 
 			"r_lingkup" => $r_lingkup,
-			"jns_prtn" => $row->jns_prtn,
+			"jns_prtn" => $row->nm_jdih_jns,
 			"th_prtn" => $row->th_prtn,
 			"nmr_prtn" => $row->nmr_prtn,
 			"nm_prtn" => $row->nm_prtn,

@@ -1,6 +1,6 @@
 <?php
     $this->load->view('pks/pks');
-    echo $rt;
+    // echo $rt;
 ?>
     <script src="<?php echo base_url('assets/bower_components/chart.js/Chart.js')?>"></script>
     <div class="container">
@@ -18,7 +18,7 @@
 
             <div class="col-md-6">
               <!-- USERS LIST -->
-              <div class="box box-danger">
+              <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Total PKS</h3>
                 </div>
@@ -83,7 +83,7 @@
               </div>
 
               <div class="col-md-6">
-                <div class="box box-danger">
+                <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Grafik Pertumbuhan PKS</h3>
                 </div>
@@ -97,7 +97,7 @@
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="box box-danger">
+          <div class="box box-info">
              <div class="box-header with-border">
                   <h3 class="box-title">Grafik Respon Waktu PKS</h3>
              </div>
