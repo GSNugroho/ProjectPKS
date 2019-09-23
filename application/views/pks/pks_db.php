@@ -59,7 +59,7 @@
                       Tahapan Status 75%
                       <span class="users-list-date">
                         <?php
-                          foreach($st_3 as $row){
+                          foreach($st_4 as $row){
                             echo $row->total;
                           }
                         ?>
@@ -69,7 +69,7 @@
                       Tahapan Status 100%
                       <span class="users-list-date">
                         <?php
-                          foreach($st_4 as $row){
+                          foreach($st_5 as $row){
                             echo $row->total;
                           }
                         ?>
@@ -255,6 +255,8 @@ $(function () {
     areaChart.Line(areaChartData, areaChartOptions)
 
   })
+
+
     </script>
       <footer class="main-footer">
     <div class="container">

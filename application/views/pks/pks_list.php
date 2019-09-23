@@ -32,7 +32,7 @@
 <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')?>"></script>
 <script>
 $(document).ready(function(){
-   $('#dataPKS').DataTable({
+   var table = $('#dataPKS').DataTable({
 	language: {
 		"sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
 		"sProcessing":   "Sedang memproses...",
@@ -70,7 +70,13 @@ $(document).ready(function(){
          { data: 'action' }
       ]
 	});
+	// $('#dataPKS').on('dblclick', 'tr', function () {
+    //     var data = table.row( this ).data();
+    //     alert( 'You clicked on '+data['nm_pks']+'\'s row' );
+    // } );
+
 	});
+	
 </script>
 </div>
 </div>

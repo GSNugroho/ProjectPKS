@@ -173,6 +173,7 @@ class Pks extends CI_Controller {
 		
 		$dt_sts = $this->input->post('sts_pr');
 		$dt_ct = $this->input->post('ct_sts');
+		if(!empty($dt_sts)){$sts_pks = '1';}
 		$prsn_1 = '25%';
 		$prsn_2 = '50%';
 		$prsn_3 = '75%';
@@ -180,28 +181,28 @@ class Pks extends CI_Controller {
 
 		if($dt_sts == 1){
 			$data = array(
-				'rev_pks' => $dt_sts,
+				'rev_pks' => $sts_pks,
 				'rev_ct' => $dt_ct,
 				'date_rev' => date('Y-m-d'),
 				'prsn_pks' => $prsn_1
 			);
 		}elseif($dt_sts == 2){
 			$data = array(
-				'cor_pks' => $dt_sts,
+				'cor_pks' => $sts_pks,
 				'cor_ct' => $dt_ct,
 				'date_cor' => date('Y-m-d'),
 				'prsn_pks' => $prsn_2
 			);
 		}elseif($dt_sts == 3){
 			$data = array(
-				'ttd_pks' => $dt_sts,
+				'ttd_pks' => $sts_pks,
 				'ttd_ct' => $dt_ct,
 				'date_ttd' => date('Y-m-d'),
 				'prsn_pks' => $prsn_3
 			);
 		}elseif($dt_sts == 4){
 			$data = array(
-				'sls_pks' => $dt_sts,
+				'sls_pks' => $sts_pks,
 				'sls_ct' => $dt_ct,
 				'date_sls' => date('Y-m-d'),
 				'prsn_pks' => $prsn_4
@@ -262,6 +263,79 @@ class Pks extends CI_Controller {
 				'sls_ct' => set_value('sls_ct', $row->sls_ct)
 			);
 			$this->load->view('pks/pks_read', $data);
+		}
+	}
+
+	public function read_progress1($id){
+		$row = $this->M_pks->get_by_id($id);
+		$param = 1;
+		if($row){
+			$data = array(
+				'date_rev' => set_value('date_rev', date('d-m-Y', strtotime($row->date_rev))),
+				'rev_ct' => set_value('rev_ct', $row->rev_ct),
+				'date_cor' => set_value('date_cor', date('d-m-Y', strtotime($row->date_cor))),
+				'cor_ct' => set_value('cor_ct', $row->cor_ct),
+				'date_ttd' => set_value('date_ttd', date('d-m-Y', strtotime($row->date_ttd))),
+				'ttd_ct' => set_value('ttd_ct', $row->ttd_ct),
+				'date_sls' => set_value('date_sls', date('d-m-Y', strtotime($row->date_sls))),
+				'sls_ct' => set_value('sls_ct', $row->ttd_ct),
+				'param' => $param
+			);
+			$this->load->view('pks/pks_info_progress', $data);
+		}
+	}
+	public function read_progress2($id){
+		$row = $this->M_pks->get_by_id($id);
+		$param = 2;
+		if($row){
+			$data = array(
+				'date_rev' => set_value('date_rev', date('d-m-Y', strtotime($row->date_rev))),
+				'rev_ct' => set_value('rev_ct', $row->rev_ct),
+				'date_cor' => set_value('date_cor', date('d-m-Y', strtotime($row->date_cor))),
+				'cor_ct' => set_value('cor_ct', $row->cor_ct),
+				'date_ttd' => set_value('date_ttd', date('d-m-Y', strtotime($row->date_ttd))),
+				'ttd_ct' => set_value('ttd_ct', $row->ttd_ct),
+				'date_sls' => set_value('date_sls', date('d-m-Y', strtotime($row->date_sls))),
+				'sls_ct' => set_value('sls_ct', $row->ttd_ct),
+				'param' => $param
+			);
+			$this->load->view('pks/pks_info_progress', $data);
+		}
+	}
+	public function read_progress3($id){
+		$row = $this->M_pks->get_by_id($id);
+		$param = 3;
+		if($row){
+			$data = array(
+				'date_rev' => set_value('date_rev', date('d-m-Y', strtotime($row->date_rev))),
+				'rev_ct' => set_value('rev_ct', $row->rev_ct),
+				'date_cor' => set_value('date_cor', date('d-m-Y', strtotime($row->date_cor))),
+				'cor_ct' => set_value('cor_ct', $row->cor_ct),
+				'date_ttd' => set_value('date_ttd', date('d-m-Y', strtotime($row->date_ttd))),
+				'ttd_ct' => set_value('ttd_ct', $row->ttd_ct),
+				'date_sls' => set_value('date_sls', date('d-m-Y', strtotime($row->date_sls))),
+				'sls_ct' => set_value('sls_ct', $row->ttd_ct),
+				'param' => $param
+			);
+			$this->load->view('pks/pks_info_progress', $data);
+		}
+	}
+	public function read_progress4($id){
+		$row = $this->M_pks->get_by_id($id);
+		$param = 4;
+		if($row){
+			$data = array(
+				'date_rev' => set_value('date_rev', date('d-m-Y', strtotime($row->date_rev))),
+				'rev_ct' => set_value('rev_ct', $row->rev_ct),
+				'date_cor' => set_value('date_cor', date('d-m-Y', strtotime($row->date_cor))),
+				'cor_ct' => set_value('cor_ct', $row->cor_ct),
+				'date_ttd' => set_value('date_ttd', date('d-m-Y', strtotime($row->date_ttd))),
+				'ttd_ct' => set_value('ttd_ct', $row->ttd_ct),
+				'date_sls' => set_value('date_sls', date('d-m-Y', strtotime($row->date_sls))),
+				'sls_ct' => set_value('sls_ct', $row->ttd_ct),
+				'param' => $param
+			);
+			$this->load->view('pks/pks_info_progress', $data);
 		}
 	}
 
@@ -457,6 +531,7 @@ class Pks extends CI_Controller {
 		asal_pks like'%".$searchValue."%' or
 		tgl_mulai like'%".$searchValue."%' or
 		pic_pks like'%".$searchValue."%' or
+		prsn_pks like'%".$searchValue."%' or
 		tgl_akhir like'%".$searchValue."%' ) ";
 		}
 
@@ -493,7 +568,7 @@ class Pks extends CI_Controller {
 		}else{$persen = 0;}
 
 		if($row->rev_pks == 1){
-		$b_rev = '<a class="btn btn-success btn-circle">
+		$b_rev = '<a href="read_progress1/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		'.date('d-m-Y', strtotime($row->date_rev)).'
 		</a>';}else{
 		$b_rev = '<a class="btn btn-danger btn-circle">
@@ -502,7 +577,7 @@ class Pks extends CI_Controller {
 		}
 
 		if($row->cor_pks == 1){
-		$b_cor = '<a class="btn btn-success btn-circle">
+		$b_cor = '<a href="read_progress2/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		'.date('d-m-Y', strtotime($row->date_cor)).'
 		</a>';}else{
 		$b_cor = '<a class="btn btn-danger btn-circle">
@@ -510,7 +585,7 @@ class Pks extends CI_Controller {
 		</a>';}
 
 		if($row->ttd_pks == 1){
-		$b_ttd = '<a class="btn btn-success btn-circle">
+		$b_ttd = '<a href="read_progress3/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		'.date('d-m-Y', strtotime($row->date_ttd)).'
 		</a>';}else{
 		$b_ttd = '<a class="btn btn-danger btn-circle">
@@ -518,7 +593,7 @@ class Pks extends CI_Controller {
 		</a>';}
 
 		if($row->sls_pks == 1){
-		$b_sls = '<a class="btn btn-success btn-circle">
+		$b_sls = '<a href="read_progress4/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		'.date('d-m-Y', strtotime($row->date_sls)).'
 		</a>';}else{
 		$b_sls = '<a class="btn btn-danger btn-circle">

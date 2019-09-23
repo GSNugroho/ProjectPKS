@@ -106,7 +106,7 @@
 $(function() {
     $("#jns_prtn").autocomplete({
         source: "<?php echo base_url('Jdih/autojenis'); ?>",
-		minLength:2,
+		minLength:1,
 		select: function (event, ui) {
                     $('[name="jns_prtn"]').val(ui.item.value); 
                     $('[name="id_jns_prtn"]').val(ui.item.id); 
@@ -116,7 +116,7 @@ $(function() {
 $(function() {
     $("#strkl").autocomplete({
         source: "<?php echo base_url('Jdih/autostrk'); ?>",
-		minLength:2
+		minLength:1
     });
 });
 </script>

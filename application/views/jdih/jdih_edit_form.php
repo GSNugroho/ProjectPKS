@@ -101,13 +101,13 @@
 $(function() {
     $("#jns_prtn").autocomplete({
         source: "<?php echo base_url('Jdih/autojenis'); ?>",
-		minLength:2
+		minLength:1
     });
 });
 $(function() {
     $("#strkl").autocomplete({
         source: "<?php echo base_url('Jdih/autostrk'); ?>",
-		minLength:2
+		minLength:1
     });
 });
 </script>

@@ -109,7 +109,7 @@
 	$(function() {
     $("#nm_instansi").autocomplete({
         source: "<?php echo base_url('Pks/autoins'); ?>",
-		minLength:2,
+		minLength:1,
 		select: function (event, ui) {
                     $('[name="nm_instansi"]').val(ui.item.value); 
                     $('[name="id_instansi"]').val(ui.item.id); 

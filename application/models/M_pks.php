@@ -94,7 +94,7 @@ class M_pks extends CI_Model{
 	}
 
 	function get_g_pks(){
-		$query = $this->db->query("SELECT MONTH(dt_cr) as bulan, COUNT(MONTH(dt_cr)) as tgl FROM SKR_Pks WHERE YEAR(dt_cr) = YEAR(GETDATE()) GROUP BY MONTH(dt_cr)");
+		$query = $this->db->query("SELECT MONTH(dt_cr) as bulan, COUNT(MONTH(dt_cr)) as tgl FROM SKR_Pks WHERE YEAR(dt_cr) = YEAR(GETDATE()) AND SKR_Pks.dl_sts = 1 GROUP BY MONTH(dt_cr)");
 		return $query->result();
 	}
 
