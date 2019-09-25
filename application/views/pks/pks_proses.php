@@ -11,7 +11,7 @@
       		<label for="sts_prtn">Pilih Status</label>
           <!-- <input class="form-control" type="text" name="jns_prtn" id="jns_prtn" placeholder="Jenis Peraturan"> -->
           <select class="form-control" name="sts_pr" id="sts_pr">
-            <option value=""></option>
+            <option value="">-- Pilih Status --</option>
             <option value="1">Revisi</option>
             <option value="2">Koreksi</option>
             <option value="3">Tanda Tangan</option>
@@ -21,6 +21,10 @@
       <div class="form-group">
           <label for="ct_sts">Catatan</label>
           <textarea class="form-control" rows="3" name="ct_sts" id="ct_sts" placeholder="Catatan"></textarea>
+      </div>
+      <div class="form-group">
+          <label for="user">Yang Melakukan Tindakan</label>
+          <input class="form-control" name="user" id="user" placeholder="Yang Melakukan Tindakan">
       </div>
         <input type="hidden" name="kd_pks" value="<?php echo $kd_pks?>">
         <input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
