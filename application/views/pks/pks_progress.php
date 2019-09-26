@@ -10,13 +10,13 @@
 	<table id="dataPKS" class="table table-bordered table-striped">
 		<thead>
 		<tr>
-		<th>Nama Instansi</th>
-		<th>Deskripsi</th>
-		<th>Revisi</th>
-		<th>Koreksi</th>
-		<th>Tanda Tangan</th>
-		<th>Selesai</th>
-		<th>Progres</th>
+			<th>Nama PKS</th>
+			<th>Nama Instansi</th>
+			<th>Revisi</th>
+			<th>Koreksi</th>
+			<th>TTD</th>
+			<th>Selesai</th>
+			<th>Progres</th>
 		</tr>
 		</thead>
 	</table>
@@ -56,8 +56,8 @@
           'url':'<?php echo base_url().'Pks/progres_list'?>'
       },
       'columns': [
+		  { data: 'nm_pks' },
 		  { data: 'nm_instansi' },
-		  { data: 'des_pks' },
 		  { data: 'rev_pks' },
 		  { data: 'cor_pks' },
 		  { data: 'ttd_pks' },

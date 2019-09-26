@@ -12,19 +12,20 @@
           <!-- <input class="form-control" type="text" name="jns_prtn" id="jns_prtn" placeholder="Jenis Peraturan"> -->
           <select class="form-control" name="sts_pr" id="sts_pr">
             <option value="">-- Pilih Status --</option>
-            <option value="1">Revisi</option>
-            <option value="2">Koreksi</option>
-            <option value="3">Tanda Tangan</option>
-            <option value="4">Selesai</option>
+            <option value="1" <?php echo ($sts_tr == '1')?'selected':''?>>Revisi</option>
+            <option value="2" <?php echo ($sts_tr == '2')?'selected':''?>>Koreksi</option>
+            <option value="3" <?php echo ($sts_tr == '3')?'selected':''?>>Tanda Tangan</option>
+            <option value="4" <?php echo ($sts_tr == '4')?'selected':''?>>Selesai</option>
           </select>
         </div>
       <div class="form-group">
           <label for="ct_sts">Catatan</label>
-          <textarea class="form-control" rows="3" name="ct_sts" id="ct_sts" placeholder="Catatan"></textarea>
+          <!-- <textarea class="form-control" rows="3" name="ct_sts" id="ct_sts" placeholder="Catatan"><?php //echo $ct_tr?></textarea> -->
+          <input class="form-control" name="ct_sts" id="ct_sts" placeholder="Catatan" value="<?php echo $ct_tr?>">
       </div>
       <div class="form-group">
           <label for="user">Yang Melakukan Tindakan</label>
-          <input class="form-control" name="user" id="user" placeholder="Yang Melakukan Tindakan">
+          <input class="form-control" name="user" id="user" placeholder="Yang Melakukan Tindakan" value="<?php echo $ur_tr?>">
       </div>
         <input type="hidden" name="kd_pks" value="<?php echo $kd_pks?>">
         <input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
@@ -45,5 +46,33 @@
      <!-- /.container -->
    </footer> 
 </div>
+<script>
+  $(document).ready(function(){
+    $("#sts_pr").change(function(){
+        var $comboValue = $(this).val();
+        if($comboValue == "1"){
+         
+            //Dynamically create the textbox
+            //var $template = "<input type='text' name='HOLYDAY' id='HOLYDAY' placeholder='HOLYDAY' />";
+            
+            // $(this).parent().append($template);
+            document.getElementById('ct_sts').value = "<?php echo $rev_ct?>";
+        } 
+        else if($comboValue == "2") {
+          document.getElementById('ct_sts').value = "<?php echo $cor_ct?>";
+        }
+        else if($comboValue == "3") {
+          document.getElementById('ct_sts').value = "<?php echo $ttd_ct?>";
+        }
+        else if($comboValue == "4") {
+          document.getElementById('ct_sts').value = "<?php echo $sls_ct?>";
+        }
+        else {
+            // $("#HOLYDAY").remove();  
+            document.getElementById("ct_sts").value = "";  
+        }
+    });
+});
+</script>
 </body>
 </html>

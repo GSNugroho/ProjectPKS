@@ -2,6 +2,14 @@
 	$this->load->view('pks/pks');
 ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
+<style>
+	.link
+{
+   color:#333;
+   text-decoration: none; 
+   background-color: none;
+}
+</style>
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Data PKS</h3>
@@ -72,7 +80,8 @@ $(document).ready(function(){
 	});
 	$('#dataPKS').on('dblclick', 'tr', function () {
         var data = table.row( this ).data();
-        alert( 'Untuk mengedit status '+data['nm_instansi']+' tolong pilih tombol warna hijau ' );
+        // alert( 'Untuk mengedit status '+data['nm_instansi']+' tolong pilih tombol warna hijau ' );
+		window.location = $(this).closest('tr').find('td:eq(0) a').attr('href');
     } );
 
 	});

@@ -159,10 +159,24 @@ class Pks extends CI_Controller {
 
 	public function proses($id){
 		$row = $this->M_pks->get_by_id($id);
-		
+		$rev = 1;
+		$cor = 2;
+		$ttd = 3;
+		$sls = 4;
 		if($row){
+			if($row->ttd_pks == 1){$sts_tr = $ttd; $ct_tr = $row->ttd_ct; $ur_tr = $row->rev_ur;}
+			else if($row->cor_pks == 1){$sts_tr = $cor; $ct_tr = $row->cor_ct; $ur_tr = $row->cor_ur;}
+			else if($row->rev_pks == 1){$sts_tr = $rev; $ct_tr = $row->rev_ct; $ur_tr = $row->rev_ur;}
+			else{$sts_tr = ''; $ct_tr =''; $ur_tr ='';}
 			$data = array(
-				'kd_pks' => set_value('kd_pks', $row->kd_pks)
+				'kd_pks' => set_value('kd_pks', $row->kd_pks),
+				'sts_tr' => $sts_tr,
+				'ct_tr' => $ct_tr,
+				'ur_tr' => $ur_tr,
+				'rev_ct' => $row->rev_ct,
+				'cor_ct' => $row->cor_ct,
+				'ttd_ct' => $row->ttd_ct,
+				'sls_ct' => $row->sls_ct
 			);
 		}
 
@@ -480,12 +494,13 @@ class Pks extends CI_Controller {
 		foreach($empRecords as $row){
 		$cek = '<a href="perawatan/cek/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		<i class="fas fa-check"></i>
+		</a>
+		<a href="proses/'.$row->kd_pks.'" class="btn btn-success btn-circle">
+		<i class="fa fa-exchange"></i>
 		</a>';
 		
 		$button = '
-		<a href="proses/'.$row->kd_pks.'" class="btn btn-success btn-circle">
-		<i class="fa fa-exchange"></i>
-		</a>
+		
 		<a href="read/'.$row->kd_pks.'" class="btn btn-info btn-circle ">
 		<i class="fa fa-info"></i>
 		</a>
@@ -496,6 +511,7 @@ class Pks extends CI_Controller {
 		<i class="fa fa-trash"></i>
 		</a>
 		';
+		$dbl_clk = '<a href="proses/'.$row->kd_pks.'"><div class="link">'.$row->nm_pks.'</div></a>';
 		
 		$j_p = $row->jns_pks;
 		if($j_p == 1){
@@ -507,7 +523,8 @@ class Pks extends CI_Controller {
 		}
 
 		$data[] = array( 
-			"nm_pks" => $row->nm_pks,
+			// "nm_pks" => $row->nm_pks,
+			"nm_pks" => $dbl_clk,
 			"nm_instansi" => $row->nm_instansi,
 			"jns_pks" => $jns_pks,
 			"des_pks" => $row->des_pks,
@@ -632,7 +649,7 @@ class Pks extends CI_Controller {
 	
 		$data[] = array( 
 			"nm_instansi" => $row->nm_instansi,
-			"des_pks" => $row->des_pks,
+			"nm_pks" => $row->nm_pks,
 			"rev_pks" => $b_rev,
 			"cor_pks" => $b_cor,
 			"ttd_pks" => $b_ttd,
