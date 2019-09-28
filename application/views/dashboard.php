@@ -44,6 +44,7 @@
           <ul class="nav navbar-nav">
             <li><a href="<?php echo base_url('Pks')?>">PKS <span class="sr-only">(current)</span></a></li>
             <li><a href="<?php echo base_url('Jdih')?>">JDIH</a></li>
+            <li><a href="<?php echo base_url('cekses/destroy')?>">Keluar</a></li>
           </ul>
           <!-- <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
@@ -53,8 +54,8 @@
         </div>
         <!-- /.navbar-collapse -->
         <!-- Navbar Right Menu -->
-        <!-- <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav"> -->
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
             <!-- Messages: style can be found in dropdown.less-->
             <!-- <li class="dropdown messages-menu"> -->
               <!-- Menu toggle button -->
@@ -151,24 +152,25 @@
               </ul>
             </li> -->
             <!-- User Account Menu -->
-            <!-- <li class="dropdown user user-menu"> -->
+            <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
-              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown"> -->
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- The user image in the navbar-->
                 <!-- <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <!-- <span class="hidden-xs">Alexander Pierce</span> -->
-              <!-- </a> -->
+                <span class="hidden-xs"><?php echo $this->session->userdata('nmUser');?></span>
+              </a>
+            </li>
               <!-- <ul class="dropdown-menu"> -->
                 <!-- The user image in the menu -->
-                <!-- <li class="user-header">
-                  <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                 <!-- <li class="user-header"> -->
+                  <!-- <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"> -->
 
-                  <p>
+                  <!-- <p>
                     Alexander Pierce - Web Developer
                     <small>Member since Nov. 2012</small>
                   </p>
-                </li> -->
+                </li>  -->
                 <!-- Menu Body -->
                 <!-- <li class="user-body">
                   <div class="row">

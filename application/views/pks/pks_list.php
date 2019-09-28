@@ -78,7 +78,7 @@ $(document).ready(function(){
          { data: 'action' }
       ]
 	});
-	$('#dataPKS').on('dblclick', 'tr', function () {
+	$('#dataPKS').on('click', 'tr', function () {
         var data = table.row( this ).data();
         // alert( 'Untuk mengedit status '+data['nm_instansi']+' tolong pilih tombol warna hijau ' );
 		window.location = $(this).closest('tr').find('td:eq(0) a').attr('href');

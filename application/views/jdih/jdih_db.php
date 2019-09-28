@@ -537,7 +537,7 @@
             </div>
             <div class="col-md-6">
               <!-- USERS LIST -->
-              <div class="box box-danger">
+              <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Jumlah Peraturan Per Ruang Lingkup</h3>
                 </div>
@@ -566,7 +566,7 @@
             <!-- /.col -->
           </div>
           <!-- /.nm_jdih_jns
-          <!-- TABLE: LATEST ORDERS -->
+           TABLE: LATEST ORDERS -->
           <div class="row">
           <div class="box box-info">
             <div class="box-header with-border">

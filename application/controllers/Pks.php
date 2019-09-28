@@ -68,7 +68,8 @@ class Pks extends CI_Controller {
 			'ttd_pks' => $param,
 			'sls_pks' => $param,
 			'dt_cr' => date('Y-m-d'),
-			'prsn_pks' => $prsn_0
+			'prsn_pks' => $prsn_0,
+			'dt_create' => date('Y-m-d h:i:s')
 		);
 		$this->do_upload();
 		$this->M_pks->insert($data);
@@ -170,6 +171,8 @@ class Pks extends CI_Controller {
 			else{$sts_tr = ''; $ct_tr =''; $ur_tr ='';}
 			$data = array(
 				'kd_pks' => set_value('kd_pks', $row->kd_pks),
+				'nm_instansi' => set_value('nm_instansi', $row->nm_instansi),
+				'nm_pks' => set_value('nm_pks', $row->nm_pks),
 				'sts_tr' => $sts_tr,
 				'ct_tr' => $ct_tr,
 				'ur_tr' => $ur_tr,
@@ -187,7 +190,8 @@ class Pks extends CI_Controller {
 		
 		$dt_sts = $this->input->post('sts_pr');
 		$dt_ct = $this->input->post('ct_sts');
-		$dt_ur = $this->input->post('user');
+		// $dt_ur = $this->input->post('user');
+		$dt_ur = $this->session->userdata('nmUser');
 		if(!empty($dt_sts)){$sts_pks = '1';}
 		$prsn_1 = '25%';
 		$prsn_2 = '50%';
@@ -395,12 +399,13 @@ class Pks extends CI_Controller {
           $spreadsheet->setActiveSheetIndex(0)
                       ->setCellValue('A1', 'No')
                       ->setCellValue('B1', 'Nama PKS')
-                      ->setCellValue('C1', 'Nama Instansi')
-                      ->setCellValue('D1', 'Jenis')
-                      ->setCellValue('E1', 'Asal')
-                      ->setCellValue('F1', 'Tanggal Mulai')
-                      ->setCellValue('G1', 'Tanggal Akhir')
-                      ->setCellValue('H1', 'PIC');
+					  ->setCellValue('C1', 'Nama Instansi')
+					  ->setCellValue('D1', 'Tanggal Masuk PKS')
+                      ->setCellValue('E1', 'Jenis')
+                      ->setCellValue('F1', 'Asal')
+                      ->setCellValue('G1', 'Tanggal Mulai')
+                      ->setCellValue('H1', 'Tanggal Akhir')
+                      ->setCellValue('I1', 'PIC');
 
           $kolom = 2;
           $nomor = 1;
@@ -410,12 +415,13 @@ class Pks extends CI_Controller {
                $spreadsheet->setActiveSheetIndex(0)
                            ->setCellValue('A' . $kolom, $nomor)
                            ->setCellValue('B' . $kolom, $row->nm_pks)
-                           ->setCellValue('C' . $kolom, $row->nm_instansi)
-                           ->setCellValue('D' . $kolom, $jns_pks)
-                           ->setCellValue('E' . $kolom, $row->asal_pks)
-                           ->setCellValue('F' . $kolom, date('j F Y', strtotime($row->tgl_mulai)))
-                           ->setCellValue('G' . $kolom, date('j F Y', strtotime($row->tgl_akhir)))
-                           ->setCellValue('H' . $kolom, $row->pic_pks);
+						   ->setCellValue('C' . $kolom, $row->nm_instansi)
+						   ->setCellValue('D' . $kolom, date('d-m-Y', strtotime($row->dt_create)))
+                           ->setCellValue('E' . $kolom, $jns_pks)
+                           ->setCellValue('F' . $kolom, $row->asal_pks)
+                           ->setCellValue('G' . $kolom, date('d-m-Y', strtotime($row->tgl_mulai)))
+                           ->setCellValue('H' . $kolom, date('d-m-Y', strtotime($row->tgl_akhir)))
+                           ->setCellValue('I' . $kolom, $row->pic_pks);
 
                $kolom++;
                $nomor++;

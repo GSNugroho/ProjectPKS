@@ -3,7 +3,7 @@
 ?>
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title">Progress PKS</h3>
+        <h3 class="box-title">Progress PKS<?php echo '/ '.$nm_instansi.'/ '.$nm_pks;?></h3>
     </div>
     <form role="form" action="<?php echo base_url().'PKS/proses_action';?>" method="POST">
       <div class="box-body">
@@ -23,10 +23,10 @@
           <!-- <textarea class="form-control" rows="3" name="ct_sts" id="ct_sts" placeholder="Catatan"><?php //echo $ct_tr?></textarea> -->
           <input class="form-control" name="ct_sts" id="ct_sts" placeholder="Catatan" value="<?php echo $ct_tr?>">
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
           <label for="user">Yang Melakukan Tindakan</label>
           <input class="form-control" name="user" id="user" placeholder="Yang Melakukan Tindakan" value="<?php echo $ur_tr?>">
-      </div>
+      </div> -->
         <input type="hidden" name="kd_pks" value="<?php echo $kd_pks?>">
         <input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
         <a href="<?php echo base_url('Pks/list_pks') ?>" class="btn btn-danger">Batal</a>
@@ -56,7 +56,7 @@
             //var $template = "<input type='text' name='HOLYDAY' id='HOLYDAY' placeholder='HOLYDAY' />";
             
             // $(this).parent().append($template);
-            document.getElementById('ct_sts').value = "<?php echo $rev_ct?>";
+        document.getElementById('ct_sts').value = "<?php echo $rev_ct?>";
         } 
         else if($comboValue == "2") {
           document.getElementById('ct_sts').value = "<?php echo $cor_ct?>";
