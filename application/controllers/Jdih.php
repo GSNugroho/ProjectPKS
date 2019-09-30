@@ -430,8 +430,7 @@ class Jdih extends CI_Controller {
 		$searchQuery = " ";
 		if($searchValue != ''){
 		$searchQuery = " and (
-		nm_jdih_jns like '%".$searchValue."%
-		' ) ";
+		nm_jdih_jns like '%".$searchValue."%' ) ";
 		}
 
 		## Total number of records without filtering
