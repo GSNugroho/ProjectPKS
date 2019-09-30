@@ -123,12 +123,7 @@ class M_pks extends CI_Model{
 	}
 	
 	function get_respon(){
-		$query = $this->db->query("SELECT MONTH(dt_cr) as bulan, DATEDIFF(day, dt_cr, date_rev) as selisih FROM SKR_Pks WHERE dl_sts = 1 AND YEAR(dt_cr) = YEAR(GETDATE())");;
-		return $query->result();
-	}
-
-	function get_r_total(){
-		$query = $this->db->query("SELECT count(MONTH(dt_cr)) as total FROM SKR_Pks WHERE dl_sts = 1 AND YEAR(dt_cr) = YEAR(GETDATE()) AND MONTH(dt_cr) = MONTH(GETDATE())");
+		$query = $this->db->query("SELECT DISTINCT MONTH(dt_cr) as bulan, AVG(DATEDIFF(day, dt_cr, date_rev)) as rata FROM SKR_Pks WHERE dt_cr IS NOT NULL GROUP BY MONTH(dt_cr)");;
 		return $query->result();
 	}
 }

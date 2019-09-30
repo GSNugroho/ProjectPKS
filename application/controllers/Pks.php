@@ -17,18 +17,7 @@ class Pks extends CI_Controller {
 
 	public function index()
 	{
-		$bnyk = $this->M_pks->get_respon();
-		$tot = $this->M_pks->get_r_total();
-		$sl = 0;
-		foreach($bnyk as $row){
-			$bl = $row->bulan;
-			$sl = $sl+(int)$row->selisih;
-		}
-		foreach($tot as $row){
-			$total = (int)$row->total;
-		}
-		
-		$rt = $sl/$total;
+
 		$data = array(
 			'st_1' => $this->M_pks->get_t_st1(),
 			'st_2' => $this->M_pks->get_t_st2(),
@@ -36,7 +25,7 @@ class Pks extends CI_Controller {
 			'st_4' => $this->M_pks->get_t_st4(),
 			'st_5' => $this->M_pks->get_t_st5(),
 			'g_t_pks' => $this->M_pks->get_g_pks(),
-			'rt' => $rt
+			'tot_respon' => $this->M_pks->get_respon()
 		);
 		$this->load->view('pks/pks_db', $data);
 	}
@@ -68,8 +57,7 @@ class Pks extends CI_Controller {
 			'ttd_pks' => $param,
 			'sls_pks' => $param,
 			'dt_cr' => date('Y-m-d'),
-			'prsn_pks' => $prsn_0,
-			'dt_create' => date('Y-m-d h:i:s')
+			'prsn_pks' => $prsn_0
 		);
 		$this->do_upload();
 		$this->M_pks->insert($data);
@@ -242,6 +230,7 @@ class Pks extends CI_Controller {
 		$data = array(
 			
 		);
+		
 		$this->load->view('pks/pks_list');
 	}
 	

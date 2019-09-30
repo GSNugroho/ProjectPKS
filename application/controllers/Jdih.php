@@ -430,7 +430,7 @@ class Jdih extends CI_Controller {
 		$searchQuery = " ";
 		if($searchValue != ''){
 		$searchQuery = " and (
-		nm_jns_jdih like '%".$searchValue."%
+		nm_jdih_jns like '%".$searchValue."%
 		' ) ";
 		}
 
