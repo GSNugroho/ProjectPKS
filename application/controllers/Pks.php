@@ -129,8 +129,34 @@ class Pks extends CI_Controller {
 			'tgl_akhir' => date('Y-m-d', strtotime($this->input->post('rta_waktu'))),
 			'pic_pks' => $this->input->post('pic', TRUE)
 		);
+
+		if(!empty($_FILES)){
+		$this->do_upload_update($this->input->post('kd_pks'));
+		}else{echo "Lanjut"; echo $this->input->post('dok_pks');}
 		$this->M_pks->update($this->input->post('kd_pks'), $data);
 		redirect(base_url('pks/list_pks'));
+	}
+
+	public function do_upload_update($id)
+	{
+		$this->load->helper('security');
+		$name = $id.'.pdf';
+		$en_name = do_hash($name, 'md5');
+
+		$config = array(
+			'upload_path' => "uploads/pks",
+			'file_name' => $en_name,
+			'allowed_types' => "pdf",
+			'overwrite' => TRUE,
+			'max_size' => "2048000"
+		);
+		$this->load->library('upload', $config);
+		if($this->upload->do_upload('dok_pks'))
+		{
+			echo 'sukses';
+		}else{
+			echo 'gagal';
+		}
 	}
 
 	public function delete($id){
@@ -394,7 +420,8 @@ class Pks extends CI_Controller {
                       ->setCellValue('F1', 'Asal')
                       ->setCellValue('G1', 'Tanggal Mulai')
                       ->setCellValue('H1', 'Tanggal Akhir')
-                      ->setCellValue('I1', 'PIC');
+                      ->setCellValue('I1', 'Persentase Pengerjaan PKS')
+                      ->setCellValue('J1', 'PIC');
 
           $kolom = 2;
           $nomor = 1;
@@ -405,12 +432,13 @@ class Pks extends CI_Controller {
                            ->setCellValue('A' . $kolom, $nomor)
                            ->setCellValue('B' . $kolom, $row->nm_pks)
 						   ->setCellValue('C' . $kolom, $row->nm_instansi)
-						   ->setCellValue('D' . $kolom, date('d-m-Y', strtotime($row->dt_create)))
+						   ->setCellValue('D' . $kolom, date('d-m-Y', strtotime($row->dt_cr)))
                            ->setCellValue('E' . $kolom, $jns_pks)
                            ->setCellValue('F' . $kolom, $row->asal_pks)
                            ->setCellValue('G' . $kolom, date('d-m-Y', strtotime($row->tgl_mulai)))
                            ->setCellValue('H' . $kolom, date('d-m-Y', strtotime($row->tgl_akhir)))
-                           ->setCellValue('I' . $kolom, $row->pic_pks);
+                           ->setCellValue('I' . $kolom, $row->prsn_pks)
+                           ->setCellValue('J' . $kolom, $row->pic_pks);
 
                $kolom++;
                $nomor++;
@@ -420,7 +448,8 @@ class Pks extends CI_Controller {
           $writer = new Xlsx($spreadsheet);
 
         header('Content-Type: application/vnd.ms-excel');
-	 	header('Content-Disposition: attachment;filename="Data PKS.xlsx"');
+		header('Content-Disposition: attachment;filename="Data_PKS.xlsx"');
+		// header('Content-Disposition: attachment;filename="Data_PKS.xls"');
 	  	header('Cache-Control: max-age=0');
 
 	  $writer->save('php://output');

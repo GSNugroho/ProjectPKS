@@ -57,8 +57,8 @@ class Jdih extends CI_Controller {
 			'dl_sts' => $dl_sts
 		);
 		$this->do_upload();
-		$this->M_jdih->insert($data);
-		redirect('Jdih/list_jdih');
+		// $this->M_jdih->insert($data);
+		// redirect('Jdih/list_jdih');
 	}
 
 	public function update($id){
@@ -90,6 +90,10 @@ class Jdih extends CI_Controller {
 			'sts_prtn' => $this->input->post('sts_prtn', TRUE),
 			'stru_prtn' => $this->input->post('stru_prtn', TRUE)
 		);
+		
+		if(!empty($_FILES)){
+		$this->do_upload_update($this->input->post('kd_jdih'));
+		}else{echo "Lanjut"; echo $this->input->post('data');}
 		$this->M_jdih->update($this->input->post('kd_jdih'), $data);
 		redirect(base_url('jdih/list_jdih'));
 	}
@@ -177,6 +181,28 @@ class Jdih extends CI_Controller {
 		// $error = array('error' => $this->upload->display_errors());
 		echo 'gagal';
 		
+		}
+	}
+
+	public function do_upload_update($id)
+	{
+		$this->load->helper('security');
+		$name = $id.'.pdf';
+		$en_name = do_hash($name, 'md5');
+
+		$config = array(
+			'upload_path' => "uploads/",
+			'file_name' => $en_name,
+			'allowed_types' => "pdf",
+			'overwrite' => TRUE,
+			'max_size' => "2048000"
+		);
+		$this->load->library('upload', $config);
+		if($this->upload->do_upload('data'))
+		{
+			echo 'sukses';
+		}else{
+			echo 'gagal';
 		}
 	}
 

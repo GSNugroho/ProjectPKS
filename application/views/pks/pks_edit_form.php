@@ -14,7 +14,7 @@
     	<h3 class="box-title">Sunting Projek PKS</h3>
 	</div>
 		
-	<form role="form" action="<?php echo base_url().'Pks/update_action';?>" method="POST">
+	<form role="form" action="<?php echo base_url().'Pks/update_action';?>" method="POST" enctype="multipart/form-data">
 	<div class="box-body">
 	<div class="form-group">
 		<label for="nm_pks">Nama PKS</label>
@@ -57,6 +57,10 @@
 	<div class="form-group">
 		<label for="pic">PIC</label>
 		<input class="form-control" type="text" name="pic" id="pic" placeholder="PIC" value="<?php echo $pic_pks?>">
+	</div>
+	<div class="form-group">
+		<label for="doc">Upload Dokumen</label>
+		<input class="form-control" type="file" name="dok_pks" id="doc" value="lanjut"><?php echo $nm_pks.'/'.$nm_instansi.'.pdf'?>
 	</div>
 	<div class="form-group">
 		<input type="hidden" name="kd_pks" id="kd_pks" value="<?php echo $kd_pks?>">
