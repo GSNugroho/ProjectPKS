@@ -1,4 +1,4 @@
 <?php
 // print_r($this->session->userdata());
- redirect(base_url('Dashboard'));
+ redirect(base_url('PKS'));
 ?>

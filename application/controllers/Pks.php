@@ -10,9 +10,16 @@ class Pks extends CI_Controller {
 
 	public function __construct()
     {
-        parent::__construct();
-		$this->load->library('session');
-		$this->load->model('M_pks');
+		parent::__construct();
+		if ((!empty($_SESSION['nmUser'])) && (!empty($_SESSION['unameApp'])) && (!empty($_SESSION['passwrdApp'])) && (!empty($_SESSION['nik'])) && (!empty($_SESSION['gugus']))) {
+			$this->load->library('session');
+			$this->load->model('M_pks');
+			$this->load->library('form_validation');
+		} else {
+			echo "Silahkan Login Terlebih Dahulu";
+			// print_r($_SESSION); 
+			echo redirect(base_url('../'));
+		}
     }
 
 	public function index()
@@ -32,18 +39,32 @@ class Pks extends CI_Controller {
 	
 	public function create()
 	{
-		$this->load->view('pks/pks_input_form');
+		$data = array(
+			'nm_instansi' => set_value('nm_instansi'),
+			'nm_pks' => set_value('nm_pks'),
+			'jns_pks' => set_value('jns_pks'),
+			'des_pks' => set_value('des_pks'),
+			'asal_pks' => set_value('asal_pks'),
+			'tgl_mulai' => set_value('rtm_waktu'),
+			'tgl_akhir' => set_value('rta_waktu'),
+			'pic_pks' => set_value('pic_pks'),
+		);
+		$this->load->view('pks/pks_input_form', $data);
 	}
 	
 	public function create_action()
 	{
+		$this->_rules();
+		if ($this->form_validation->run() == FALSE) {
+            $this->create();
+        } else {
 		$param = 0;
 		$dl_sts = 1;
 		$prsn_0 = '0%';
 
 		$data = array(
-			'nm_instansi' => $this->input->post('nm_instansi', TRUE),
 			'kd_pks' => $this->kode(),
+			'nm_instansi' => $this->input->post('nm_instansi', TRUE),
 			'nm_pks' => $this->input->post('nm_pks', TRUE),
 			'jns_pks' => $this->input->post('jns_pks', TRUE),
 			'des_pks' => $this->input->post('des_pks', TRUE),
@@ -62,6 +83,22 @@ class Pks extends CI_Controller {
 		$this->do_upload();
 		$this->M_pks->insert($data);
 		redirect(site_url('Pks/list_pks'));
+		}
+	}
+
+	public function _rules()
+	{
+		$this->form_validation->set_rules('nm_instansi', 'Nama Instansi', 'trim|required');
+		$this->form_validation->set_rules('nm_pks', 'Nama PKS', 'trim|required');
+		$this->form_validation->set_rules('jns_pks', 'Jenis PKS', 'trim|required');
+		$this->form_validation->set_rules('des_pks', 'Deskripsi PKS', 'trim|required');
+		$this->form_validation->set_rules('asal_pks', 'Asal PKS', 'trim|required');
+		// $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'trim|required');
+		// $this->form_validation->set_rules('tgl_akhir', 'Tanggal Selesai', 'trim|required');
+		// $this->form_validation->set_rules('pic_pks', 'PIC', 'trim|required');
+		// $this->form_validation->set_rules('data_pks', 'Upload', 'trim|required');
+
+		$this->form_validation->set_error_delimiters('<i class="fa fa-fw fa-info-circle text-danger"></i><span class="text-danger">', '</span>');
 	}
 
 	public function do_upload(){

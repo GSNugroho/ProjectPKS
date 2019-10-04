@@ -46,7 +46,7 @@
             <li><a href="<?php echo base_url('Pks/create')?>">Tambah PKS</a></li>
             <li><a href="<?php echo base_url('Pks/list_pks')?>">Data PKS</a></li>
             <li><a href="<?php echo base_url('Pks/progress')?>">Status PKS</a></li>
-            <li><a href="<?php echo site_url()?>">Keluar</a></li>
+            <li><a href="<?php echo base_url('Cekses/destroy');?>">Keluar</a></li>
           </ul>
           <!-- <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
