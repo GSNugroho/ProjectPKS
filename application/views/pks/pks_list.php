@@ -9,8 +9,40 @@
    text-decoration: none; 
    background-color: none;
 }
+.pesan{
+    display: none;
+    position: fixed;
+    border: 1px solid greenyellow;
+    width: 200px;
+    top: 95px;
+    left: 500px;
+    padding: 5px 10px;
+    background-color: #00a65a;
+    text-align: center;
+	color: white;
+	}
+	.pesans{
+    display: none;
+    position: fixed;
+    border: 1px solid red
+    width: 200px;
+    top: 95px;
+    left: 500px;
+    padding: 5px 10px;
+    background-color: #f56954;
+    text-align: center;
+	color: white;
+	}
 </style>
 <div class="box box-primary">
+		<?php
+            if (($this->session->userdata('message')) <> '') {
+                echo '<div class="pesan">'.$this->session->userdata('message').'</div>';
+			}
+			if (($this->session->userdata('messages')) <> '') {
+                echo '<div class="pesans">'.$this->session->userdata('messages').'</div>';
+            }
+        ?>
     <div class="box-header with-border">
         <h3 class="box-title">Data PKS</h3>
 	</div>
@@ -85,7 +117,11 @@ $(document).ready(function(){
     } );
 
 	});
+	$(document).ready(function(){setTimeout(function(){$(".pesan").fadeIn('slow');}, 0);});
+	setTimeout(function(){$(".pesan").fadeOut('slow');}, 3000);
 	
+	$(document).ready(function(){setTimeout(function(){$(".pesans").fadeIn('slow');}, 0);});
+    setTimeout(function(){$(".pesans").fadeOut('slow');}, 3000);
 </script>
 </div>
 </div>

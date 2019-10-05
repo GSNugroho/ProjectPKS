@@ -56,14 +56,14 @@
 		<input class="form-control" type="text" name="asal_pks" id="asal_pks" placeholder="Asal Permohonan PKS" value="<?php echo $asal_pks?>">
 	</div>
 	<div class="form-group">
-		<label for="rtm_waktu">Rencana Tanggal Mulai PKS </label><?php echo form_error('tgl_mulai')?>
+		<label for="rtm_waktu">Rencana Tanggal Mulai PKS </label><?php echo form_error('rtm_waktu')?>
 	<div class="input-group date" id="tgl1">
 		<input type="text" class="form-control" name="rtm_waktu" placeholder="dd-mm-yyyy" value="<?php echo $tgl_mulai?>"/>	
 		<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
 	</div>
 	</div>
 	<div class="form-group">
-		<label for="rtm_waktu">Rencana Tanggal Selesai PKS </label><?php echo form_error('tgl_akhir')?>
+		<label for="rtm_waktu">Rencana Tanggal Selesai PKS </label><?php echo form_error('rta_waktu')?>
 	<div class="input-group date" id="tgl2">
 		<input type="text" class="form-control" name="rta_waktu" placeholder="dd-mm-yyyy" value="<?php echo $tgl_akhir?>"/>	
 		<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
@@ -71,7 +71,7 @@
 	</div>
 	<div class="form-group">
 		<label for="pic">PIC </label><?php echo form_error('pic_pks')?>
-		<input class="form-control" type="text" name="pic" id="pic" placeholder="PIC" value="<?php echo $pic_pks?>">
+		<input class="form-control" type="text" name="pic_pks" id="pic_pks" placeholder="PIC" value="<?php echo $pic_pks?>">
 	</div>
 	<div class="form-group">
 		<label for="doc">Upload Dokumen </label><?php echo form_error('data_pks')?>

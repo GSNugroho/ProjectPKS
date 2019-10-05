@@ -71,7 +71,7 @@ class Pks extends CI_Controller {
 			'asal_pks' => $this->input->post('asal_pks', TRUE),
 			'tgl_mulai' => date('Y-m-d', strtotime($this->input->post('rtm_waktu'))),
 			'tgl_akhir' => date('Y-m-d', strtotime($this->input->post('rta_waktu'))),
-			'pic_pks' => $this->input->post('pic', TRUE),
+			'pic_pks' => $this->input->post('pic_pks', TRUE),
 			'dl_sts' => $dl_sts,
 			'rev_pks' => $param,
 			'cor_pks' => $param,
@@ -82,6 +82,7 @@ class Pks extends CI_Controller {
 		);
 		$this->do_upload();
 		$this->M_pks->insert($data);
+		$this->session->set_flashdata('message', 'Tambah Data PKS Berhasil');
 		redirect(site_url('Pks/list_pks'));
 		}
 	}
@@ -93,9 +94,9 @@ class Pks extends CI_Controller {
 		$this->form_validation->set_rules('jns_pks', 'Jenis PKS', 'trim|required');
 		$this->form_validation->set_rules('des_pks', 'Deskripsi PKS', 'trim|required');
 		$this->form_validation->set_rules('asal_pks', 'Asal PKS', 'trim|required');
-		// $this->form_validation->set_rules('tgl_mulai', 'Tanggal Mulai', 'trim|required');
-		// $this->form_validation->set_rules('tgl_akhir', 'Tanggal Selesai', 'trim|required');
-		// $this->form_validation->set_rules('pic_pks', 'PIC', 'trim|required');
+		$this->form_validation->set_rules('rtm_waktu', 'Tanggal Mulai', 'trim|required');
+		$this->form_validation->set_rules('rta_waktu', 'Tanggal Selesai', 'trim|required');
+		$this->form_validation->set_rules('pic_pks', 'PIC', 'trim|required');
 		// $this->form_validation->set_rules('data_pks', 'Upload', 'trim|required');
 
 		$this->form_validation->set_error_delimiters('<i class="fa fa-fw fa-info-circle text-danger"></i><span class="text-danger">', '</span>');
@@ -171,6 +172,7 @@ class Pks extends CI_Controller {
 		$this->do_upload_update($this->input->post('kd_pks'));
 		}else{echo "Lanjut"; echo $this->input->post('dok_pks');}
 		$this->M_pks->update($this->input->post('kd_pks'), $data);
+		$this->session->set_flashdata('message', 'Sunting Data PKS Berhasil');
 		redirect(base_url('pks/list_pks'));
 	}
 
@@ -205,6 +207,7 @@ class Pks extends CI_Controller {
 				'dl_sts' => $dl_sts
 			);
 			$this->M_pks->update($id, $data);
+			$this->session->set_flashdata('messages', 'Hapus Data PKS Berhasil');
 			redirect(base_url('Pks/list_pks'));
 		}
 	}
@@ -284,6 +287,7 @@ class Pks extends CI_Controller {
 		}
 
 		$this->M_pks->update($this->input->post('kd_pks'), $data);
+		$this->session->set_flashdata('message', 'Ubah Status Data PKS Berhasil');
 		redirect(base_url('PKS/list_pks'));
 		
 	}
