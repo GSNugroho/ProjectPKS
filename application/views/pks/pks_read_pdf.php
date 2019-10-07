@@ -3,6 +3,7 @@
   // The location of the PDF file 
   // on the server 
   $filename = "uploads/pks/".$en_name.".pdf"; 
+  // $filename = "dt.app.rspw/pks/".$en_name.".pdf"; 
     // echo $filename;
    // Header content type 
   header("Content-type: application/pdf"); 

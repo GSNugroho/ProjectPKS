@@ -109,6 +109,7 @@ class Pks extends CI_Controller {
 
 		$config = array(
 			'upload_path' => "uploads/pks",
+			// 'upload_path' => "dt.app.rspw/pks/",
 			'file_name' => $en_name,
 			'allowed_types' => "pdf",
 			'overwrite' => TRUE,
@@ -119,6 +120,8 @@ class Pks extends CI_Controller {
 			echo 'sukses';
 		}else{
 			echo 'gagal';
+			$this->session->set_flashdata('messages', 'Upload Data Peraturan Gagal');
+			redirect(base_url('Pks/list_pks'));
 		}
 	}
 
@@ -184,6 +187,7 @@ class Pks extends CI_Controller {
 
 		$config = array(
 			'upload_path' => "uploads/pks",
+			// 'upload_path' => "dt.app.rspw/pks",
 			'file_name' => $en_name,
 			'allowed_types' => "pdf",
 			'overwrite' => TRUE,

@@ -26,23 +26,8 @@ class Cekses extends CI_Controller
         $ses_json = json_decode($ses_base, true);
         $this->session->set_userdata($ses_json);
         
-        // echo "NmUser: ". $this->session->userdata('nmUser');
-        // echo "<br>";
-        // echo "UnameApp: ". $this->session->userdata('unameApp');
-        // echo "<br>";
-        // echo "PasswrdApp: ". $this->session->userdata('passwrdApp');
-        // echo "<br>";
-        // echo "NIK: ". $this->session->userdata('nik');
-        // echo "<br>";
-        // echo "Gugus: ". $this->session->userdata('gugus');
-        // echo "<br>";
-        
         $this->load->view('chain');
-        // if ((!empty($_SESSION['nmUser'])) && (!empty($_SESSION['unameApp'])) && (!empty($_SESSION['passwrdApp'])) && (!empty($_SESSION['nik'])) && (!empty($_SESSION['gugus']))) {
-        //     $this->load->view('chain');
-        // } else {
-        //     echo redirect(base_url('../'));
-        // }
+        
     }
 
     public function destroy()
