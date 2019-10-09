@@ -126,5 +126,10 @@ class M_pks extends CI_Model{
 		$query = $this->db->query("SELECT DISTINCT MONTH(dt_cr) as bulan, AVG(DATEDIFF(day, dt_cr, date_rev)) as rata FROM SKR_Pks WHERE dt_cr IS NOT NULL GROUP BY MONTH(dt_cr)");;
 		return $query->result();
 	}
+
+	function get_total_persen(){
+		$query = $this->db->query("SELECT prsn_pks, COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 GROUP BY prsn_pks");
+		return $query->result();
+	}
 }
 ?>

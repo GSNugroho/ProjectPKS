@@ -24,58 +24,9 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding" style="height:250px">
-                  <ul class="users-list clearfix">
-                    <li>
-                      Tahapan Status 0%
-                      <span class="users-list-date">
-                        <?php 
-                          foreach($st_1 as $row){
-                            echo $row->total;
-                          }
-                        ?>
-                      </span>
-                    </li>
-                    <li>
-                      Tahapan Status 25%
-                      <span class="users-list-date">
-                        <?php
-                          foreach($st_2 as $row){
-                            echo $row->total;
-                          }
-                        ?>
-                      </span>
-                    </li>
-                    <li>
-                      Tahapan Status 50%
-                      <span class="users-list-date">
-                        <?php
-                          foreach($st_3 as $row){
-                            echo $row->total;
-                          }
-                        ?>
-                      </span>
-                    </li>
-                    <li>
-                      Tahapan Status 75%
-                      <span class="users-list-date">
-                        <?php
-                          foreach($st_4 as $row){
-                            echo $row->total;
-                          }
-                        ?>
-                      </span>
-                    </li>
-                    <li>
-                      Tahapan Status 100%
-                      <span class="users-list-date">
-                        <?php
-                          foreach($st_5 as $row){
-                            echo $row->total;
-                          }
-                        ?>
-                      </span>
-                    </li>
-                  </ul>
+                <div class="chart">
+                  <canvas id="pieChart" style="height:250px"></canvas>
+                </div>
                   <!-- /.users-list -->
                 </div>
                 <!-- /.box-footer -->
@@ -89,7 +40,7 @@
                 </div>
                 <div class="box-body">
                   <div class="chart">
-                    <canvas id="areaChart" style="height:230px"></canvas>
+                    <canvas id="barChart" style="height:230px"></canvas>
                   </div>
                 </div>
                 </div>
@@ -103,16 +54,13 @@
              </div>
              <div class="box-body">
                <div class="chart">
-                  <canvas id="areaChart2" style="height:250px"></canvas>
+                  <canvas id="barChart2" style="height:250px"></canvas>
                 </div>
               </div>
            </div>
           </div>
       </div>
 
-
-
-        
         <!-- /.col -->
       
       <!-- /.row -->
@@ -120,80 +68,8 @@
     </div>
     </div>
     <script>
-$(function () {
-    var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
-    
-    var areaChart       = new Chart(areaChartCanvas)
-
-    var areaChartData = {
-      labels  : [<?php foreach($g_t_pks as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
-      case 2: echo '"Februari",';break;case 3: echo '"Maret",';break;case 4: echo '"April",';break;case 5: echo '"Mei",';break;
-      case 6: echo '"Juni",';break;case 7: echo '"Juli",';break;case 8: echo '"Agustus",';break;case 9: echo '"September",';break;
-      case 10: echo '"Oktober",';break;case 11: echo '"November",';break;case 12: echo '"Desember",';break;}}?>],
-      datasets: [
-        {
-          label               : 'Digital Goods',
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [<?php foreach($g_t_pks as $row){echo $row->tgl.',';}?>]
-        }
-      ]
-    }
-
-    var areaChartOptions = {
-      //Boolean - If we should show the scale at all
-      showScale               : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : false,
-      //String - Colour of the grid lines
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
-      scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
-      scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
-      scaleShowVerticalLines  : true,
-      //Boolean - Whether the line is curved between points
-      bezierCurve             : true,
-      //Number - Tension of the bezier curve between points
-      bezierCurveTension      : 0.3,
-      //Boolean - Whether to show a dot for each point
-      pointDot                : false,
-      //Number - Radius of each point dot in pixels
-      pointDotRadius          : 4,
-      //Number - Pixel width of point dot stroke
-      pointDotStrokeWidth     : 1,
-      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-      pointHitDetectionRadius : 20,
-      //Boolean - Whether to show a stroke for datasets
-      datasetStroke           : true,
-      //Number - Pixel width of dataset stroke
-      datasetStrokeWidth      : 2,
-      //Boolean - Whether to fill the dataset with a color
-      datasetFill             : true,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio     : true,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive              : true
-    }
-
-    //Create the line chart
-    areaChart.Line(areaChartData, areaChartOptions)
-
-  })
-
-  $(function () {
-    var areaChartCanvas = $('#areaChart2').get(0).getContext('2d')
-    
-    var areaChart       = new Chart(areaChartCanvas)
-
-    var areaChartData = {
+  
+    var areaChartDatar = {
       labels  : [<?php foreach($tot_respon as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
       case 2: echo '"Februari",';break;case 3: echo '"Maret",';break;case 4: echo '"April",';break;case 5: echo '"Mei",';break;
       case 6: echo '"Juni",';break;case 7: echo '"Juli",';break;case 8: echo '"Agustus",';break;case 9: echo '"September",';break;
@@ -211,51 +87,104 @@ $(function () {
         }
       ]
     }
-
-    var areaChartOptions = {
-      //Boolean - If we should show the scale at all
-      showScale               : true,
-      //Boolean - Whether grid lines are shown across the chart
-      scaleShowGridLines      : false,
-      //String - Colour of the grid lines
+    var barChartCanvas                   = $('#barChart2').get(0).getContext('2d')
+    var barChart                         = new Chart(barChartCanvas)
+    var barChartData                     = areaChartDatar
+    barChartData.datasets[0].fillColor   = '#0dfff7'
+    barChartData.datasets[0].strokeColor = '#0dfff7'
+    barChartData.datasets[0].pointColor  = '#0dd7ff'
+    
+    var barChartOptions                  = {
+      scaleBeginAtZero        : true,
+      scaleShowGridLines      : true,
       scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      //Number - Width of the grid lines
       scaleGridLineWidth      : 1,
-      //Boolean - Whether to show horizontal lines (except X axis)
       scaleShowHorizontalLines: true,
-      //Boolean - Whether to show vertical lines (except Y axis)
       scaleShowVerticalLines  : true,
-      //Boolean - Whether the line is curved between points
-      bezierCurve             : true,
-      //Number - Tension of the bezier curve between points
-      bezierCurveTension      : 0.3,
-      //Boolean - Whether to show a dot for each point
-      pointDot                : false,
-      //Number - Radius of each point dot in pixels
-      pointDotRadius          : 4,
-      //Number - Pixel width of point dot stroke
-      pointDotStrokeWidth     : 1,
-      //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-      pointHitDetectionRadius : 20,
-      //Boolean - Whether to show a stroke for datasets
-      datasetStroke           : true,
-      //Number - Pixel width of dataset stroke
-      datasetStrokeWidth      : 2,
-      //Boolean - Whether to fill the dataset with a color
-      datasetFill             : true,
-      //String - A legend template
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].lineColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-      maintainAspectRatio     : true,
-      //Boolean - whether to make the chart responsive to window resizing
-      responsive              : true
+      barShowStroke           : true,
+      barStrokeWidth          : 2,
+      barValueSpacing         : 5,
+      barDatasetSpacing       : 1,
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      responsive              : true,
+      maintainAspectRatio     : true
     }
 
-    //Create the line chart
-    areaChart.Line(areaChartData, areaChartOptions)
+    barChartOptions.datasetFill = false
+    barChart.Bar(barChartData, barChartOptions)
 
-  })
 
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieChart       = new Chart(pieChartCanvas)
+    var PieData        = [
+      <?php 
+        foreach($grafik_persen as $row){
+          echo "{value: ".$row->total.", label : '".$row->prsn_pks."'},";
+        }
+      ?>
+    ]
+    var pieOptions     = {
+      segmentShowStroke    : true,
+      segmentStrokeColor   : '#fff',
+      segmentStrokeWidth   : 2,
+      percentageInnerCutout: 50,
+      animationSteps       : 100,
+      animationEasing      : 'easeOutBounce',
+      animateRotate        : true,
+      animateScale         : false,
+      responsive           : true,
+      maintainAspectRatio  : true,
+      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    }
+    //Create pie or douhnut chart
+    // You can switch between pie and douhnut using the method below.
+    pieChart.Doughnut(PieData, pieOptions)
+  
+
+  var areaChartData = {
+      labels  : [<?php foreach($g_t_pks as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
+      case 2: echo '"Februari",';break;case 3: echo '"Maret",';break;case 4: echo '"April",';break;case 5: echo '"Mei",';break;
+      case 6: echo '"Juni",';break;case 7: echo '"Juli",';break;case 8: echo '"Agustus",';break;case 9: echo '"September",';break;
+      case 10: echo '"Oktober",';break;case 11: echo '"November",';break;case 12: echo '"Desember",';break;}}?>],
+      datasets: [
+        {
+          
+          fillColor           : 'rgba(60,141,188,0.9)',
+          strokeColor         : 'rgba(60,141,188,0.8)',
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(60,141,188,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : [<?php foreach($g_t_pks as $row){echo $row->tgl.',';}?>]
+        }
+      ]
+    }
+
+    var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
+    var barChart                         = new Chart(barChartCanvas)
+    var barChartData                     = areaChartData
+    barChartData.datasets[0].fillColor   = '#00a65a'
+    barChartData.datasets[0].strokeColor = '#00a65a'
+    barChartData.datasets[0].pointColor  = '#00a65a'
+
+    var barChartOptions                  = {
+      scaleBeginAtZero        : true,
+      scaleShowGridLines      : true,
+      scaleGridLineColor      : 'rgba(0,0,0,.05)',
+      scaleGridLineWidth      : 1,
+      scaleShowHorizontalLines: true,
+      scaleShowVerticalLines  : true,
+      barShowStroke           : true,
+      barStrokeWidth          : 2,
+      barValueSpacing         : 5,
+      barDatasetSpacing       : 1,
+      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
+      responsive              : true,
+      maintainAspectRatio     : true
+    }
+
+    barChartOptions.datasetFill = false
+    barChart.Bar(barChartData, barChartOptions)
 
     </script>
       <footer class="main-footer">

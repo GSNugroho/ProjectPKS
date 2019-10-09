@@ -17,14 +17,12 @@ class Pks extends CI_Controller {
 			$this->load->library('form_validation');
 		} else {
 			echo "Silahkan Login Terlebih Dahulu";
-			// print_r($_SESSION); 
 			echo redirect(base_url('../'));
 		}
     }
 
 	public function index()
 	{
-
 		$data = array(
 			'st_1' => $this->M_pks->get_t_st1(),
 			'st_2' => $this->M_pks->get_t_st2(),
@@ -32,7 +30,8 @@ class Pks extends CI_Controller {
 			'st_4' => $this->M_pks->get_t_st4(),
 			'st_5' => $this->M_pks->get_t_st5(),
 			'g_t_pks' => $this->M_pks->get_g_pks(),
-			'tot_respon' => $this->M_pks->get_respon()
+			'tot_respon' => $this->M_pks->get_respon(),
+			'grafik_persen' => $this->M_pks->get_total_persen()
 		);
 		$this->load->view('pks/pks_db', $data);
 	}
@@ -109,7 +108,7 @@ class Pks extends CI_Controller {
 
 		$config = array(
 			'upload_path' => "uploads/pks",
-			// 'upload_path' => "dt.app.rspw/pks/",
+			// 'upload_path' => "dt.rspantiwaluyo/pks/",
 			'file_name' => $en_name,
 			'allowed_types' => "pdf",
 			'overwrite' => TRUE,
@@ -187,7 +186,7 @@ class Pks extends CI_Controller {
 
 		$config = array(
 			'upload_path' => "uploads/pks",
-			// 'upload_path' => "dt.app.rspw/pks",
+			// 'upload_path' => "dt.rspantiwaluyo/pks",
 			'file_name' => $en_name,
 			'allowed_types' => "pdf",
 			'overwrite' => TRUE,
