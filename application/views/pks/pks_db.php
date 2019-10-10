@@ -136,8 +136,7 @@
       maintainAspectRatio  : true,
       legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
     }
-    //Create pie or douhnut chart
-    // You can switch between pie and douhnut using the method below.
+
     pieChart.Doughnut(PieData, pieOptions)
   
 
@@ -163,9 +162,9 @@
     var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
     var barChart                         = new Chart(barChartCanvas)
     var barChartData                     = areaChartData
-    barChartData.datasets[0].fillColor   = '#00a65a'
-    barChartData.datasets[0].strokeColor = '#00a65a'
-    barChartData.datasets[0].pointColor  = '#00a65a'
+    barChartData.datasets[0].fillColor   = '#80ff00'
+    barChartData.datasets[0].strokeColor = '#80ff00'
+    barChartData.datasets[0].pointColor  = '#80ff00'
 
     var barChartOptions                  = {
       scaleBeginAtZero        : true,

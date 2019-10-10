@@ -2,7 +2,7 @@
 	$this->load->view('pks/pks');
 ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
-<div class="box box-primary">
+<div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">Status PKS</h3>
     </div>

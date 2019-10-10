@@ -9,7 +9,7 @@
 	<script src="<?php echo base_url('assets/datepicker/js/jquery-1.11.3.min.js')?>"></script>
 	<script src="<?php echo base_url('assets/datepicker/js/bootstrap-datetimepicker.js')?>"></script>
 
-<div class="box box-primary">
+<div class="box box-info">
 	<div class="box-header with-border">
     	<h3 class="box-title">Sunting Projek PKS</h3>
 	</div>

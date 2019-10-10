@@ -1,4 +1,4 @@
 <?php
 // print_r($this->session->userdata());
- redirect(base_url('PKS'));
+ redirect(base_url('Pks'));
 ?>

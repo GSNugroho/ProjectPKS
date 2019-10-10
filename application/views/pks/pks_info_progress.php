@@ -1,7 +1,7 @@
 <?php
 	$this->load->view('pks/pks');
 ?>
-<div class="box box-primary">
+<div class="box box-info">
 	<div class="box-header with-border">
     	<h3 class="box-title">Rincian Progres</h3>
 	</div>

@@ -23,7 +23,7 @@
         } 
 	</style>
 
-<div class="box box-primary">
+<div class="box box-info">
 	<div class="box-header with-border">
     	<h3 class="box-title">Tambah PKS</h3>
 	</div>
@@ -57,17 +57,17 @@
 	</div>
 	<div class="form-group">
 		<label for="rtm_waktu">Rencana Tanggal Mulai PKS </label><?php echo form_error('rtm_waktu')?>
-	<div class="input-group date" id="tgl1">
-		<input type="text" class="form-control" name="rtm_waktu" placeholder="dd-mm-yyyy" value="<?php echo $tgl_mulai?>"/>	
-		<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-	</div>
+	<!-- <div class="input-group date" id="tgl1"> -->
+		<input type="text" class="form-control" name="rtm_waktu" id="tgl1"placeholder="dd-mm-yyyy" value="<?php echo $tgl_mulai?>"/>	
+		<!-- <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+	</div> -->
 	</div>
 	<div class="form-group">
 		<label for="rtm_waktu">Rencana Tanggal Selesai PKS </label><?php echo form_error('rta_waktu')?>
-	<div class="input-group date" id="tgl2">
-		<input type="text" class="form-control" name="rta_waktu" placeholder="dd-mm-yyyy" value="<?php echo $tgl_akhir?>"/>	
-		<span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-	</div>
+	<!-- <div class="input-group date" id="tgl2"> -->
+		<input type="text" class="form-control" name="rta_waktu" id="tgl2" placeholder="dd-mm-yyyy" value="<?php echo $tgl_akhir?>"/>	
+		<!-- <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+	</div> -->
 	</div>
 	<div class="form-group">
 		<label for="pic">PIC </label><?php echo form_error('pic_pks')?>

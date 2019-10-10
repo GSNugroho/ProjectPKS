@@ -1,7 +1,7 @@
 <?php
 	$this->load->view('pks/pks');
 ?>
-<div class="box box-primary">
+<div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">Progress PKS<?php echo '/ '.$nm_instansi.'/ '.$nm_pks;?></h3>
     </div>

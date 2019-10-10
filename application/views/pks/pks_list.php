@@ -14,7 +14,7 @@
     position: fixed;
     border: 1px solid greenyellow;
     width: 200px;
-    top: 95px;
+    top: 85px;
     left: 500px;
     padding: 5px 10px;
     background-color: #00a65a;
@@ -34,7 +34,7 @@
 	color: white;
 	}
 </style>
-<div class="box box-primary">
+<div class="box box-info">
 		<?php
             if (($this->session->userdata('message')) <> '') {
                 echo '<div class="pesan">'.$this->session->userdata('message').'</div>';
