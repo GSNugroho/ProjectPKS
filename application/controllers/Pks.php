@@ -116,9 +116,47 @@ class Pks extends CI_Controller {
 		);
 		$this->load->library('upload', $config);
 		if($this->upload->do_upload('dok_pks')){
-			echo 'sukses';
+			$upload_data = $this->upload->data();
+			$fileName = $upload_data['file_name'];
+
+			//File path at local server
+        	$source = 'uploads/'.$fileName;
+                
+        	//Load codeigniter FTP class
+        	$this->load->library('ftp');
+                
+			//FTP configuration
+			$ciphertext = 'bqySZoc9IFNZfT+lAUW1tFIQPGyNhgtqq/Iv5U5Zdhs7BQ+SAbbmbYgwnva56gKnZN6+zEl1lPbVL+hgBZSEBQ==';
+			$c = base64_decode($ciphertext);
+			$ivlen = openssl_cipher_iv_length($cipher="AES-256-CBC");
+			$iv = substr($c, 0, $ivlen);
+			$hmac = substr($c, $ivlen, $sha2len=32);
+			$ciphertext_raw = substr($c, $ivlen+$sha2len);
+			$key = 'RSPW5010';
+			$original_plaintext = openssl_decrypt($ciphertext_raw, $cipher, $key, $options=OPENSSL_RAW_DATA, $iv);
+
+			$ftp_config['hostname'] = 'dt.rspantiwaluyo.com'; 
+        	$ftp_config['username'] = 'ftp-rspw';
+			$ftp_config['password'] = $original_plaintext;
+			$ftp_config['port']		= 2121;
+        	$ftp_config['debug']    = TRUE;
+                
+        	//Connect to the remote server
+        	$this->ftp->connect($ftp_config);
+                
+        	//File upload path of remote server
+			$destination = '/Web/upload/pks/'.$fileName;
+                
+        	//Upload file to the remote server
+        	$this->ftp->upload($source, ".".$destination);
+                
+        	//Close FTP connection
+        	$this->ftp->close();
+                
+        	//Delete file from local server
+        	@unlink($source);
 		}else{
-			echo 'gagal';
+			
 			$this->session->set_flashdata('messages', 'Upload Data Peraturan Gagal');
 			redirect(base_url('Pks/list_pks'));
 		}
@@ -185,7 +223,7 @@ class Pks extends CI_Controller {
 		$en_name = do_hash($name, 'md5');
 
 		$config = array(
-			'upload_path' => "uploads/pks",
+			'upload_path' => "uploads/",
 			// 'upload_path' => "dt.rspantiwaluyo/pks",
 			'file_name' => $en_name,
 			'allowed_types' => "pdf",
@@ -195,9 +233,48 @@ class Pks extends CI_Controller {
 		$this->load->library('upload', $config);
 		if($this->upload->do_upload('dok_pks'))
 		{
-			echo 'sukses';
+			$upload_data = $this->upload->data();
+			$fileName = $upload_data['file_name'];
+        // //File path at local server
+        	$source = 'uploads/'.$fileName;
+                
+        // //Load codeigniter FTP class
+        	$this->load->library('ftp');
+                
+		//FTP configuration
+			
+			$ciphertext = 'bqySZoc9IFNZfT+lAUW1tFIQPGyNhgtqq/Iv5U5Zdhs7BQ+SAbbmbYgwnva56gKnZN6+zEl1lPbVL+hgBZSEBQ==';
+			$c = base64_decode($ciphertext);
+			$ivlen = openssl_cipher_iv_length($cipher="AES-256-CBC");
+			$iv = substr($c, 0, $ivlen);
+			$hmac = substr($c, $ivlen, $sha2len=32);
+			$ciphertext_raw = substr($c, $ivlen+$sha2len);
+			$key = 'RSPW5010';
+			$original_plaintext = openssl_decrypt($ciphertext_raw, $cipher, $key, $options=OPENSSL_RAW_DATA, $iv);
+
+			$ftp_config['hostname'] = 'dt.rspantiwaluyo.com'; 
+        	$ftp_config['username'] = 'ftp-rspw';
+			$ftp_config['password'] = $original_plaintext;
+			$ftp_config['port']		= 2121;
+			$ftp_config['debug']    = TRUE;
+			
+        //Connect to the remote server
+        	$this->ftp->connect($ftp_config);
+        
+        //File upload path of remote server
+        	$destination = '/Web/upload/pks/'.$fileName;
+                
+        //Upload file to the remote server
+        	$this->ftp->upload($source, ".".$destination);
+                
+        //Close FTP connection
+        	$this->ftp->close();
+                
+        //Delete file from local server
+        	@unlink($source);
 		}else{
-			echo 'gagal';
+			$this->session->set_flashdata('messages', 'Upload Data Peraturan Gagal');
+			redirect(base_url('Pks/list_pks'));
 		}
 	}
 
@@ -213,6 +290,14 @@ class Pks extends CI_Controller {
 			$this->session->set_flashdata('messages', 'Hapus Data PKS Berhasil');
 			redirect(base_url('Pks/list_pks'));
 		}
+	}
+
+	public function delete_file($id){
+		$this->load->helper('security');
+
+		$e_name = $id.'.pdf';
+		$en_name = do_hash($e_name, 'md5');
+		unlink(FCPATH.'https://dt.rspantiwaluyo.com/pks/'.$en_name.'.pdf');
 	}
 
 	public function proses($id){

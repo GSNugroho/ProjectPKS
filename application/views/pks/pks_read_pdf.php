@@ -2,10 +2,11 @@
 <?php 
   // The location of the PDF file 
   // on the server 
-  $filename = "uploads/pks/".$en_name.".pdf"; 
-  // $filename = "dt.rspantiwaluyo/pks/".$en_name.".pdf"; 
+  // $filename = "uploads/pks/".$en_name.".pdf"; 
+  $filename = "https://dt.respantiwaluyo.com/pks/".$en_name.".pdf"; 
     // echo $filename;
    // Header content type 
+   $file = get_headers($filename, TRUE);
   header("Content-type: application/pdf"); 
     // header("Content-title: ".$filename);
   header('Content-Transfer-Encoding: binary');

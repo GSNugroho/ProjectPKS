@@ -1,6 +1,7 @@
 <html>
 <head>
-<meta charset="utf-8">
+  <link rel="shortcut icon" href="../../logo_new.png" type="image/x-icon">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>PKS</title>
   <!-- Tell the browser to be responsive to screen width -->
