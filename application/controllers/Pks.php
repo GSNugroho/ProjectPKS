@@ -107,7 +107,7 @@ class Pks extends CI_Controller {
 		$en_name = do_hash($name, 'md5');
 
 		$config = array(
-			'upload_path' => "uploads/pks",
+			'upload_path' => "uploads/",
 			// 'upload_path' => "dt.rspantiwaluyo/pks/",
 			'file_name' => $en_name,
 			'allowed_types' => "pdf",
@@ -258,7 +258,7 @@ class Pks extends CI_Controller {
 			$ftp_config['port']		= 2121;
 			$ftp_config['debug']    = TRUE;
 			
-        //Connect to the remote server
+        // Connect to the remote server
         	$this->ftp->connect($ftp_config);
         
         //File upload path of remote server

@@ -3,6 +3,7 @@
     // echo $rt;
 ?>
     <script src="<?php echo base_url('assets/bower_components/chart.js/Chart.js')?>"></script>
+    <script src="<?php echo base_url('assets/bower_components/highchart/highcharts.js')?>"></script>
     <div class="container">
     <section class="content-header">
       <h1>
@@ -25,7 +26,8 @@
                 <!-- /.box-header -->
                 <div class="box-body no-padding" style="height:250px">
                 <div class="chart">
-                  <canvas id="pieChart" style="height:250px"></canvas>
+                  <!-- <canvas id="pieChart" style="height:250px"></canvas> -->
+                  <div id="pieChart" style="min-width: 310px; height: 420px; max-width: 600px; margin: 0 auto"></div>
                 </div>
                   <!-- /.users-list -->
                 </div>
@@ -40,7 +42,8 @@
                 </div>
                 <div class="box-body">
                   <div class="chart">
-                    <canvas id="barChart" style="height:230px"></canvas>
+                    <!-- <canvas id="barChart" style="height:230px"></canvas> -->
+                    <div id="barChart" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
                   </div>
                 </div>
                 </div>
@@ -54,7 +57,8 @@
              </div>
              <div class="box-body">
                <div class="chart">
-                  <canvas id="barChart2" style="height:250px"></canvas>
+                  <!-- <canvas id="barChart2" style="height:250px"></canvas> -->
+                  <div id="barChart2" style="min-width: 310px; height: 400px; max-width: auto; margin: 0 auto"></div>
                 </div>
               </div>
            </div>
@@ -68,122 +72,127 @@
     </div>
     </div>
     <script>
-  
-    var areaChartDatar = {
-      labels  : [<?php foreach($tot_respon as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
-      case 2: echo '"Februari",';break;case 3: echo '"Maret",';break;case 4: echo '"April",';break;case 5: echo '"Mei",';break;
-      case 6: echo '"Juni",';break;case 7: echo '"Juli",';break;case 8: echo '"Agustus",';break;case 9: echo '"September",';break;
-      case 10: echo '"Oktober",';break;case 11: echo '"November",';break;case 12: echo '"Desember",';break;}}?>],
-      datasets: [
-        {
-          label               : 'Digital Goods',
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [<?php foreach($tot_respon as $row){echo $row->rata.',';}?>]
+
+    Highcharts.chart('barChart2', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ''
+    },
+    xAxis: {
+        categories: [
+          <?php foreach($tot_respon as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
+          case 2: echo '"Februari",';break;case 3: echo '"Maret",';break;case 4: echo '"April",';break;case 5: echo '"Mei",';break;
+          case 6: echo '"Juni",';break;case 7: echo '"Juli",';break;case 8: echo '"Agustus",';break;case 9: echo '"September",';break;
+          case 10: echo '"Oktober",';break;case 11: echo '"November",';break;case 12: echo '"Desember",';break;}}?>
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Waktu Respon PKS (hari)'
         }
-      ]
-    }
-    var barChartCanvas                   = $('#barChart2').get(0).getContext('2d')
-    var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = areaChartDatar
-    barChartData.datasets[0].fillColor   = '#0dfff7'
-    barChartData.datasets[0].strokeColor = '#0dfff7'
-    barChartData.datasets[0].pointColor  = '#0dd7ff'
-    
-    var barChartOptions                  = {
-      scaleBeginAtZero        : true,
-      scaleShowGridLines      : true,
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      scaleGridLineWidth      : 1,
-      scaleShowHorizontalLines: true,
-      scaleShowVerticalLines  : true,
-      barShowStroke           : true,
-      barStrokeWidth          : 2,
-      barValueSpacing         : 5,
-      barDatasetSpacing       : 1,
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      responsive              : true,
-      maintainAspectRatio     : true
-    }
-
-    barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y} hari</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Respon',
+        data: [<?php foreach($tot_respon as $row){echo $row->rata.',';}?>]
+    }]
+});
 
 
-    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-    var pieChart       = new Chart(pieChartCanvas)
-    var PieData        = [
-      <?php 
+    Highcharts.chart('pieChart', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: ''
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+        name: 'Jumlah PKS',
+        colorByPoint: true,
+        data: [
+          <?php 
         foreach($grafik_persen as $row){
-          echo "{value: ".$row->total.", label : '".$row->prsn_pks."'},";
+          echo "{name: '".$row->prsn_pks."', y: ".$row->total."},";
         }
       ?>
-    ]
-    var pieOptions     = {
-      segmentShowStroke    : true,
-      segmentStrokeColor   : '#fff',
-      segmentStrokeWidth   : 2,
-      percentageInnerCutout: 50,
-      animationSteps       : 100,
-      animationEasing      : 'easeOutBounce',
-      animateRotate        : true,
-      animateScale         : false,
-      responsive           : true,
-      maintainAspectRatio  : true,
-      legendTemplate       : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
+        ]
+    }]
+});
 
-    pieChart.Doughnut(PieData, pieOptions)
-  
-
-  var areaChartData = {
-      labels  : [<?php foreach($g_t_pks as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
-      case 2: echo '"Februari",';break;case 3: echo '"Maret",';break;case 4: echo '"April",';break;case 5: echo '"Mei",';break;
-      case 6: echo '"Juni",';break;case 7: echo '"Juli",';break;case 8: echo '"Agustus",';break;case 9: echo '"September",';break;
-      case 10: echo '"Oktober",';break;case 11: echo '"November",';break;case 12: echo '"Desember",';break;}}?>],
-      datasets: [
-        {
-          
-          fillColor           : 'rgba(60,141,188,0.9)',
-          strokeColor         : 'rgba(60,141,188,0.8)',
-          pointColor          : '#3b8bba',
-          pointStrokeColor    : 'rgba(60,141,188,1)',
-          pointHighlightFill  : '#fff',
-          pointHighlightStroke: 'rgba(60,141,188,1)',
-          data                : [<?php foreach($g_t_pks as $row){echo $row->tgl.',';}?>]
+    Highcharts.chart('barChart', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        text: ''
+    },
+    xAxis: {
+        categories: [
+          <?php foreach($g_t_pks as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
+          case 2: echo '"Februari",';break;case 3: echo '"Maret",';break;case 4: echo '"April",';break;case 5: echo '"Mei",';break;
+          case 6: echo '"Juni",';break;case 7: echo '"Juli",';break;case 8: echo '"Agustus",';break;case 9: echo '"September",';break;
+          case 10: echo '"Oktober",';break;case 11: echo '"November",';break;case 12: echo '"Desember",';break;}}?>
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Jumlah Total PKS'
         }
-      ]
-    }
-
-    var barChartCanvas                   = $('#barChart').get(0).getContext('2d')
-    var barChart                         = new Chart(barChartCanvas)
-    var barChartData                     = areaChartData
-    barChartData.datasets[0].fillColor   = '#80ff00'
-    barChartData.datasets[0].strokeColor = '#80ff00'
-    barChartData.datasets[0].pointColor  = '#80ff00'
-
-    var barChartOptions                  = {
-      scaleBeginAtZero        : true,
-      scaleShowGridLines      : true,
-      scaleGridLineColor      : 'rgba(0,0,0,.05)',
-      scaleGridLineWidth      : 1,
-      scaleShowHorizontalLines: true,
-      scaleShowVerticalLines  : true,
-      barShowStroke           : true,
-      barStrokeWidth          : 2,
-      barValueSpacing         : 5,
-      barDatasetSpacing       : 1,
-      legendTemplate          : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>',
-      responsive              : true,
-      maintainAspectRatio     : true
-    }
-
-    barChartOptions.datasetFill = false
-    barChart.Bar(barChartData, barChartOptions)
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'PKS',
+        data: [<?php foreach($g_t_pks as $row){echo $row->tgl.',';}?>]
+    }]
+});
 
     </script>
       <footer class="main-footer">
