@@ -647,8 +647,20 @@ class Pks extends CI_Controller {
 		$columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
 		$searchValue = $_POST['search']['value']; // Search value
 
+		##Custom Search
+		$searchByAwal = $this->input->post('rtm_waktu');
+		$searchByAkhir = $this->input->post('rta_waktu');
+
 		## Search 
 		$searchQuery = " ";
+		if($searchByAwal != ''){
+			$searchQuery .= " and (tgl_awal like '%".$searchByAwal."%' ) ";
+		 }
+		$searchQuery = " ";
+		if($searchByAkhir != ''){
+			$searchQuery .= " and (tgl_akhir like '%".$searchByAkhir."%' ) ";
+		 }
+
 		if($searchValue != ''){
 		$searchQuery = " and (
 		kd_pks like '%".$searchValue."%' or 

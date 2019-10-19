@@ -2,6 +2,13 @@
 	$this->load->view('pks/pks');
 ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/bootstrap.min.css')?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/ilmudetil.css')?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/bootstrap-datetimepicker.css')?>"/>
+<script src="<?php echo base_url('assets/datepicker/js/bootstrap.min.js')?>"></script>
+<script src="<?php echo base_url('assets/datepicker/js/moment-with-locales.js')?>"></script>
+<script src="<?php echo base_url('assets/datepicker/js/jquery-1.11.3.min.js')?>"></script>
+<script src="<?php echo base_url('assets/datepicker/js/bootstrap-datetimepicker.js')?>"></script>
 <style>
 	.link
 {
@@ -24,7 +31,7 @@
 	.pesans{
     display: none;
     position: fixed;
-    border: 1px solid red
+    border: 1px solid red;
     width: 200px;
     top: 95px;
     left: 500px;
@@ -47,6 +54,17 @@
         <h3 class="box-title">Data PKS</h3>
 	</div>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url('Pks/export') ?>">Export ke Excel</a></p>
+<table style="margin-left: 10px">
+     <tr>
+       <td>
+	   <input type="text" class="form-control" name="rtm_waktu" id="tgl1"placeholder="dd-mm-yyyy"/>
+	   </td>
+	   <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+       <td>
+	   <input type="text" class="form-control" name="rta_waktu" id="tgl2" placeholder="dd-mm-yyyy"/>	
+       </td>
+     </tr>
+   </table>
 <div class="box-body">
 	<table id="dataPKS" class="table table-bordered table-striped">
 		<thead>
@@ -95,9 +113,19 @@ $(document).ready(function(){
       'processing': true,
       'serverSide': true,
       'serverMethod': 'post',
+	//   'searching': false,
       'ajax': {
-          'url':'<?php echo base_url().'Pks/tbl_list'?>'
-      },
+          'url':'<?php echo base_url().'Pks/tbl_list'?>',
+		  'data': function(data){
+          // Read values
+          var awal = $('#tgl1').val();
+          var akhir = $('#tgl2').val();
+
+          // Append to data
+          data.searchByAwal = awal;
+          data.searchByAkhir = akhir;
+      	}
+	  },
       'columns': [
 		 { data: 'nm_pks' },
 		 { data: 'nm_instansi' },
@@ -110,7 +138,16 @@ $(document).ready(function(){
          { data: 'action' }
       ]
 	});
-	$('#dataPKS').on('click', 'tr', function () {
+
+	$('#tgl1').change(function(){
+    table.draw();
+  	});
+
+  	$('#tgl2').change(function(){
+    table.draw();
+  	});
+
+	$('#dataPKS').on('dblclick', 'tr', function () {
         var data = table.row( this ).data();
         // alert( 'Untuk mengedit status '+data['nm_instansi']+' tolong pilih tombol warna hijau ' );
 		window.location = $(this).closest('tr').find('td:eq(0) a').attr('href');
@@ -122,6 +159,14 @@ $(document).ready(function(){
 	
 	$(document).ready(function(){setTimeout(function(){$(".pesans").fadeIn('slow');}, 0);});
     setTimeout(function(){$(".pesans").fadeOut('slow');}, 3000);
+
+	$(function() { 
+  	$('#tgl1').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
+	});
+
+	$(function() { 
+  	$('#tgl2').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
+	});
 </script>
 </div>
 </div>
