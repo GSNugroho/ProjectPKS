@@ -53,15 +53,18 @@
     <div class="box-header with-border">
         <h3 class="box-title">Data PKS</h3>
 	</div>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url('Pks/export') ?>">Export ke Excel</a></p>
+<p>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url('Pks/export') ?>">Export ke Excel</a></p>
+<p>&nbsp;&nbsp;&nbsp;Tanggal Mulai</p>
 <table style="margin-left: 10px">
      <tr>
        <td>
 	   <input type="text" class="form-control" name="rtm_waktu" id="tgl1"placeholder="dd-mm-yyyy"/>
+	   <!-- <input type="date" class="form-control" name="rtm-waktu" id="tgl1"> -->
 	   </td>
-	   <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	   <td>&nbsp;&nbsp;-&nbsp;&nbsp;</td>
        <td>
 	   <input type="text" class="form-control" name="rta_waktu" id="tgl2" placeholder="dd-mm-yyyy"/>	
+	   <!-- <input type="date" class="form-control" name="rta_waktu" id="tgl2"> -->
        </td>
      </tr>
    </table>
@@ -139,12 +142,12 @@ $(document).ready(function(){
       ]
 	});
 
-	$('#tgl1').change(function(){
-    table.draw();
-  	});
+	// $('#tgl1').change( function(){
+    // table.draw(true);
+  	// });
 
-  	$('#tgl2').change(function(){
-    table.draw();
+  	$('#tgl2').on('dp.change', function(){
+    table.draw(true);
   	});
 
 	$('#dataPKS').on('dblclick', 'tr', function () {
@@ -164,9 +167,20 @@ $(document).ready(function(){
   	$('#tgl1').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
 	});
 
+	// $('#tgl1').datetimepicker({
+	// 	onSelect: function(dateText) {
+    // }, locale:'id',format : "DD-MM-YYYY"
+	// });
+
 	$(function() { 
   	$('#tgl2').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
 	});
+
+	// $('#tgl2').datetimepicker({
+	// 	onSelect: function(dateText) {
+    // }, locale:'id',format : "DD-MM-YYYY"
+	// });
+
 </script>
 </div>
 </div>

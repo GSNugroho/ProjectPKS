@@ -44,7 +44,7 @@
 		<select name="jns_pks" class="form-control" id="jns_pks">
 			<option value="">--Pilih Jenis PKS</option>
 			<option value="1" <?php echo ($jns_pks == '1')?'selected':''?>>Menejerial</option>
-			<option value="2" <?php echo ($jns_pks == '2')?'selected':''?>>Medis</option>
+			<option value="2" <?php echo ($jns_pks == '2')?'selected':''?>>Klinis</option>
 		</select>
 	</div>
 	<div class="form-group">

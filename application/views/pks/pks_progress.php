@@ -12,7 +12,7 @@
 		<tr>
 			<th>Nama PKS</th>
 			<th>Nama Instansi</th>
-			<th>Revisi</th>
+			<th>Pencermatan</th>
 			<th>Koreksi</th>
 			<th>TTD</th>
 			<th>Selesai</th>

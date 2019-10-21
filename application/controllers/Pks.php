@@ -86,45 +86,6 @@ class Pks extends CI_Controller {
 		}
 	}
 
-	public function create_action2()
-	{
-		$this->_rules();
-		if($this->form_validation->run() == FALSE) {
-			$this->create();
-		}else{
-			$data = array(
-				'vc_kd_mou' => $this->input->post('vc_kd_mou'),
-				'vc_jns_mou' => $this->input->post('vc_jns_mou'),
-				'vc_mou' => $this->input->post('vc_mou'),
-				'vc_no_mou' => $this->input->post('vc_no_mou'),
-				'dt_tgl_mou' => $this->input->post('dt_tgl_mou'),
-				'dt_tgl_terakhir' => $this->input->post('dt_tgl_terakhir'),
-				'vc_pihak_1' => $this->input->post('vc_pihak_1'),
-				'vc_pihak_2' => $this->input->post('vc_pihak_2'),
-				'dt_tgl_create' => $this->input->post('dt_tgl_create'),
-				'vc_pic' => $this->input->post('vc_pic'),
-				'vc_kontak_p' => $this->input->post('vc_kontak_p'),
-				'vc_kontak_p2' => $this->input->post('vc_kontak_p2'),
-				'vc_kontak_p3' => $this->input->post('vc_kontak_p3'),
-				'vc_email_person' => $this->input->post('vc_email_person'),
-				'vc_kd_ins' => $this->input->post('vc_kd_ins'),
-				'vc_file' => $this->input->post('vc_file'),
-				'vc_oleh' => $this->input->post('vc_oleh'),
-				'bt_aktif' => $this->input->post('bt_aktif'),
-				'bt_open' => $this->input->post('bt_open'),
-				'dt_tglTerima_draft' => $this->input->post('dt_tglTerima_draft'),
-				'vc_bentukDraft' => $this->input->post('vc_bentukDraft'),
-				'vc_klausul' => $this->input->post('vc_klausul'),
-				'dt_tglKirim_rekanan' => $this->input->post('dt_tglKirim_rekanan'),
-				'vc_caraKirim' => $this->input->post('vc_caraKirim'),
-				'dt_tglTerima_naskah' => $this->input->post('dt_tglTerima_naskah')
-			);
-			$this->M_pks->insert_data($data);
-			$this->session->set_flashdata('message', 'Tambah Data PKS Berhasil');
-			redirect(site_url('Pks/list_pks'));
-		}
-	}
-
 	public function _rules()
 	{
 		$this->form_validation->set_rules('nm_instansi', 'Nama Instansi', 'trim|required');
@@ -346,7 +307,7 @@ class Pks extends CI_Controller {
 		$ttd = 3;
 		$sls = 4;
 		if($row){
-			if($row->ttd_pks == 1){$sts_tr = $ttd; $ct_tr = $row->ttd_ct; $ur_tr = $row->rev_ur;}
+			if($row->ttd_pks == 1){$sts_tr = $ttd; $ct_tr = $row->ttd_ct; $ur_tr = $row->ttd_ur;}
 			else if($row->cor_pks == 1){$sts_tr = $cor; $ct_tr = $row->cor_ct; $ur_tr = $row->cor_ur;}
 			else if($row->rev_pks == 1){$sts_tr = $rev; $ct_tr = $row->rev_ct; $ur_tr = $row->rev_ur;}
 			else{$sts_tr = ''; $ct_tr =''; $ur_tr ='';}
@@ -358,9 +319,13 @@ class Pks extends CI_Controller {
 				'ct_tr' => $ct_tr,
 				'ur_tr' => $ur_tr,
 				'rev_ct' => $row->rev_ct,
+				'rev_ur' => $row->rev_ur,
 				'cor_ct' => $row->cor_ct,
+				'cor_ur' => $row->cor_ur,
 				'ttd_ct' => $row->ttd_ct,
-				'sls_ct' => $row->sls_ct
+				'ttd_ur' => $row->ttd_ur,
+				'sls_ct' => $row->sls_ct,
+				'sls_ur' => $row->sls_ur
 			);
 		}
 
@@ -648,21 +613,24 @@ class Pks extends CI_Controller {
 		$searchValue = $_POST['search']['value']; // Search value
 
 		##Custom Search
-		$searchByAwal = $this->input->post('rtm_waktu');
-		$searchByAkhir = $this->input->post('rta_waktu');
-
+        // if ($this->input->post('searchByAwal') != '' && $this->input->post('searchByAkhir') != '') {
+        //     $searchByAwal = date('Y-m-d', strtotime($this->input->post('searchByAwal')));
+        //     $searchByAkhir = date('Y-m-d', strtotime($this->input->post('searchByAkhir')));
+        // }
 		## Search 
-		$searchQuery = " ";
-		if($searchByAwal != ''){
-			$searchQuery .= " and (tgl_awal like '%".$searchByAwal."%' ) ";
+		$searchQuery = "";
+		if($this->input->post('searchByAwal') != '' && $this->input->post('searchByAkhir') != ''){
+			$searchByAwal = date('Y-m-d', strtotime($this->input->post('searchByAwal')));
+            $searchByAkhir = date('Y-m-d', strtotime($this->input->post('searchByAkhir')));
+			$searchQuery .= " and (tgl_mulai BETWEEN '".$searchByAwal."' AND '".$searchByAkhir."' ) ";
 		 }
-		$searchQuery = " ";
-		if($searchByAkhir != ''){
-			$searchQuery .= " and (tgl_akhir like '%".$searchByAkhir."%' ) ";
-		 }
+		// $searchQuery = " ";
+		// if($searchByAkhir != ''){
+		// 	$searchQuery .= " and (tgl_akhir like '%".$searchByAkhir."%' ) ";
+		//  }
 
 		if($searchValue != ''){
-		$searchQuery = " and (
+		$searchQuery .= " and (
 		kd_pks like '%".$searchValue."%' or 
 		nm_instansi like '%".$searchValue."%' or 
 		jns_pks like '%".$searchValue."%' or 

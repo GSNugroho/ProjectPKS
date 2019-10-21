@@ -12,7 +12,7 @@
           <!-- <input class="form-control" type="text" name="jns_prtn" id="jns_prtn" placeholder="Jenis Peraturan"> -->
           <select class="form-control" name="sts_pr" id="sts_pr">
             <option value="">-- Pilih Status --</option>
-            <option value="1" <?php echo ($sts_tr == '1')?'selected':''?>>Revisi</option>
+            <option value="1" <?php echo ($sts_tr == '1')?'selected':''?>>Pencermatan</option>
             <option value="2" <?php echo ($sts_tr == '2')?'selected':''?>>Koreksi</option>
             <option value="3" <?php echo ($sts_tr == '3')?'selected':''?>>Tanda Tangan</option>
             <option value="4" <?php echo ($sts_tr == '4')?'selected':''?>>Selesai</option>
@@ -23,10 +23,10 @@
           <!-- <textarea class="form-control" rows="3" name="ct_sts" id="ct_sts" placeholder="Catatan"><?php //echo $ct_tr?></textarea> -->
           <input class="form-control" name="ct_sts" id="ct_sts" placeholder="Catatan" value="<?php echo $ct_tr?>">
       </div>
-      <!-- <div class="form-group">
-          <label for="user">Yang Melakukan Tindakan</label>
-          <input class="form-control" name="user" id="user" placeholder="Yang Melakukan Tindakan" value="<?php echo $ur_tr?>">
-      </div> -->
+      <div class="form-group">
+          <label for="user">PIC</label>
+          <input class="form-control" name="user" id="user" placeholder="PIC" value="<?php echo $ur_tr?>">
+      </div>
         <input type="hidden" name="kd_pks" value="<?php echo $kd_pks?>">
         <input type='submit' name='submit' value='Simpan' class="btn btn-primary"/>
         <a href="<?php echo base_url('Pks/list_pks') ?>" class="btn btn-danger">Batal</a>
@@ -51,25 +51,24 @@
     $("#sts_pr").change(function(){
         var $comboValue = $(this).val();
         if($comboValue == "1"){
-         
-            //Dynamically create the textbox
-            //var $template = "<input type='text' name='HOLYDAY' id='HOLYDAY' placeholder='HOLYDAY' />";
-            
-            // $(this).parent().append($template);
-        document.getElementById('ct_sts').value = "<?php echo $rev_ct?>";
+          document.getElementById('ct_sts').value = "<?php echo $rev_ct?>";
+          document.getElementById('user').value = "<?php echo $rev_ur?>";
         } 
         else if($comboValue == "2") {
           document.getElementById('ct_sts').value = "<?php echo $cor_ct?>";
+          document.getElementById('user').value = "<?php echo $cor_ur?>";
         }
         else if($comboValue == "3") {
           document.getElementById('ct_sts').value = "<?php echo $ttd_ct?>";
+          document.getElementById('user').value = "<?php echo $ttd_ur?>";
         }
         else if($comboValue == "4") {
           document.getElementById('ct_sts').value = "<?php echo $sls_ct?>";
+          document.getElementById('user').value = "<?php echo $sls_ur?>";
         }
         else {
-            // $("#HOLYDAY").remove();  
-            document.getElementById("ct_sts").value = "";  
+            document.getElementById("ct_sts").value = "";
+            document.getElementById("user").value = "";
         }
     });
 });

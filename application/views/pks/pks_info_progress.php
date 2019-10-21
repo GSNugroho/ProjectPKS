@@ -11,24 +11,24 @@
     <table>
     <?php
         if($param == 1){
-            echo '<tr><td>Tanggal Revisi&nbsp;</td><td>:</td><td>&nbsp;'.$date_rev.'</td></tr>
-                    <tr><td>Catatan Revisi&nbsp;</td><td>:</td><td>&nbsp;'.$rev_ct.'</td></tr>
-                    <tr><td>User Yang Melakukan Tindakan&nbsp;</td><td>:</td><td>&nbsp;'.$rev_ur.'</td>
+            echo '<tr><td>Tanggal Pencermatan&nbsp;</td><td>:</td><td>&nbsp;'.$date_rev.'</td></tr>
+                    <tr><td>Catatan Pencermatan&nbsp;</td><td>:</td><td>&nbsp;'.$rev_ct.'</td></tr>
+                    <tr><td>PIC Pencermatan&nbsp;</td><td>:</td><td>&nbsp;'.$rev_ur.'</td>
                     </tr>';
         }elseif($param == 2){
             echo '<tr><td>Tanggal Koreksi&nbsp;</td><td>:</td><td>&nbsp;'.$date_cor.'</td></tr>
                     <tr><td>Catatan Koreksi&nbsp;</td><td>:</td><td>&nbsp;'.$cor_ct.'</td></tr>
-                    <tr><td>User Yang Melakukan Tindakan&nbsp;</td><td>:</td><td>&nbsp;'.$cor_ur.'</td>
+                    <tr><td>PIC Koreksi&nbsp;</td><td>:</td><td>&nbsp;'.$cor_ur.'</td>
                     </tr>';
         }elseif($param == 3){
             echo '<tr><td>Tanggal Tanda Tangan&nbsp;</td><td>:</td><td>&nbsp;'.$date_ttd.'</td></tr>
                     <tr><td>Catatan Tanda Tangan&nbsp;</td><td>:</td><td>&nbsp;'.$ttd_ct.'</td></tr>
-                    <tr><td>User Yang Melakukan Tindakan&nbsp;</td><td>:</td><td>&nbsp;'.$ttd_ur.'</td>
+                    <tr><td>PIC Tanda Tangan&nbsp;</td><td>:</td><td>&nbsp;'.$ttd_ur.'</td>
                     </tr>';
         }elseif($param == 4){
             echo '<tr><td>Tanggal Selesai&nbsp;</td><td>:</td><td>&nbsp;'.$date_sls.'</td></tr>
                     <tr><td>Catatan Selesai&nbsp;</td><td>:</td><td>&nbsp;'.$sls_ct.'</td></tr>
-                    <tr><td>User Yang Melakukan Tindakan&nbsp;</td><td>:</td><td>&nbsp;'.$sls_ur.'</td>
+                    <tr><td>PIC Selesai&nbsp;</td><td>:</td><td>&nbsp;'.$sls_ur.'</td>
                     </tr>';
         }
     ?>
