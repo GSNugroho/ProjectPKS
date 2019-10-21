@@ -613,10 +613,6 @@ class Pks extends CI_Controller {
 		$searchValue = $_POST['search']['value']; // Search value
 
 		##Custom Search
-        // if ($this->input->post('searchByAwal') != '' && $this->input->post('searchByAkhir') != '') {
-        //     $searchByAwal = date('Y-m-d', strtotime($this->input->post('searchByAwal')));
-        //     $searchByAkhir = date('Y-m-d', strtotime($this->input->post('searchByAkhir')));
-        // }
 		## Search 
 		$searchQuery = "";
 		if($this->input->post('searchByAwal') != '' && $this->input->post('searchByAkhir') != ''){
@@ -624,10 +620,6 @@ class Pks extends CI_Controller {
             $searchByAkhir = date('Y-m-d', strtotime($this->input->post('searchByAkhir')));
 			$searchQuery .= " and (tgl_mulai BETWEEN '".$searchByAwal."' AND '".$searchByAkhir."' ) ";
 		 }
-		// $searchQuery = " ";
-		// if($searchByAkhir != ''){
-		// 	$searchQuery .= " and (tgl_akhir like '%".$searchByAkhir."%' ) ";
-		//  }
 
 		if($searchValue != ''){
 		$searchQuery .= " and (

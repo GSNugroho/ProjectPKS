@@ -116,7 +116,6 @@ $(document).ready(function(){
       'processing': true,
       'serverSide': true,
       'serverMethod': 'post',
-	//   'searching': false,
       'ajax': {
           'url':'<?php echo base_url().'Pks/tbl_list'?>',
 		  'data': function(data){
@@ -141,10 +140,6 @@ $(document).ready(function(){
          { data: 'action' }
       ]
 	});
-
-	// $('#tgl1').change( function(){
-    // table.draw(true);
-  	// });
 
   	$('#tgl2').on('dp.change', function(){
     table.draw(true);
