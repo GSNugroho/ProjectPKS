@@ -51,7 +51,7 @@
             }
         ?>
     <div class="box-header with-border">
-        <h3 class="box-title">Data PKS</h3>
+        <h3 class="box-title">Data Proyek PKS</h3>
 	</div>
 <p>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url('Pks/export') ?>">Export ke Excel</a></p>
 <p>&nbsp;&nbsp;&nbsp;Tanggal Mulai</p>

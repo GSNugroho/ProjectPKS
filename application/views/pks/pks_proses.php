@@ -3,7 +3,7 @@
 ?>
 <div class="box box-info">
     <div class="box-header with-border">
-        <h3 class="box-title">Progress PKS<?php echo '/ '.$nm_instansi.'/ '.$nm_pks;?></h3>
+        <h3 class="box-title">Progress Proyek PKS<?php echo '/ '.$nm_instansi.'/ '.$nm_pks;?></h3>
     </div>
     <form role="form" action="<?php echo base_url().'PKS/proses_action';?>" method="POST">
       <div class="box-body">

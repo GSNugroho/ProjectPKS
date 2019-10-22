@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
 <div class="box box-info">
     <div class="box-header with-border">
-        <h3 class="box-title">Status PKS</h3>
+        <h3 class="box-title">Status Proyek PKS</h3>
     </div>
 <div class="box-body">
 	<table id="dataPKS" class="table table-bordered table-striped">

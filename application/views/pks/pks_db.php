@@ -21,7 +21,7 @@
               <!-- USERS LIST -->
               <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Total PKS</h3>
+                  <h3 class="box-title">Total Proyek PKS</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body no-padding" style="height:250px">
@@ -38,7 +38,7 @@
               <div class="col-md-6">
                 <div class="box box-info">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Grafik Pertumbuhan PKS</h3>
+                  <h3 class="box-title">Grafik Pertumbuhan Proyek PKS</h3>
                 </div>
                 <div class="box-body">
                   <div class="chart">
@@ -53,7 +53,7 @@
         <div class="col-md-12">
           <div class="box box-info">
              <div class="box-header with-border">
-                  <h3 class="box-title">Grafik Respon Waktu PKS</h3>
+                  <h3 class="box-title">Grafik Respon Waktu Proyek PKS</h3>
              </div>
              <div class="box-body">
                <div class="chart">
@@ -80,6 +80,9 @@
     title: {
         text: ''
     },
+    credits: {
+        enabled: false
+    },
     xAxis: {
         categories: [
           <?php foreach($tot_respon as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
@@ -92,7 +95,7 @@
     yAxis: {
         min: 0,
         title: {
-            text: 'Waktu Respon PKS (hari)'
+            text: 'Waktu Respon Proyek PKS (hari)'
         }
     },
     tooltip: {
@@ -126,6 +129,9 @@
     title: {
         text: ''
     },
+    credits: {
+        enabled: false
+    },
     tooltip: {
         pointFormat: '{series.name}: <b>{point.y}</b>'
     },
@@ -140,7 +146,7 @@
         }
     },
     series: [{
-        name: 'Jumlah PKS',
+        name: 'Jumlah Proyek PKS',
         colorByPoint: true,
         data: [
           <?php 
@@ -159,6 +165,9 @@
     title: {
         text: ''
     },
+    credits: {
+        enabled: false
+    },
     xAxis: {
         categories: [
           <?php foreach($g_t_pks as $row) {switch($row->bulan){ case 1: echo '"Januari",';break; 
@@ -171,7 +180,7 @@
     yAxis: {
         min: 0,
         title: {
-            text: 'Jumlah Total PKS'
+            text: 'Jumlah Total Proyek PKS'
         }
     },
     tooltip: {
@@ -189,7 +198,7 @@
         }
     },
     series: [{
-        name: 'PKS',
+        name: 'Proyek PKS',
         data: [<?php foreach($g_t_pks as $row){echo $row->tgl.',';}?>]
     }]
 });

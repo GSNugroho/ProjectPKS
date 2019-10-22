@@ -3,7 +3,7 @@
 ?>
 <div class="box box-info">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Data Projek PKS</h3>
+    	<h3 class="box-title">Data Proyek PKS</h3>
 	</div>
 		
 	<div class="box-body">

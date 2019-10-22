@@ -25,7 +25,7 @@
 
 <div class="box box-info">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Tambah PKS</h3>
+    	<h3 class="box-title">Tambah Proyek PKS</h3>
 	</div>
 		
 	<form role="form" action="<?php echo base_url().'Pks/create_action';?>" method="POST" enctype="multipart/form-data">

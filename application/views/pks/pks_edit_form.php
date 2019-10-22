@@ -11,7 +11,7 @@
 
 <div class="box box-info">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Sunting Projek PKS</h3>
+    	<h3 class="box-title">Sunting Proyek PKS</h3>
 	</div>
 		
 	<form role="form" action="<?php echo base_url().'Pks/update_action';?>" method="POST" enctype="multipart/form-data">

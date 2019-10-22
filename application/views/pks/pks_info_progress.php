@@ -3,7 +3,7 @@
 ?>
 <div class="box box-info">
 	<div class="box-header with-border">
-    	<h3 class="box-title">Rincian Progres</h3>
+    	<h3 class="box-title">Rincian Progres Proyek PKS</h3>
 	</div>
 		
 	<div class="box-body">
