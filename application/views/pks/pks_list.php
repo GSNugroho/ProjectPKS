@@ -2,6 +2,7 @@
 	$this->load->view('pks/pks');
 ?>
 <link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/bower_components/datatables.net-bs/css/buttons.dataTables.min.css')?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/bootstrap.min.css')?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/ilmudetil.css')?>">
 <link rel="stylesheet" href="<?php echo base_url('assets/datepicker/css/bootstrap-datetimepicker.css')?>"/>
@@ -53,7 +54,7 @@
     <div class="box-header with-border">
         <h3 class="box-title">Data Proyek PKS</h3>
 	</div>
-<p>&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url('Pks/export') ?>">Export ke Excel</a></p>
+<!-- <p>&nbsp;&nbsp;&nbsp;<a href="<?php //echo base_url('Pks/export') ?>">Export ke Excel</a></p> -->
 <p>&nbsp;&nbsp;&nbsp;Tanggal Mulai</p>
 <table style="margin-left: 10px">
      <tr>
@@ -66,21 +67,45 @@
 	   <input type="text" class="form-control" name="rta_waktu" id="tgl2" placeholder="dd-mm-yyyy"/>	
 	   <!-- <input type="date" class="form-control" name="rta_waktu" id="tgl2"> -->
        </td>
-     </tr>
+	 </tr>
+	 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+	 <tr>
+		 <td>
+			 <div class="form-group">
+				 <select id="jenis" class="form-control">
+					 <option value="">--Jenis--</option>
+					 <option value="1">Manajerial</option>
+					 <option value="2">Klinis</option>
+				 </select>
+			 </div>
+		 </td>
+		 <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+		 <td>
+			  <div class="form-group">
+				  <select id="prsn" class="form-control">
+					  <option value="">Status</option>
+					  <option value="0%">0%</option>
+					  <option value="25%">25%</option>
+					  <option value="50%">50%</option>
+					  <option value="75%">75%</option>
+				  </select>
+			  </div>
+		 </td>
+	 </tr>
    </table>
 <div class="box-body">
 	<table id="dataPKS" class="table table-bordered table-striped">
 		<thead>
 		<tr>
-		<th>Nama PKS</th>
-		<th>Nama Instansi</th>
-		<th>Jenis</th>
-		<th>Asal</th>
-		<th>Tanggal Mulai</th>
-		<th>Tanggal Akhir</th>
-		<th>Status Pengerjaan</th>
-		<th>PIC</th>
-		<th>Tindakan</th>
+		<th width='20%'>Nama PKS</th>
+		<th width='10%'>Nama Instansi</th>
+		<th width='10%'>Jenis</th>
+		<th width='15%'>Asal</th>
+		<th width='10%'>Tanggal Mulai</th>
+		<th width='10%'>Tanggal Akhir</th>
+		<th width='5%'>Status Pengerjaan</th>
+		<th width='5%'>PIC</th>
+		<th width='15%'>Tindakan</th>
 		</tr>
 		</thead>
 	</table>
@@ -91,9 +116,26 @@
 </div>
 <script src="<?php echo base_url('assets/bower_components/datatables.net/js/jquery.dataTables.min.js')?>"></script>
 <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')?>"></script>
+<script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.buttons.min.js')?>"></script>
+<script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/jszip.min.js')?>"></script>
+<script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/pdfmake.min.js')?>"></script>
+<script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/vfs_fonts.js')?>"></script>
+<script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/buttons.flash.min.js')?>"></script>
+<script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/buttons.html5.min.js')?>"></script>
 <script>
 $(document).ready(function(){
    var table = $('#dataPKS').DataTable({
+	dom: 'lBfrtip',
+    buttons: [
+		{
+			extend : 'excelHtml5',
+			text : 'Export Data ke Excel',
+			title : 'Daftar Proyek PKS',
+			exportOptions : {
+				columns: [0, 1, 2, 3, 4, 5, 6, 7]
+			}
+			},
+        ],
 	language: {
 		"sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
 		"sProcessing":   "Sedang memproses...",
@@ -122,10 +164,14 @@ $(document).ready(function(){
           // Read values
           var awal = $('#tgl1').val();
           var akhir = $('#tgl2').val();
+		  var jns = $('#jenis').val();
+		  var prsn = $('#prsn').val();
 
           // Append to data
           data.searchByAwal = awal;
           data.searchByAkhir = akhir;
+		  data.searchByJenis = jns;
+		  data.searchByPrsn = prsn;
       	}
 	  },
       'columns': [
@@ -142,8 +188,16 @@ $(document).ready(function(){
 	});
 
   	$('#tgl2').on('dp.change', function(){
-    table.draw(true);
+    	table.draw(true);
   	});
+
+	$('#jenis').on('change', function(){
+		table.draw(true);
+	});
+
+	$('#prsn').on('change', function(){
+		table.draw(true);
+	});
 
 	$('#dataPKS').on('dblclick', 'tr', function () {
         var data = table.row( this ).data();

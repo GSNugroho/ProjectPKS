@@ -5,7 +5,23 @@
 <div class="box box-info">
     <div class="box-header with-border">
         <h3 class="box-title">Status Proyek PKS</h3>
-    </div>
+	</div>
+<table style="margin-left: 10px">
+	 <tr><td>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+	 <tr>
+		 <td>
+			  <div class="form-group">
+				  <select id="prsn" class="form-control">
+					  <option value="">--Status--</option>
+					  <option value="0%">0%</option>
+					  <option value="25%">25%</option>
+					  <option value="50%">50%</option>
+					  <option value="75%">75%</option>
+				  </select>
+			  </div>
+		 </td>
+	 </tr>
+</table>
 <div class="box-body">
 	<table id="dataPKS" class="table table-bordered table-striped">
 		<thead>
@@ -29,7 +45,7 @@
 <script src="<?php echo base_url('assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')?>"></script>
 <script>
 	$(document).ready(function(){
-   $('#dataPKS').DataTable({
+   var table = $('#dataPKS').DataTable({
 	language: {
 	"sEmptyTable":	 "Tidak ada data yang tersedia pada tabel ini",
 	"sProcessing":   "Sedang memproses...",
@@ -53,7 +69,12 @@
       'serverSide': true,
       'serverMethod': 'post',
       'ajax': {
-          'url':'<?php echo base_url().'Pks/progres_list'?>'
+          'url':'<?php echo base_url().'Pks/progres_list'?>',
+		  'data': function(data){
+			  var status = $('#prsn').val();
+
+			  data.searchByPrsn = status;
+		  }
       },
       'columns': [
 		  { data: 'nm_pks' },
@@ -65,6 +86,11 @@
       	  { data: 'progres' }
       ]
 	});
+
+	$('#prsn').on('change', function(){
+		table.draw(true);
+	})
+
 	});
 </script>
 </div>

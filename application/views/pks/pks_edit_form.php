@@ -29,7 +29,7 @@
 		<select name="jns_pks" class="form-control" id="jns_pks">
 			<option value="">--Pilih Jenis PKS</option>
 			<option value="1" <?php echo ($jns_pks == '1')?'selected':''?>>Menejerial</option>
-			<option value="2" <?php echo ($jns_pks == '2')?'selected':''?>>Medis</option>
+			<option value="2" <?php echo ($jns_pks == '2')?'selected':''?>>Klinis</option>
 		</select>
 	</div>
 	<div class="form-group">
@@ -58,10 +58,10 @@
 		<label for="pic">PIC</label>
 		<input class="form-control" type="text" name="pic" id="pic" placeholder="PIC" value="<?php echo $pic_pks?>">
 	</div>
-	<div class="form-group">
+	<!-- <div class="form-group">
 		<label for="doc">Upload Dokumen</label>
 		<input class="form-control" type="file" name="dok_pks" id="doc" value="lanjut"><?php echo $nm_pks.'/'.$nm_instansi.'.pdf'?>
-	</div>
+	</div> -->
 	<div class="form-group">
 		<input type="hidden" name="kd_pks" id="kd_pks" value="<?php echo $kd_pks?>">
         <button type="submit" class="btn btn-primary">Simpan</button>

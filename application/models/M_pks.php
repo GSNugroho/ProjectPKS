@@ -131,5 +131,10 @@ class M_pks extends CI_Model{
 		$query = $this->db->query("SELECT prsn_pks, COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 GROUP BY prsn_pks");
 		return $query->result();
 	}
+
+	function get_total_info(){
+		$query = $this->db->query("SELECT COUNT(*) as total FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0");
+		return $query->result();
+	}
 }
 ?>

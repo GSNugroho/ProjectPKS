@@ -73,10 +73,10 @@
 		<label for="pic">PIC </label><?php echo form_error('pic_pks')?>
 		<input class="form-control" type="text" name="pic_pks" id="pic_pks" placeholder="PIC" value="<?php echo $pic_pks?>">
 	</div>
-	<div class="form-group">
-		<label for="doc">Upload Dokumen </label><?php echo form_error('data_pks')?>
+	<!-- <div class="form-group">
+		<label for="doc">Upload Dokumen </label><?php //echo form_error('data_pks')?>
 		<input class="form-control" type="file" name="dok_pks" id="doc">
-	</div>
+	</div> -->
 	<div class="form-group">
 		<button type="submit" class="btn btn-primary">Simpan</button>
 		<a href="<?php echo base_url('Pks/list_pks') ?>" class="btn btn-danger">Batal</a>

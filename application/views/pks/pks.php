@@ -45,7 +45,7 @@
           <ul class="nav navbar-nav">
             <li><a href="<?php echo base_url('Pks')?>">Beranda</a></li>
             <li><a href="<?php echo base_url('Pks/create')?>">Tambah Proyek PKS</a></li>
-            <li><a href="<?php echo base_url('Pks/list_pks')?>">Data Proyek PKS</a></li>
+            <li><a href="<?php echo base_url('Pks/list_pks')?>">Data Proyek PKS<span class="label label-danger"><?php foreach($tot_info as $row){echo $row->total;}?></span></a></li>
             <li><a href="<?php echo base_url('Pks/progress')?>">Status Proyek PKS</a></li>
             <li><a href="<?php echo base_url('Cekses/destroy');?>">Keluar</a></li>
           </ul>

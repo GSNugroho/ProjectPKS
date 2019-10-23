@@ -31,7 +31,8 @@ class Pks extends CI_Controller {
 			'st_5' => $this->M_pks->get_t_st5(),
 			'g_t_pks' => $this->M_pks->get_g_pks(),
 			'tot_respon' => $this->M_pks->get_respon(),
-			'grafik_persen' => $this->M_pks->get_total_persen()
+			'grafik_persen' => $this->M_pks->get_total_persen(),
+			'tot_info' => $this->M_pks->get_total_info()
 		);
 		$this->load->view('pks/pks_db', $data);
 	}
@@ -47,6 +48,7 @@ class Pks extends CI_Controller {
 			'tgl_mulai' => set_value('rtm_waktu'),
 			'tgl_akhir' => set_value('rta_waktu'),
 			'pic_pks' => set_value('pic_pks'),
+			'tot_info' => $this->M_pks->get_total_info()
 		);
 		$this->load->view('pks/pks_input_form', $data);
 	}
@@ -79,7 +81,7 @@ class Pks extends CI_Controller {
 			'dt_cr' => date('Y-m-d'),
 			'prsn_pks' => $prsn_0
 		);
-		$this->do_upload();
+		// $this->do_upload();
 		$this->M_pks->insert($data);
 		$this->session->set_flashdata('message', 'Tambah Data PKS Berhasil');
 		redirect(site_url('Pks/list_pks'));
@@ -190,7 +192,8 @@ class Pks extends CI_Controller {
 				'asal_pks' => set_value('asal_pks', $row->asal_pks),
 				'tgl_mulai' => set_value('tgl_mulai', date('d/m/Y', strtotime($row->tgl_mulai))),
 				'tgl_akhir' => set_value('tgl_akhir', date('d/m/Y', strtotime($row->tgl_akhir))),
-				'pic_pks' => set_value('pic_pks', $row->pic_pks)
+				'pic_pks' => set_value('pic_pks', $row->pic_pks),
+				'tot_info' => $this->M_pks->get_total_info()
 			);
 			$this->load->view('pks/pks_edit_form', $data);
 		}
@@ -208,9 +211,9 @@ class Pks extends CI_Controller {
 			'pic_pks' => $this->input->post('pic', TRUE)
 		);
 
-		if(!empty($_FILES)){
-		$this->do_upload_update($this->input->post('kd_pks'));
-		}else{echo "Lanjut"; echo $this->input->post('dok_pks');}
+		// if(!empty($_FILES)){
+		// $this->do_upload_update($this->input->post('kd_pks'));
+		// }else{echo "Lanjut"; echo $this->input->post('dok_pks');}
 		$this->M_pks->update($this->input->post('kd_pks'), $data);
 		$this->session->set_flashdata('message', 'Sunting Data PKS Berhasil');
 		redirect(base_url('pks/list_pks'));
@@ -325,7 +328,8 @@ class Pks extends CI_Controller {
 				'ttd_ct' => $row->ttd_ct,
 				'ttd_ur' => $row->ttd_ur,
 				'sls_ct' => $row->sls_ct,
-				'sls_ur' => $row->sls_ur
+				'sls_ur' => $row->sls_ur,
+				'tot_info' => $this->M_pks->get_total_info()
 			);
 		}
 
@@ -387,10 +391,10 @@ class Pks extends CI_Controller {
 	public function list_pks()
 	{
 		$data = array(
-			
+			'tot_info' => $this->M_pks->get_total_info()
 		);
 		
-		$this->load->view('pks/pks_list');
+		$this->load->view('pks/pks_list', $data);
 	}
 	
 	public function read($id){
@@ -401,7 +405,7 @@ class Pks extends CI_Controller {
 			if($jp == 1){
 			$jns_pks = 'Manajerial';
 			}else if($jp == 2){
-			$jns_pks = 'Medis';
+			$jns_pks = 'Klinis';
 			}else{
 			$jns_pks = '';
 			}
@@ -431,7 +435,8 @@ class Pks extends CI_Controller {
 				'rev_ct' => set_value('rev_ct', $row->rev_ct),
 				'cor_ct' => set_value('cor_ct', $row->cor_ct),
 				'ttd_ct' => set_value('ttd_ct', $row->ttd_ct),
-				'sls_ct' => set_value('sls_ct', $row->sls_ct)
+				'sls_ct' => set_value('sls_ct', $row->sls_ct),
+				'tot_info' => $this->M_pks->get_total_info()
 			);
 			$this->load->view('pks/pks_read', $data);
 		}
@@ -454,7 +459,8 @@ class Pks extends CI_Controller {
 				'date_sls' => set_value('date_sls', date('d-m-Y', strtotime($row->date_sls))),
 				'sls_ct' => set_value('sls_ct', $row->ttd_ct),
 				'sls_ur' => set_value('sls_ur', $row->sls_ur),
-				'param' => $param
+				'param' => $param,
+				'tot_info' => $this->M_pks->get_total_info()
 			);
 			$this->load->view('pks/pks_info_progress', $data);
 		}
@@ -476,7 +482,8 @@ class Pks extends CI_Controller {
 				'date_sls' => set_value('date_sls', date('d-m-Y', strtotime($row->date_sls))),
 				'sls_ct' => set_value('sls_ct', $row->ttd_ct),
 				'sls_ur' => set_value('sls_ur', $row->sls_ur),
-				'param' => $param
+				'param' => $param,
+				'tot_info' => $this->M_pks->get_total_info()
 			);
 			$this->load->view('pks/pks_info_progress', $data);
 		}
@@ -491,14 +498,15 @@ class Pks extends CI_Controller {
 				'rev_ur' => set_value('rev_ur', $row->rev_ur),
 				'date_cor' => set_value('date_cor', date('d-m-Y', strtotime($row->date_cor))),
 				'cor_ct' => set_value('cor_ct', $row->cor_ct),
-				'cor_ur' => set_value('cor_ur', $row->ur),
+				'cor_ur' => set_value('cor_ur', $row->cor_ur),
 				'date_ttd' => set_value('date_ttd', date('d-m-Y', strtotime($row->date_ttd))),
 				'ttd_ct' => set_value('ttd_ct', $row->ttd_ct),
 				'ttd_ur' => set_value('ttd_ur', $row->ttd_ur),
 				'date_sls' => set_value('date_sls', date('d-m-Y', strtotime($row->date_sls))),
 				'sls_ct' => set_value('sls_ct', $row->ttd_ct),
 				'sls_ur' => set_value('sls_ur', $row->sls_ur),
-				'param' => $param
+				'param' => $param,
+				'tot_info' => $this->M_pks->get_total_info()
 			);
 			$this->load->view('pks/pks_info_progress', $data);
 		}
@@ -520,7 +528,8 @@ class Pks extends CI_Controller {
 				'date_sls' => set_value('date_sls', date('d-m-Y', strtotime($row->date_sls))),
 				'sls_ct' => set_value('sls_ct', $row->ttd_ct),
 				'sls_ur' => set_value('sls_ct', $row->ttd_ur),
-				'param' => $param
+				'param' => $param,
+				'tot_info' => $this->M_pks->get_total_info()
 			);
 			$this->load->view('pks/pks_info_progress', $data);
 		}
@@ -528,7 +537,10 @@ class Pks extends CI_Controller {
 
 	public function progress()
 	{
-		$this->load->view('pks/pks_progress');
+		$data = array(
+			'tot_info' => $this->M_pks->get_total_info()
+		);
+		$this->load->view('pks/pks_progress', $data);
 	}
 
 	public function export_excel(){
@@ -559,7 +571,7 @@ class Pks extends CI_Controller {
           $kolom = 2;
           $nomor = 1;
           foreach($data as $row) {
-			if($row->jns_pks == 1){$jns_pks = 'Menejerial';}else{$jns_pks = 'Medis';}
+			if($row->jns_pks == 1){$jns_pks = 'Menejerial';}else{$jns_pks = 'Klinis';}
 
                $spreadsheet->setActiveSheetIndex(0)
                            ->setCellValue('A' . $kolom, $nomor)
@@ -620,12 +632,21 @@ class Pks extends CI_Controller {
             $searchByAkhir = date('Y-m-d', strtotime($this->input->post('searchByAkhir')));
 			$searchQuery .= " and (tgl_mulai BETWEEN '".$searchByAwal."' AND '".$searchByAkhir."' ) ";
 		 }
+		 
+		$jenis = $this->input->post('searchByJenis');
+		if($jenis != ''){
+			$searchQuery .= "and jns_pks = '".$jenis."'";
+		}
+
+		$prsn = $this->input->post('searchByPrsn');
+		if($prsn != ''){
+			$searchQuery .= "and prsn_pks = '".$prsn."'";
+		}
 
 		if($searchValue != ''){
 		$searchQuery .= " and (
 		kd_pks like '%".$searchValue."%' or 
 		nm_instansi like '%".$searchValue."%' or 
-		jns_pks like '%".$searchValue."%' or 
 		des_pks like '%".$searchValue."%' or 
 		asal_pks like'%".$searchValue."%' or
 		tgl_mulai like'%".$searchValue."%' or
@@ -681,7 +702,7 @@ class Pks extends CI_Controller {
 		if($j_p == 1){
 			$jns_pks = 'Manajerial';
 		}else if($j_p == 2){
-			$jns_pks = 'Medis';
+			$jns_pks = 'Klinis';
 		}else{
 			$jns_pks = '';
 		}
@@ -724,8 +745,14 @@ class Pks extends CI_Controller {
 
 		## Search 
 		$searchQuery = " ";
+
+		$searchByPrsn = $this->input->post('searchByPrsn');
+		if($searchByPrsn != ''){
+			$searchQuery .= "and prsn_pks = '".$searchByPrsn."'";
+		}
+
 		if($searchValue != ''){
-		$searchQuery = " and (
+		$searchQuery .= " and (
 		kd_pks like '%".$searchValue."%' or 
 		nm_instansi like '%".$searchValue."%' or 
 		jns_pks like '%".$searchValue."%' or 
