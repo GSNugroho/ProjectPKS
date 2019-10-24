@@ -145,6 +145,16 @@
             showInLegend: true
         }
     },
+    legend: {
+                enabled: true,
+                align: 'left',
+                width: '100%',
+                verticalAlign: 'bottom',
+                // useHTML: true,
+                labelFormatter: function() {
+                    return ' ' + this.name + ' : ' + this.y + ' PKS';
+				        }
+    },
     series: [{
         name: 'Jumlah Proyek PKS',
         colorByPoint: true,

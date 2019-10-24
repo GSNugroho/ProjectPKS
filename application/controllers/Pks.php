@@ -340,8 +340,8 @@ class Pks extends CI_Controller {
 		
 		$dt_sts = $this->input->post('sts_pr');
 		$dt_ct = $this->input->post('ct_sts');
-		// $dt_ur = $this->input->post('user');
-		$dt_ur = $this->session->userdata('nmUser');
+		$dt_ur = $this->input->post('user');
+		// $dt_ur = $this->session->userdata('nmUser');
 		if(!empty($dt_sts)){$sts_pks = '1';}
 		$prsn_1 = '25%';
 		$prsn_2 = '50%';

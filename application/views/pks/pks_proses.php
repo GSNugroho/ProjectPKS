@@ -5,7 +5,7 @@
     <div class="box-header with-border">
         <h3 class="box-title">Progress Proyek PKS<?php echo '/ '.$nm_instansi.'/ '.$nm_pks;?></h3>
     </div>
-    <form role="form" action="<?php echo base_url().'PKS/proses_action';?>" method="POST">
+    <form role="form" action="<?php echo base_url().'Pks/proses_action';?>" method="POST">
       <div class="box-body">
       <div class="form-group">
       		<label for="sts_prtn">Pilih Status</label>
