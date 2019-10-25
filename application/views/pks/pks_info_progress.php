@@ -8,31 +8,76 @@
 		
 	<div class="box-body">
     <a href="<?php echo base_url('Pks/progress') ?>" class="btn btn-danger">Kembali</a>   
-    <table>
+    <div class="table-responsive">
+    <table class="table table-bordered">
+        <tr>
+            <th>No</th>
+            <th>Tanggal Tindakan</th>
+            <th>Tindakan</th>
+            <th>Keterangan</th>
+            <th>PIC</th>
+        </tr>
     <?php
         if($param == 1){
-            echo '<tr><td>Tanggal Pencermatan&nbsp;</td><td>:</td><td>&nbsp;'.$date_rev.'</td></tr>
-                    <tr><td>Catatan Pencermatan&nbsp;</td><td>:</td><td>&nbsp;'.$rev_ct.'</td></tr>
-                    <tr><td>PIC Pencermatan&nbsp;</td><td>:</td><td>&nbsp;'.$rev_ur.'</td>
-                    </tr>';
+            $i=1;
+            foreach($detail_proses as $row){
+                if($row->d_tind == 1){
+                    $tind = 'Pencermatan';
+                }elseif($row->d_tind == 2){
+                    $tind = 'Koreksi';
+                }elseif($row->d_tind == 3){
+                    $tind = 'Tanda Tangan';
+                }elseif($row->d_tind == 4){
+                    $tind = 'Selesai';
+                }
+                echo '<tr><td>'.$i.'</td><td>'.date('d-m-Y', strtotime($row->tgl_tind)).'</td><td>'.$tind.'</td><td>'.$row->ket_tind.'</td><td>'.$row->pic_tind.'<td></tr>';
+            }
         }elseif($param == 2){
-            echo '<tr><td>Tanggal Koreksi&nbsp;</td><td>:</td><td>&nbsp;'.$date_cor.'</td></tr>
-                    <tr><td>Catatan Koreksi&nbsp;</td><td>:</td><td>&nbsp;'.$cor_ct.'</td></tr>
-                    <tr><td>PIC Koreksi&nbsp;</td><td>:</td><td>&nbsp;'.$cor_ur.'</td>
-                    </tr>';
+            $i=1;
+            foreach($detail_proses as $row){
+                if($row->d_tind == 1){
+                    $tind = 'Pencermatan';
+                }elseif($row->d_tind == 2){
+                    $tind = 'Koreksi';
+                }elseif($row->d_tind == 3){
+                    $tind = 'Tanda Tangan';
+                }elseif($row->d_tind == 4){
+                    $tind = 'Selesai';
+                }
+                echo '<tr><td>'.$i.'</td><td>'.date('d-m-Y', strtotime($row->tgl_tind)).'</td><td>'.$tind.'</td><td>'.$row->ket_tind.'</td><td>'.$row->pic_tind.'<td></tr>';
+            }
         }elseif($param == 3){
-            echo '<tr><td>Tanggal Tanda Tangan&nbsp;</td><td>:</td><td>&nbsp;'.$date_ttd.'</td></tr>
-                    <tr><td>Catatan Tanda Tangan&nbsp;</td><td>:</td><td>&nbsp;'.$ttd_ct.'</td></tr>
-                    <tr><td>PIC Tanda Tangan&nbsp;</td><td>:</td><td>&nbsp;'.$ttd_ur.'</td>
-                    </tr>';
+            $i=1;
+            foreach($detail_proses as $row){
+                if($row->d_tind == 1){
+                    $tind = 'Pencermatan';
+                }elseif($row->d_tind == 2){
+                    $tind = 'Koreksi';
+                }elseif($row->d_tind == 3){
+                    $tind = 'Tanda Tangan';
+                }elseif($row->d_tind == 4){
+                    $tind = 'Selesai';
+                }
+                echo '<tr><td>'.$i.'</td><td>'.date('d-m-Y', strtotime($row->tgl_tind)).'</td><td>'.$tind.'</td><td>'.$row->ket_tind.'</td><td>'.$row->pic_tind.'<td></tr>';
+            }
         }elseif($param == 4){
-            echo '<tr><td>Tanggal Selesai&nbsp;</td><td>:</td><td>&nbsp;'.$date_sls.'</td></tr>
-                    <tr><td>Catatan Selesai&nbsp;</td><td>:</td><td>&nbsp;'.$sls_ct.'</td></tr>
-                    <tr><td>PIC Selesai&nbsp;</td><td>:</td><td>&nbsp;'.$sls_ur.'</td>
-                    </tr>';
+            $i=1;
+            foreach($detail_proses as $row){
+                if($row->d_tind == 1){
+                    $tind = 'Pencermatan';
+                }elseif($row->d_tind == 2){
+                    $tind = 'Koreksi';
+                }elseif($row->d_tind == 3){
+                    $tind = 'Tanda Tangan';
+                }elseif($row->d_tind == 4){
+                    $tind = 'Selesai';
+                }
+                echo '<tr><td>'.$i.'</td><td>'.date('d-m-Y', strtotime($row->tgl_tind)).'</td><td>'.$tind.'</td><td>'.$row->ket_tind.'</td><td>'.$row->pic_tind.'<td></tr>';
+            }
         }
     ?>
     </table>
+    </div>
 </div>
 </div>
 </div>

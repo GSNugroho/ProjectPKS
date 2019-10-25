@@ -14,6 +14,10 @@ class M_pks extends CI_Model{
         $this->db->insert('SKR_Pks', $data);
 	}
 
+	function insert_detail($data){
+		$this->db->insert('SKR_Pks_detail', $data);
+	}
+
 	function update($id, $data){
 		$this->db->where($this->id, $id);
 		$this->db->update($this->table, $data);
@@ -25,18 +29,18 @@ class M_pks extends CI_Model{
 	}
 	
 	function get_total_dt(){
-		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0");
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100%'");
 		return $query->result();
 	}
 
 	function get_total_fl($searchQuery){
-		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0".$searchQuery);
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100%'".$searchQuery);
 		return $query->result();
 	}
 
 	function get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
-		$query = $this->db->query("SELECT TOP ".$rowperpage."* FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0".$searchQuery." and SKR_Pks.kd_pks NOT IN(
-			SELECT TOP ".$baris." SKR_Pks.kd_pks FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
+		$query = $this->db->query("SELECT TOP ".$rowperpage."* FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1  AND SKR_Pks.prsn_pks != '100%'".$searchQuery." and SKR_Pks.kd_pks NOT IN(
+			SELECT TOP ".$baris." SKR_Pks.kd_pks FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 ".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
 			order by ".$columnName." ".$columnSortOrder);
 		return $query->result();
 	}
@@ -133,7 +137,17 @@ class M_pks extends CI_Model{
 	}
 
 	function get_total_info(){
-		$query = $this->db->query("SELECT COUNT(*) as total FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.sls_pks = 0");
+		$query = $this->db->query("SELECT COUNT(*) as total FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100%'");
+		return $query->result();
+	}
+
+	function get_proses_info($id){
+		$query = $this->db->query("SELECT * FROM SKR_Pks JOIN SKR_Pks_detail ON SKR_Pks.kd_pks = SKR_Pks_detail.kd_pks WHERE SKR_Pks.kd_pks = '".$id."'");
+		return $query->result();
+	}
+
+	function get_proses_info_detail($id, $c){
+		$query = $this->db->query("SELECT * FROM SKR_Pks JOIN SKR_Pks_detail ON SKR_Pks.kd_pks = SKR_Pks_detail.kd_pks WHERE SKR_Pks.kd_pks = '".$id."' AND SKR_Pks_detail.d_tind = '".$c."'");
 		return $query->result();
 	}
 }
