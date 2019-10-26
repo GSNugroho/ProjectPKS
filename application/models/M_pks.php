@@ -29,17 +29,17 @@ class M_pks extends CI_Model{
 	}
 	
 	function get_total_dt(){
-		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100%'");
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100'");
 		return $query->result();
 	}
 
 	function get_total_fl($searchQuery){
-		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100%'".$searchQuery);
+		$query = $this->db->query("SELECT count(*) as allcount FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100'".$searchQuery);
 		return $query->result();
 	}
 
 	function get_total_ft($searchQuery, $columnName, $columnSortOrder, $baris, $rowperpage){
-		$query = $this->db->query("SELECT TOP ".$rowperpage."* FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1  AND SKR_Pks.prsn_pks != '100%'".$searchQuery." and SKR_Pks.kd_pks NOT IN(
+		$query = $this->db->query("SELECT TOP ".$rowperpage."* FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1  AND SKR_Pks.prsn_pks != '100'".$searchQuery." and SKR_Pks.kd_pks NOT IN(
 			SELECT TOP ".$baris." SKR_Pks.kd_pks FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 ".$searchQuery." order by ".$columnName." ".$columnSortOrder.")
 			order by ".$columnName." ".$columnSortOrder);
 		return $query->result();
@@ -73,27 +73,27 @@ class M_pks extends CI_Model{
 	}
 
 	function get_t_st1(){
-		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '0%'");
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '0'");
 		return $query->result();
 	}
 
 	function get_t_st2(){
-		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '25%'");
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '25'");
 		return $query->result();
 	}
 
 	function get_t_st3(){
-		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '50%'");
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '50'");
 		return $query->result();
 	}
 
 	function get_t_st4(){
-		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '75%'");
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '75'");
 		return $query->result();
 	}
 
 	function get_t_st5(){
-		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '100%'");
+		$query = $this->db->query("SELECT COUNT(prsn_pks) AS total FROM SKR_Pks WHERE dl_sts = 1 AND prsn_pks = '100'");
 		return $query->result();
 	}
 
@@ -137,7 +137,7 @@ class M_pks extends CI_Model{
 	}
 
 	function get_total_info(){
-		$query = $this->db->query("SELECT COUNT(*) as total FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100%'");
+		$query = $this->db->query("SELECT COUNT(*) as total FROM SKR_Pks WHERE 1=1 AND SKR_Pks.dl_sts = 1 AND SKR_Pks.prsn_pks != '100'");
 		return $query->result();
 	}
 

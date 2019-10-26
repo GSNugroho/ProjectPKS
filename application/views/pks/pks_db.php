@@ -161,7 +161,7 @@
         data: [
           <?php 
         foreach($grafik_persen as $row){
-          echo "{name: '".$row->prsn_pks."', y: ".$row->total."},";
+          echo "{name: '".$row->prsn_pks."%', y: ".$row->total."},";
         }
       ?>
         ]

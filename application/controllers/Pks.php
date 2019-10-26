@@ -327,10 +327,10 @@ class Pks extends CI_Controller {
 		$dt_ur = $this->input->post('user');
 		// $dt_ur = $this->session->userdata('nmUser');
 		if(!empty($dt_sts)){$sts_pks = '1';}
-		$prsn_1 = '25%';
-		$prsn_2 = '50%';
-		$prsn_3 = '75%';
-		$prsn_4 = '100%';
+		$prsn_1 = '25';
+		$prsn_2 = '50';
+		$prsn_3 = '75';
+		$prsn_4 = '100';
 
 		if($dt_sts == 1){
 			$data = array(
@@ -673,7 +673,7 @@ class Pks extends CI_Controller {
 			"asal_pks" => $row->asal_pks,
 			"tgl_mulai" => date('d/m/Y', strtotime($row->tgl_mulai)),
 			"tgl_akhir" => date('d/m/Y', strtotime($row->tgl_akhir)),
-			"prsn_pks" => $row->prsn_pks,
+			"prsn_pks" => $row->prsn_pks.'%',
 			"pic_pks" => $row->pic_pks,
 			"action" => $button
 		);

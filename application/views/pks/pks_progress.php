@@ -13,11 +13,11 @@
 			  <div class="form-group">
 				  <select id="prsn" class="form-control">
 					  <option value="">&nbsp;Status&nbsp;</option>
-					  <option value="0%">0%</option>
-					  <option value="25%">25%</option>
-					  <option value="50%">50%</option>
-					  <option value="75%">75%</option>
-					  <option value="100%">100%</option>
+					  <option value="0">0%</option>
+					  <option value="25">25%</option>
+					  <option value="50">50%</option>
+					  <option value="75">75%</option>
+					  <option value="100">100%</option>
 				  </select>
 			  </div>
 		 </td>
@@ -65,7 +65,7 @@
 		"sLast":     "Terakhir"
 	}
 	},
-	//   'order': [[ 0, "desc" ]],
+	//    'order': [[ 6, "desc" ]],
       'processing': true,
       'serverSide': true,
       'serverMethod': 'post',

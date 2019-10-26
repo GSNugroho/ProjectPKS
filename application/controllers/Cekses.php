@@ -6,6 +6,7 @@ class Cekses extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('M_pks');
     }
 
     public function index()
@@ -67,7 +68,10 @@ class Cekses extends CI_Controller
 
     public function notfound()
     {
-        $this->load->view('404');
+        $data = array(
+            'tot_info' => $this->M_pks->get_total_info()
+        );
+        $this->load->view('404', $data);
     }
 }
 ?>
