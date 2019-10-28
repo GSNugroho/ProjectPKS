@@ -216,19 +216,9 @@ $(document).ready(function(){
   	$('#tgl1').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
 	});
 
-	// $('#tgl1').datetimepicker({
-	// 	onSelect: function(dateText) {
-    // }, locale:'id',format : "DD-MM-YYYY"
-	// });
-
 	$(function() { 
   	$('#tgl2').datetimepicker({locale:'id',format : "DD-MM-YYYY"});
 	});
-
-	// $('#tgl2').datetimepicker({
-	// 	onSelect: function(dateText) {
-    // }, locale:'id',format : "DD-MM-YYYY"
-	// });
 
 </script>
 </div>

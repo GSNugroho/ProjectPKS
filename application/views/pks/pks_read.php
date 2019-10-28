@@ -16,19 +16,27 @@
     <tr><td>Tanggal Mulai PKS</td><td>:</td><td><?php echo $tgl_mulai; ?></td></tr>
     <tr><td>Tanggal Selesai PKS</td><td>:</td><td><?php echo $tgl_akhir; ?></td></tr>
     <tr><td>PIC</td><td>:</td><td><?php echo $pic_pks; ?></td></tr>
-    <tr><td>Tanggal Revisi</td><td>:</td><td><?php echo $date_rev; ?></td></tr>
-    <tr><td>Keterangan Revisi</td><td>:</td><td><?php echo $rev_ct; ?></td></tr>
-    <tr><td>Tanggal Koreksi</td><td>:</td><td><?php echo $date_cor; ?></td></tr>
-    <tr><td>Keterangan Koreksi</td><td>:</td><td><?php echo $cor_ct; ?></td></tr>
-    <tr><td>Tanggal Tandatangan</td><td>:</td><td><?php echo $date_ttd; ?></td></tr>
-    <tr><td>Keterangan Tandatangan</td><td>:</td><td><?php echo $ttd_ct; ?></td></tr>
-    <tr><td>Tanggal Selesai</td><td>:</td><td><?php echo $date_sls; ?></td></tr>
-    <tr><td>Keterangan Selesai</td><td>:</td><td><?php echo $sls_ct; ?></td></tr>
-    <!-- <tr><td>Unduh Dokumen</td><td>:</td><td><a href="<?php //echo base_url('Pks/read_pdf/'.$kd_pks)?>" target="_blank"> -->
-    <!-- <i class="fa fa-file-text-o"></i>
-    <?php //echo $nm_pks.'/'.$nm_instansi.'.pdf'?>
-    </a></td></tr> -->
     </table>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+      <tr>
+            <th>No</th>
+            <th>Tanggal</th>
+            <th>Tindakan</th>
+            <th>Keterangan</th>
+            <th>PIC</th>
+          </tr>
+          <?php
+              $i = 1;
+              foreach($detail_proses as $row){
+              if($row->d_tind == '1'){ $tind = 'Pencermatan';}else if($row->d_tind == '2'){ $tind = 'Koreksi';}
+              else if($row->d_tind == '3'){ $tind = 'Tanda Tangan';}else if($row->d_tind == '4'){ $tind = 'Selesai';}
+              echo "<tr><td>".$i."</td><td>".date('d-m-Y', strtotime($row->tgl_tind))."</td><td>".$tind."</td><td>".$row->ket_tind."</td><td>".$row->pic_tind."</td></tr>";
+              $i++;
+            }
+          ?>
+      </table>
+    </div>
 </div>
 </div>
 </div>

@@ -61,7 +61,7 @@ class Pks extends CI_Controller {
         } else {
 		$param = 0;
 		$dl_sts = 1;
-		$prsn_0 = '0%';
+		$prsn_0 = '0';
 
 		$data = array(
 			'kd_pks' => $this->kode(),
@@ -74,10 +74,6 @@ class Pks extends CI_Controller {
 			'tgl_akhir' => date('Y-m-d', strtotime($this->input->post('rta_waktu'))),
 			'pic_pks' => $this->input->post('pic_pks', TRUE),
 			'dl_sts' => $dl_sts,
-			'rev_pks' => $param,
-			'cor_pks' => $param,
-			'ttd_pks' => $param,
-			'sls_pks' => $param,
 			'dt_cr' => date('Y-m-d'),
 			'prsn_pks' => $prsn_0
 		);
@@ -402,41 +398,16 @@ class Pks extends CI_Controller {
 		$row = $this->M_pks->get_by_id($id);
 
 		if($row){
-			$jp = $row->jns_pks;
-			if($jp == 1){
-			$jns_pks = 'Manajerial';
-			}else if($jp == 2){
-			$jns_pks = 'Klinis';
-			}else{
-			$jns_pks = '';
-			}
-
-			if(!empty($row->date_rev)){$date_rev = date('d-m-Y', strtotime($row->date_rev));}
-			else{$date_rev = '';}
-			if(!empty($row->date_cor)){$date_cor = date('d-m-Y', strtotime($row->date_cor));}
-			else{$date_cor = '';}
-			if(!empty($row->date_ttd)){$date_ttd = date('d-m-Y', strtotime($row->date_ttd));}
-			else{$date_ttd = '';}
-			if(!empty($row->date_sls)){$date_sls = date('d-m-Y', strtotime($row->date_rev));}
-			else{$date_sls = '';}
 			$data = array(
 				'kd_pks' => set_value('kd_pks', $row->kd_pks),
 				'nm_instansi' => set_value('nm_instansi', $row->nm_instansi),
-				'jns_pks' => $jns_pks,
+				'jns_pks' => set_value('jns_pks', $row->nm_jns_pks),
 				'des_pks' => set_value('des_pks', $row->des_pks),
 				'asal_pks' => set_value('asal_pks', $row->asal_pks),
 				'tgl_mulai' => set_value('tgl_mulai', date('d-m-Y', strtotime($row->tgl_mulai))),
 				'tgl_akhir' => set_value('tgl_akhir', date('d-m-Y', strtotime($row->tgl_akhir))),
 				'pic_pks' => set_value('pic_pks', $row->pic_pks),
-				'date_rev' => $date_rev,
-				'date_cor' => $date_cor,
-				'date_ttd' => $date_ttd,
-				'date_sls' => $date_sls,
-				'nm_pks' => set_value('nm_pks', $row->nm_pks),
-				'rev_ct' => set_value('rev_ct', $row->rev_ct),
-				'cor_ct' => set_value('cor_ct', $row->cor_ct),
-				'ttd_ct' => set_value('ttd_ct', $row->ttd_ct),
-				'sls_ct' => set_value('sls_ct', $row->sls_ct),
+				'detail_proses' => $this->M_pks->get_proses_info($id),
 				'tot_info' => $this->M_pks->get_total_info()
 			);
 			$this->load->view('pks/pks_read', $data);

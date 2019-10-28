@@ -24,7 +24,7 @@ class M_pks extends CI_Model{
 	}
 	
 	function get_by_id($id){
-		$query = $this->db->query("SELECT * FROM SKR_Pks WHERE kd_pks = '".$id."'");
+		$query = $this->db->query("SELECT * FROM SKR_Pks JOIN SKR_Pks_jns ON SKR_Pks.jns_pks = SKR_Pks_jns.kd_jns_pks WHERE kd_pks = '".$id."'");
 		return $query->row();
 	}
 	
