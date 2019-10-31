@@ -29,8 +29,10 @@
           <?php
               $i = 1;
               foreach($detail_proses as $row){
-              if($row->d_tind == '1'){ $tind = 'Pencermatan';}else if($row->d_tind == '2'){ $tind = 'Koreksi';}
-              else if($row->d_tind == '3'){ $tind = 'Tanda Tangan';}else if($row->d_tind == '4'){ $tind = 'Selesai';}
+              if($row->d_tind == '1'){ $tind = 'Pencermatan';}
+              else if($row->d_tind == '2'){ $tind = 'Koreksi';}
+              else if($row->d_tind == '3'){ $tind = 'Tanda Tangan';}
+              else if($row->d_tind == '4'){ $tind = 'Selesai';}
               echo "<tr><td>".$i."</td><td>".date('d-m-Y', strtotime($row->tgl_tind))."</td><td>".$tind."</td><td>".$row->ket_tind."</td><td>".$row->pic_tind."</td></tr>";
               $i++;
             }

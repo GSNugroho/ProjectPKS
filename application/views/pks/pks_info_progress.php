@@ -31,6 +31,7 @@
                     $tind = 'Selesai';
                 }
                 echo '<tr><td>'.$i.'</td><td>'.date('d-m-Y', strtotime($row->tgl_tind)).'</td><td>'.$tind.'</td><td>'.$row->ket_tind.'</td><td>'.$row->pic_tind.'<td></tr>';
+                $i++;
             }
         }elseif($param == 2){
             $i=1;
@@ -45,6 +46,7 @@
                     $tind = 'Selesai';
                 }
                 echo '<tr><td>'.$i.'</td><td>'.date('d-m-Y', strtotime($row->tgl_tind)).'</td><td>'.$tind.'</td><td>'.$row->ket_tind.'</td><td>'.$row->pic_tind.'<td></tr>';
+                $i++;
             }
         }elseif($param == 3){
             $i=1;
@@ -59,6 +61,7 @@
                     $tind = 'Selesai';
                 }
                 echo '<tr><td>'.$i.'</td><td>'.date('d-m-Y', strtotime($row->tgl_tind)).'</td><td>'.$tind.'</td><td>'.$row->ket_tind.'</td><td>'.$row->pic_tind.'<td></tr>';
+                $i++;
             }
         }elseif($param == 4){
             $i=1;
@@ -73,6 +76,7 @@
                     $tind = 'Selesai';
                 }
                 echo '<tr><td>'.$i.'</td><td>'.date('d-m-Y', strtotime($row->tgl_tind)).'</td><td>'.$tind.'</td><td>'.$row->ket_tind.'</td><td>'.$row->pic_tind.'<td></tr>';
+                $i++;
             }
         }
     ?>

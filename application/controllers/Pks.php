@@ -24,12 +24,9 @@ class Pks extends CI_Controller {
 	public function index()
 	{
 		$data = array(
-			'st_1' => $this->M_pks->get_t_st1(),
-			'st_2' => $this->M_pks->get_t_st2(),
-			'st_3' => $this->M_pks->get_t_st3(),
-			'st_4' => $this->M_pks->get_t_st4(),
-			'st_5' => $this->M_pks->get_t_st5(),
 			'g_t_pks' => $this->M_pks->get_g_pks(),
+			'g_t_pks_bsls' => $this->M_pks->get_g_pks_bsls(),
+			'g_t_pks_sls' => $this->M_pks->get_g_pks_sls(),
 			'tot_respon' => $this->M_pks->get_respon(),
 			'grafik_persen' => $this->M_pks->get_total_persen(),
 			'tot_info' => $this->M_pks->get_total_info()
@@ -62,6 +59,12 @@ class Pks extends CI_Controller {
 		$param = 0;
 		$dl_sts = 1;
 		$prsn_0 = '0';
+		$sekarang = date('Y-m-d');
+		if(($this->input->post('asal_pks')) == 'Internal'){
+			$expired = date('Y-m-d', strtotime('+28 day', strtotime($sekarang)));
+		}else if(($this->input->post('asal_pks')) == 'Eksternal'){
+			$expired = date('Y-m-d', strtotime('+41 day', strtotime($sekarang)));
+		}
 
 		$data = array(
 			'kd_pks' => $this->kode(),
@@ -75,6 +78,7 @@ class Pks extends CI_Controller {
 			'pic_pks' => $this->input->post('pic_pks', TRUE),
 			'dl_sts' => $dl_sts,
 			'dt_cr' => date('Y-m-d'),
+			'dt_exp' => $expired,
 			'prsn_pks' => $prsn_0
 		);
 		// $this->do_upload();
@@ -758,6 +762,8 @@ class Pks extends CI_Controller {
 		</a>';}
 
 
+		if($persen != 100)
+		{
 		$button = '
 		<div class="progress progress-sm active">
 		<div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: '.$persen.'%">
@@ -765,6 +771,12 @@ class Pks extends CI_Controller {
 		</div>
 		'.$persen.'% Selesai
 		';
+		}else if($persen == 100)
+		{
+		$button = '
+		'.$persen.'% Selesai
+		';
+		}
 	
 		$data[] = array( 
 			"nm_instansi" => $row->nm_instansi,
@@ -809,5 +821,24 @@ class Pks extends CI_Controller {
         echo json_encode($returnData);die;
     }
 		
+	function edit_tindakan()
+	{
+		if(isset($_POST['edit_row']))
+		{
+			$id = $this->input->post('row_id');
+			$ket = $this->input->post('ket_val');
+			$pic = $this->input->post('pic_val');
+
+			$data = array(
+				'ket_tind' => $ket,
+				'pic_tind' => $pic
+			);
+
+			$this->M_pks->update_tindakan($id, $data);
+			echo "success";
+			// redirect(base_url('Pks/list_pks'));
+			exit();
+		}
+	}
 }
 ?>

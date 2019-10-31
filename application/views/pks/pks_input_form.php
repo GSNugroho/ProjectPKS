@@ -42,8 +42,8 @@
 	<div class="form-group">
 		<label for="jns_pks">Jenis PKS</label> <?php echo form_error('jns_pks')?>
 		<select name="jns_pks" class="form-control" id="jns_pks">
-			<option value="">--Pilih Jenis PKS</option>
-			<option value="1" <?php echo ($jns_pks == '1')?'selected':''?>>Menejerial</option>
+			<option value="">--Pilih Jenis PKS--</option>
+			<option value="1" <?php echo ($jns_pks == '1')?'selected':''?>>Manajerial</option>
 			<option value="2" <?php echo ($jns_pks == '2')?'selected':''?>>Klinis</option>
 		</select>
 	</div>
@@ -53,7 +53,11 @@
 	</div>
 	<div class="form-group">
 		<label for="asal_pks">Asal Permohonan PKS </label><?php echo form_error('asal_pks')?>
-		<input class="form-control" type="text" name="asal_pks" id="asal_pks" placeholder="Asal Permohonan PKS" value="<?php echo $asal_pks?>">
+		<select name="asal_pks" class="form-control" id="asal_pks">
+			<option value="">--Asal Permohonan--</option>
+			<option value="Internal" <?php echo ($asal_pks == 'Internal')?'selected':''?>>Internal</option>
+			<option value="Eksternal" <?php echo ($asal_pks == 'Eksternal')?'selected':''?>>Eksternal</option>
+		</select>
 	</div>
 	<div class="form-group">
 		<label for="rtm_waktu">Rencana Tanggal Mulai PKS </label><?php echo form_error('rtm_waktu')?>

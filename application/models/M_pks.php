@@ -22,6 +22,11 @@ class M_pks extends CI_Model{
 		$this->db->where($this->id, $id);
 		$this->db->update($this->table, $data);
 	}
+
+	function update_tindakan($id, $data){
+		$this->db->where('id', $id);
+		$this->db->update('SKR_Pks_detail', $data);
+	}
 	
 	function get_by_id($id){
 		$query = $this->db->query("SELECT * FROM SKR_Pks JOIN SKR_Pks_jns ON SKR_Pks.jns_pks = SKR_Pks_jns.kd_jns_pks WHERE kd_pks = '".$id."'");
@@ -102,8 +107,18 @@ class M_pks extends CI_Model{
 		return $query->result();
 	}
 
+	function get_g_pks_bsls(){
+		$query = $this->db->query("SELECT MONTH(dt_cr) as bulan, COUNT(MONTH(dt_cr)) as tgl FROM SKR_Pks WHERE YEAR(dt_cr) = YEAR(GETDATE()) AND SKR_Pks.dl_sts = 1 AND SKR_Pks.date_sls IS NULL GROUP BY MONTH(dt_cr)");
+		return $query->result();
+	}
+
+	function get_g_pks_sls(){
+		$query = $this->db->query("SELECT MONTH(dt_cr) as bulan, COUNT(MONTH(dt_cr)) as tgl FROM SKR_Pks WHERE YEAR(dt_cr) = YEAR(GETDATE()) AND SKR_Pks.dl_sts = 1 AND SKR_Pks.date_sls IS NOT NULL GROUP BY MONTH(dt_cr)");
+		return $query->result();
+	}
+
 	function autoins($params = array()){
-        $this->db->select("*");
+        $this->db->select("vc_k_png, vc_n_png");
         $this->db->from('pubpng');
 
         //search by terms

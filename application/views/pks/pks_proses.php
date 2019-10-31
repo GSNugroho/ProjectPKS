@@ -14,14 +14,27 @@
             <th>Tindakan</th>
             <th>Keterangan</th>
             <th>PIC</th>
+            <th></th>
           </tr>
             <?php
               $i = 1;
               foreach($detail_proses as $row){
                 if($row->d_tind == '1'){ $tind = 'Pencermatan';}else if($row->d_tind == '2'){ $tind = 'Koreksi';}
                 else if($row->d_tind == '3'){ $tind = 'Tanda Tangan';}else if($row->d_tind == '4'){ $tind = 'Selesai';}
-                echo "<tr><td>".$i."</td><td>".date('d-m-Y', strtotime($row->tgl_tind))."</td><td>".$tind."</td><td>".$row->ket_tind."</td><td>".$row->pic_tind."</td></tr>";
-                $i++;
+            ?>
+                <tr id='row<?php echo $row->id?>'>
+                  <td><?php echo $i;?></td>
+                  <td><?php echo date('d-m-Y', strtotime($row->tgl_tind));?></td>
+                  <td><?php echo $tind?></td>
+                  <td id='ket_val<?php echo $row->id?>'><?php echo $row->ket_tind?></td>
+                  <td id='pic_val<?php echo $row->id?>'><?php echo $row->pic_tind?></td>
+                  <td><input type='button' id='edit_button<?php echo $row->id?>' value='Edit' class='edit' onclick="edit_row('<?php echo $row->id?>')">
+                      <input type='button' id='save_button<?php echo $row->id?>' value='Save' class='save' style="display:none;" onclick="save_row('<?php echo $row->id?>')">
+                  </td>
+                  </tr>
+                
+            <?php
+            $i++;
               }
             ?>
         </table>
@@ -92,6 +105,46 @@
 //         }
 //     });
 // });
+
+function edit_row(id)
+{
+ var ket = document.getElementById("ket_val"+id).innerHTML;
+ var pic = document.getElementById("pic_val"+id).innerHTML;
+
+ document.getElementById("ket_val"+id).innerHTML="<input type='text' id='ket_text"+id+"' value='"+ket+"'>";
+ document.getElementById("pic_val"+id).innerHTML="<input type='text' id='pic_text"+id+"' value='"+pic+"'>";
+	
+ document.getElementById("edit_button"+id).style.display="none";
+ document.getElementById("save_button"+id).style.display="block";
+}
+
+function save_row(id)
+{
+  var ket = document.getElementById("ket_text"+id).value;
+  var pic = document.getElementById("pic_text"+id).value;
+  
+  $.ajax
+  ({
+    type:'post',
+    url:'<?php echo base_url('Pks/edit_tindakan')?>',
+    data:{
+    edit_row:'edit_row',
+    row_id:id,
+    ket_val:ket,
+    pic_val:pic
+    },
+    success:function(response) {
+    if(response=="success")
+    {
+      document.getElementById("ket_val"+id).innerHTML=ket;
+      document.getElementById("pic_val"+id).innerHTML=pic;
+      document.getElementById("edit_button"+id).style.display="block";
+      document.getElementById("save_button"+id).style.display="none";
+    }
+    }
+  });
+
+}
 </script>
 </body>
 </html>

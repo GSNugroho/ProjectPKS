@@ -155,6 +155,7 @@ $(document).ready(function(){
 	}
 	},
 	//   'order': [[ 0, "desc" ]],
+	  'lengthMenu': [[10, 25, 50, 100, 9223372036854776], [10, 25, 50, 100, 'Semua']],
       'processing': true,
       'serverSide': true,
       'serverMethod': 'post',
