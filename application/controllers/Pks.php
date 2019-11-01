@@ -11,14 +11,14 @@ class Pks extends CI_Controller {
 	public function __construct()
     {
 		parent::__construct();
-		if ((!empty($_SESSION['nmUser'])) && (!empty($_SESSION['unameApp'])) && (!empty($_SESSION['passwrdApp'])) && (!empty($_SESSION['nik'])) && (!empty($_SESSION['gugus']))) {
+		// if ((!empty($_SESSION['nmUser'])) && (!empty($_SESSION['unameApp'])) && (!empty($_SESSION['passwrdApp'])) && (!empty($_SESSION['nik'])) && (!empty($_SESSION['gugus']))) {
 			$this->load->library('session');
 			$this->load->model('M_pks');
 			$this->load->library('form_validation');
-		} else {
-			echo "Silahkan Login Terlebih Dahulu";
-			echo redirect(base_url('../'));
-		}
+		// } else {
+		// 	echo "Silahkan Login Terlebih Dahulu";
+		// 	echo redirect(base_url('../'));
+		// }
     }
 
 	public function index()
@@ -728,35 +728,51 @@ class Pks extends CI_Controller {
 			$persen = 100;
 		}else{$persen = 0;}
 
-		if($row->date_rev != NULL){
+		if(($row->date_rev != NULL) && ($row->date_rev < $row->dt_exp)){
 		$b_rev = '<a href="read_progress1/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		'.date('d-m-Y', strtotime($row->date_rev)).'
-		</a>';}else{
+		</a>';}else if(($row->date_rev != NULL) && ($row->date_rev > $row->dt_exp)){
+		$b_rev = '<a href="read_progress1/'.$row->kd_pks.'" class="btn btn-danger btn-circle">
+		'.date('d-m-Y', strtotime($row->date_rev)).'
+		</a>';}
+		else{
 		$b_rev = '<a class="btn btn-danger btn-circle">
 		
 		</a>';
 		}
 
-		if($row->date_cor != NULL){
+		if(($row->date_cor != NULL) && ($row->date_cor < $row->dt_exp)){
 		$b_cor = '<a href="read_progress2/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		'.date('d-m-Y', strtotime($row->date_cor)).'
-		</a>';}else{
+		</a>';}else if(($row->date_cor != NULL) && ($row->date_cor > $row->dt_exp)){
+		$b_cor = '<a href="read_progress2/'.$row->kd_pks.'" class="btn btn-danger btn-circle">
+		'.date('d-m-Y', strtotime($row->date_cor)).'
+		</a>';}
+		else{
 		$b_cor = '<a class="btn btn-danger btn-circle">
 		
 		</a>';}
 
-		if($row->date_ttd != NULL){
+		if(($row->date_ttd != NULL) && ($row->date_ttd < $row->dt_exp)){
 		$b_ttd = '<a href="read_progress3/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		'.date('d-m-Y', strtotime($row->date_ttd)).'
-		</a>';}else{
+		</a>';}else if(($row->date_ttd != NULL) && ($row->date_ttd > $row->dt_exp)){
+		$b_ttd = '<a href="read_progress3/'.$row->kd_pks.'" class="btn btn-danger btn-circle">
+		'.date('d-m-Y', strtotime($row->date_ttd)).'
+		</a>';}
+		else{
 		$b_ttd = '<a class="btn btn-danger btn-circle">
 			
 		</a>';}
 
-		if($row->date_sls != NULL){
+		if(($row->date_sls != NULL) && ($row->date_sls < $row->dt_exp)){
 		$b_sls = '<a href="read_progress4/'.$row->kd_pks.'" class="btn btn-success btn-circle">
 		'.date('d-m-Y', strtotime($row->date_sls)).'
-		</a>';}else{
+		</a>';}else if(($row->date_sls != NULL) && ($row->date_sls > $row->dt_exp)){
+		$b_sls = '<a href="read_progress4/'.$row->kd_pks.'" class="btn btn-danger btn-circle">
+		'.date('d-m-Y', strtotime($row->date_sls)).'
+		</a>';}
+		else{
 		$b_sls = '<a class="btn btn-danger btn-circle">
 				
 		</a>';}
